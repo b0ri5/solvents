@@ -26,11 +26,11 @@ const sum_divisors = function(upper, div1, div2) {
   // The range is exclusive, so subtract 1 to get the inclusive upperbound
   const upper_inclusive = upper - 1;
   // Need the combo of div1 * div2 to subtract divisor double-counts
-  const common_div = div1 * div2;
+  const c_div = div1 * div2;
 
   return arithmetic_sum(div1, div1, Math.floor((upper_inclusive) / div1)) +
       arithmetic_sum(div2, div2, Math.floor((upper_inclusive) / div2)) -
-      arithmetic_sum(common_div, common_div, Math.floor((upper_inclusive) / common_div));
+      arithmetic_sum(c_div, c_div, Math.floor((upper_inclusive) / c_div));
 };
 
 exports.sum_divisors = sum_divisors;
