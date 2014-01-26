@@ -18,7 +18,7 @@ const sum_divisors = function(a, b, c) {
   var count_bc = Math.floor((a - 1) / bc);
 
   // Get the sum of b, c, and b*c
-  sum = geometric_sum(b, b, count_b);
+  var sum = geometric_sum(b, b, count_b);
   sum += geometric_sum(c, c, count_c);
   // Subtract b*c since we've double-counted it
   sum -= geometric_sum(bc, bc, count_bc);
