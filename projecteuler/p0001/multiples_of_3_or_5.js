@@ -1,10 +1,10 @@
 'use strict';
 
 // param a is the first term
-// param r is the "common ratio" or step between numbers
+// param d is the "common difference" or step between numbers
 // param n is the number of terms to sum
-const geometric_sum = function(a, r, n) {
-  return a * ((1 - Math.pow(r, n)) / (1 - r));
+const arithmetic_sum = function(a, d, n) {
+  return (n / 2) * (2 * a + d * (n - 1));
 };
 
 // param a defines the top of the range to sum (1, a)
@@ -18,10 +18,10 @@ const sum_divisors = function(a, b, c) {
   var count_bc = Math.floor((a - 1) / bc);
 
   // Get the sum of b, c, and b*c
-  var sum = geometric_sum(b, b, count_b);
-  sum += geometric_sum(c, c, count_c);
+  var sum = arithmetic_sum(b, b, count_b);
+  sum += arithmetic_sum(c, c, count_c);
   // Subtract b*c since we've double-counted it
-  sum -= geometric_sum(bc, bc, count_bc);
+  sum -= arithmetic_sum(bc, bc, count_bc);
 
   return sum;
 };
