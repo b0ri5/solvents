@@ -11,6 +11,7 @@ for root, dirs, files in os.walk('.'):
   if root.startswith('./.') or \
      root.startswith('./build') or \
      root.startswith('./lang') or \
+     root.startswith('./dist') or \
      root.startswith('./third_party') or \
      '__pycache__' in root or \
      root == '.':

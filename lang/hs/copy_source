@@ -29,7 +29,7 @@ def capitalize_dirs(dir):
   dirs = []
   while True:
     head, tail = os.path.split(dir)
-    dirs.append(tail[0].upper() + tail[1:])
+    dirs = [tail[0].upper() + tail[1:]] + dirs
     if not head:
       break
     dir = head
