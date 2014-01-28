@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * Calculates the arithmetic sum of a sequence according to:
  * http://www.mathsisfun.com/algebra/sequences-sums-arithmetic.html
@@ -32,6 +33,7 @@ const sum_divisors = function(upper, div1, div2) {
       arithmetic_sum(c_div, c_div, Math.floor((upper_inclusive) / c_div));
 };
 
+
 const brute_force = function(n) {
   let sum = 0;
   for (let i = 0; i < n; i++) {
@@ -41,6 +43,7 @@ const brute_force = function(n) {
   }
   return sum;
 };
+
 
 exports.brute_force = brute_force;
 exports.sum_divisors = sum_divisors;

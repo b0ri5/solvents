@@ -31,4 +31,5 @@ describe('multiples_of_3_or_5', function() {
     it('should solve large problem', function() {
       assert.equal(233168, multiples_of_3_or_5.brute_force(1000));
     });
+  });
 });
