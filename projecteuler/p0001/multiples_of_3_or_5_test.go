@@ -35,5 +35,4 @@ func TestSolutions(t *testing.T) {
 			}
 		}
 	}
-
 }
