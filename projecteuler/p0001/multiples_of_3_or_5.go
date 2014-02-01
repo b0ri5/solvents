@@ -24,12 +24,12 @@ func closedForm(n int) int {
 func goroutineWithChannel(n int) int {
 	divisors := make(chan int)
 	go func() {
+		defer close(divisors)
 		for i := 0; i < n; i++ {
 			if i%3 == 0 || i%5 == 0 {
 				divisors <- i
 			}
 		}
-		close(divisors)
 	}()
 
 	sum := 0
