@@ -7,4 +7,4 @@ set -o xtrace # Trace commands
 # So we need to copy the build file to the solvents root.
 cp lang/java/build.gradle .
 
-gradle check --info
+third_party/gradle-1.11/bin/gradle check --info

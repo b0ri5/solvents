@@ -5,7 +5,8 @@ set -x # Trace commands
 
 java -version
 
-sudo apt-get install gradle
-gradle -v
 
-# wget http://services.gradle.org/distributions/gradle-1.11-bin.zip
+wget -O third_party/gradle-1.11-bin.zip http://services.gradle.org/distributions/gradle-1.11-bin.zip
+# -o says to overwrite files
+unzip -o -d third_party third_party/gradle-1.11-bin.zip
+third_party/gradle-1.11/bin/gradle -v
