@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e # Exit on error
+set -x # Trace commands
+
+java -version
+
+wget -O third_party/gradle-1.11-bin.zip http://services.gradle.org/distributions/gradle-1.11-bin.zip
+# -o says to overwrite files
+unzip -o -d third_party third_party/gradle-1.11-bin.zip
+third_party/gradle-1.11/bin/gradle -v

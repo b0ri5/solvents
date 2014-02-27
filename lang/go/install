@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e # Exit on error
+set -x # Trace commands
+
+go version
+go get code.google.com/p/go.tools/cmd/vet

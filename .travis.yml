@@ -7,7 +7,9 @@ before_install:
   - sudo apt-get update
 install:
   - ./lang/cc/install
+  - ./lang/go/install
   - ./lang/hs/install && export PATH=~/.cabal/bin:${PATH}
+  - ./lang/java/install
   - ./lang/js/install
   - ./lang/py/install
 before_script:
