@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -x # Exit on error
+
+go version
+go get code.google.com/p/go.tools/cmd/vet
