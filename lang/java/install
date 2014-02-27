@@ -3,4 +3,9 @@
 set -e # Exit on error
 set -x # Trace commands
 
+java -version
+
 sudo apt-get install gradle
+gradle -v
+
+# wget http://services.gradle.org/distributions/gradle-1.11-bin.zip
