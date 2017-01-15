@@ -55,7 +55,7 @@ TODO(b0ri5): Add instructions on how to work on stuff from the commandline.
   * TODO(b0ri5): Check style with [checkstyle](http://checkstyle.sourceforge.net/)
 * Javascript
   * run by [nodejs](http://nodejs.org/)
-  * tested with [mocha](http://visionmedia.github.io/mocha/)
+  * tested with [mocha](http://mochajs.org/)
   * checked by [gjslint](https://developers.google.com/closure/utilities)
   * TODO(b0ri5): When we have enough js code, evaluate jshint.
 * Python
