@@ -1,4 +1,4 @@
-from . import fortytwo
+import fortytwo
 import unittest
 
 class FortytwoTest(unittest.TestCase):

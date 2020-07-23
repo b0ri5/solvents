@@ -31,3 +31,6 @@ src/
 # Ignore node_modules for js
 node_modules/
 lang/js/node_modules/
+
+# Ignore bazel artifacts
+bazel-*
