@@ -1,0 +1,85 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@rules_java//java:defs.bzl", "java_binary")
+load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
+
+haskell_library(
+    name = "fortytwo_haskell",
+    srcs = ["FortyTwo.hs"],
+    deps = ["@stackage//:base"],
+)
+
+haskell_test(
+    name = "fortytwo_haskell_test",
+    size = "small",
+    srcs = ["FortyTwoSpec.hs"],
+    main_function = "Samples.FortyTwoSpec.main",
+    deps = [
+        ":fortytwo_haskell",
+        "@stackage//:base",
+        "@stackage//:hspec",
+    ],
+)
+
+java_library(
+    name = "fortytwo_java",
+    srcs = ["FortyTwo.java"],
+)
+
+java_test(
+    name = "fortytwo_java_test",
+    size = "small",
+    srcs = ["FortyTwoTest.java"],
+    test_class = "samples.FortyTwoTest",
+    deps = [
+        "fortytwo_java",
+        "@maven//:com_google_truth_truth",
+    ],
+)
+
+py_library(
+    name = "fortytwo_py",
+    srcs = ["fortytwo.py"],
+)
+
+py_test(
+    name = "fortytwo_py_test",
+    size = "small",
+    srcs = ["fortytwo_test.py"],
+    main = "fortytwo_test.py",
+    deps = [":fortytwo_py"],
+)
+
+cc_library(
+    name = "fortytwo_cc",
+    srcs = [
+        "fortytwo.cc",
+        "fortytwo.h",
+    ],
+)
+
+cc_test(
+    name = "fortytwo_cc_test",
+    size = "small",
+    deps = [
+        ":fortytwo_cc",
+        "@gtest//:gtest_main",
+    ],
+)
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "fortyone.h",
+        "fortytwo.go",
+        "fortytwo.h",
+    ],
+    importpath = "github.com/b0ri5/solvents/samples",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "go_default_test",
+    size = "small",
+    srcs = ["fortytwo_test.go"],
+    embed = [":go_default_library"],
+)
