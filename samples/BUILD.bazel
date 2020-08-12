@@ -69,12 +69,9 @@ cc_test(
 go_library(
     name = "go_default_library",
     srcs = [
-        "fortyone.h",
         "fortytwo.go",
-        "fortytwo.h",
     ],
     importpath = "github.com/b0ri5/solvents/samples",
-    visibility = ["//visibility:public"],
 )
 
 go_test(
