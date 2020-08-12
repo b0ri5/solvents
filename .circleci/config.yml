@@ -2,18 +2,14 @@
 version: 2.1
 jobs:
   test:
-          #docker:
-    # CircleCI Go images available at: https://hub.docker.com/r/circleci/golang/
-    #- image: circleci/golang:1.14.7
-      #- image: circleci/python:3.8.5
+    # Use a machine executor because it most easily supports multiple languages
     machine:
+      # See https://circleci.com/docs/2.0/configuration-reference/#machine for the list of images
       image: ubuntu-1604:202004-01
     steps:
       - checkout
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
       - run: go get github.com/bazelbuild/bazelisk
-      # Install python3 for haskell
-      ##- run: sudo apt-get install python3
       - run: bazelisk test //...
 
 workflows:
