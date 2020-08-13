@@ -1,4 +1,4 @@
- [![b0ri5](https://circleci.com/gh/b0ri5/solventz.svg?style=svg)](https://circleci.com/gh/b0ri5/solventz)
+ [![b0ri5](https://circleci.com/gh/b0ri5/solvents.svg?style=svg)](https://circleci.com/gh/b0ri5/solvents)
 
 **A repository for learning about problems.**
 
