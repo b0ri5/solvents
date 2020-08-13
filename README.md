@@ -1,4 +1,4 @@
- [![Build Status](https://secure.travis-ci.org/b0ri5/solvents.png?branch=master)](https://travis-ci.org/b0ri5/solvents)
+ [![b0ri5](https://circleci.com/gh/b0ri5/solventz.svg?style=svg)](https://circleci.com/gh/b0ri5/solventz)
 
 **A repository for learning about problems.**
 
