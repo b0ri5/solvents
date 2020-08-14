@@ -19,6 +19,9 @@ jobs:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
       - run: yarn buildifier --lint=warn -r .
+      - run:
+          command: echo "Run yarn buildifier --lint=fix -r ."
+          when: on_fail
 
 workflows:
   test-workflow:
