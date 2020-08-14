@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -e # Exit on error
-set -o xtrace # Trace commands
-
-npm --version
-npm link lang/js
-npm test solvents

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -o xtrace
-
-fixjsstyle --exclude_directories \
-build,\
-lang/js/node_modules,\
-node_modules \
- --recurse .
