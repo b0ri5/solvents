@@ -13,6 +13,7 @@ jobs:
       - run: bazelisk test //...
   check-buildifier:
     docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
       - image: circleci/node:14.8.0
     steps:
       - checkout
