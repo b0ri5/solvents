@@ -1,13 +1,4 @@
-load("@rules_java//java:defs.bzl", "java_library")
 load("@bazel_gazelle//:def.bzl", "gazelle")
-load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 
 # gazelle:prefix github.com/b0ri5/solvents
 gazelle(name = "gazelle")
-
-buildifier(name = "buildifier")
-
-java_library(
-    name = "truth",
-    srcs = glob(["**/*.java"]),
-)
