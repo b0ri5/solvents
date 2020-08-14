@@ -64,13 +64,6 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/3.3.zip",
 )
 
-http_archive(
-    name = "truth",
-    sha256 = "447bbd2afcf30f8eed90f560c666b6c63386bfd7fcf63667874a41687f00ad7b",
-    strip_prefix = "truth-release_1_0_1",
-    url = "https://github.com/google/truth/archive/release_1_0_1.zip",
-)
-
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
