@@ -11,6 +11,13 @@ jobs:
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
       - run: go get github.com/bazelbuild/bazelisk
       - run: bazelisk test //...
+  check-buildifier:
+    docker:
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: yarn install --frozen-lockfile --non-interactive
+      - run: yarn buildifier --lint=warn -r .
 
 workflows:
   test-workflow:

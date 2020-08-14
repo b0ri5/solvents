@@ -1,0 +1,6 @@
+{
+  "license": "MIT",
+  "devDependencies": {
+    "@bazel/buildifier": "^3.4.0"
+  }
+}
