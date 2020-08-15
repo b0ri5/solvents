@@ -46,11 +46,20 @@ jobs:
           command: |
             echo "Run find . -name *.h -o -name *.cc | xargs yarn clang-format -i -style=\"{BasedOnStyle: Google, Language: Cpp}\""
           when: on_fail
+  check-java:
+    docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: circleci/openjdk:14.0.1-buster
+    steps:
+      - checkout
+      - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
+      - run: find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --dry-run
 
 workflows:
   test-workflow:
     jobs:
       - check-buildifier
       - check-cc
+      - check-java
       - check-json
       - test
