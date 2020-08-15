@@ -35,9 +35,9 @@ gazelle_dependencies()
 # Make buildifier available. See https://github.com/bazelbuild/buildtools/tree/master/buildifier#setup-and-usage-via-bazel
 http_archive(
     name = "com_google_protobuf",
-    sha256 = "d8dfa7697e1b7c8f4d36a6838f476052f0ecf7cb49dbb13391623c05b7e1aa7b",
-    strip_prefix = "protobuf-3.12.4",
-    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v3.12.4/protobuf-all-3.12.4.zip"],
+    sha256 = "ff0fa865b5973dfa3206856342ac16184a9d7f3280ab870a07da2026863fa7cb",
+    strip_prefix = "protobuf-3.13.0",
+    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protobuf-all-3.13.0.zip"],
 )
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
