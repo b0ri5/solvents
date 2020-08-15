@@ -25,7 +25,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-clang-format@^1.4.0:
+clang-format@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/clang-format/-/clang-format-1.4.0.tgz#1ee2f10637eb5bb0bd7d0b82c949af68e848367e"
   integrity sha512-NrdyUnHJOGvMa60vbWk7GJTvOdhibj3uK5C0FlwdNG4301OUvqEJTFce9I9x8qw2odBbIVrJ+9xbsFS3a4FbDA==
