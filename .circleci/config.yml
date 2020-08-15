@@ -22,9 +22,22 @@ jobs:
       - run:
           command: echo "Run yarn buildifier --lint=fix -r ."
           when: on_fail
+  check-json:
+    docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: yarn install --frozen-lockfile --non-interactive
+      - run: yarn clang-format -style=Google --Werror -n package.json renovate.json
+      - run:
+          command: echo "Run yarn clang-format -style=Google -i package.json renovate.json"
+          when: on_fail
+
 
 workflows:
   test-workflow:
     jobs:
       - test
       - check-buildifier
+      - check-json
