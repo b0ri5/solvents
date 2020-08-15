@@ -33,11 +33,22 @@ jobs:
       - run:
           command: echo "Run yarn clang-format -style=Google -i package.json renovate.json"
           when: on_fail
-
+  check-cc:
+    docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: yarn install --frozen-lockfile --non-interactive
+      - run: find . -name *.h -o -name *.cc | xargs yarn clang-format --Werror -n -style="{BasedOnStyle: Google, Language: Cpp}"
+      - run:
+          command: echo "Run find . -name *.h -o -name *.cc | xargs yarn clang-format -i -style=\"{BasedOnStyle: Google, Language: Cpp}\""
+          when: on_fail
 
 workflows:
   test-workflow:
     jobs:
-      - test
       - check-buildifier
+      - check-cc
       - check-json
+      - test
