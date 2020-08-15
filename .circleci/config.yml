@@ -40,9 +40,11 @@ jobs:
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
-      - run: find . -name *.h -o -name *.cc | xargs yarn clang-format --Werror -n -style="{BasedOnStyle: Google, Language: Cpp}"
+      - run: |
+          find . -name *.h -o -name *.cc | xargs yarn clang-format --Werror -n -style="{BasedOnStyle: Google, Language: Cpp}"
       - run:
-          command: echo "Run find . -name *.h -o -name *.cc | xargs yarn clang-format -i -style=\"{BasedOnStyle: Google, Language: Cpp}\""
+          command: |
+            echo "Run find . -name *.h -o -name *.cc | xargs yarn clang-format -i -style=\"{BasedOnStyle: Google, Language: Cpp}\""
           when: on_fail
 
 workflows:
