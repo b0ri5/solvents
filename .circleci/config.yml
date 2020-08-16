@@ -28,15 +28,11 @@ jobs:
       - image: circleci/python:3.8.5
     steps:
       - checkout
-      - run: |
-          for f in $(find . -name "*.json")
-          do
-            diff <(python -m json.tool $f) $f
-          done
+      - run: .circleci/check_json
       - run:
           command: |
             echo "Run
-              for f in $(find . -name *.json)
+              for f in $(find . -name "*.json")
               do
                 tmp=$(mktemp)
                 python -m json.tool > $tmp
