@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e # Exit on error
+
+for f in $(find . -name "*.json" -not -path "./node_modules/*")
+do
+  tmp=$(mktemp)
+  python -m json.tool $f > $tmp
+  cp $tmp $f
+done

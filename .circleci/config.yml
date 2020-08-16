@@ -25,13 +25,12 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0
+      - image: circleci/python:3.8.5
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile --non-interactive
-      - run: yarn clang-format -style=Google --Werror -n .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json
+      - run: .circleci/check_json
       - run:
-          command: echo "Run yarn clang-format -style=Google -i .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json"
+          command: echo "Run .circleci/fix_json"
           when: on_fail
   check-cc:
     docker:
@@ -49,7 +48,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:14.0.1-buster
+      - image: circleci/openjdk:14.0.2-buster
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
