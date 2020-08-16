@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e # Exit on error
+
+for f in $(find . -name "*.json" -not -path "./node_modules/*")
+do
+  echo Checking $f
+  diff <(python -m json.tool $f) $f
+done
