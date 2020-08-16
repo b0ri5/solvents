@@ -6,5 +6,5 @@ for f in $(find . -name "*.json" -not -path "./node_modules/*")
 do
   tmp=$(mktemp)
   python -m json.tool $f > $tmp
-  cmp $tmp $f
+  cp $tmp $f
 done

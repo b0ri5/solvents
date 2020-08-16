@@ -1,5 +1,7 @@
 {
-  "license" : "MIT", "devDependencies" : {
-    "@bazel/buildifier" : "3.4.0", "clang-format" : "1.4.0"
-  }
+    "devDependencies": {
+        "@bazel/buildifier": "3.4.0",
+        "clang-format": "1.4.0"
+    },
+    "license": "MIT"
 }
