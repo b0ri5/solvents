@@ -53,7 +53,11 @@ jobs:
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
-      - run: find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --dry-run
+      - run: find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --dry-run --set-exit-if-changed
+      - run:
+          command: |
+            echo "Run find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --replace
+          when: on_fail
 
 workflows:
   test-workflow:
