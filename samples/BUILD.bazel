@@ -4,6 +4,14 @@ load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
 
+#load("@npm//typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "fortytwo_ts",
+    srcs = ["fortytwo.ts"],
+)
+
 haskell_library(
     name = "fortytwo_haskell",
     srcs = ["FortyTwo.hs"],
