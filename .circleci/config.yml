@@ -25,13 +25,23 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0
+      - image: circleci/python:3.8.5
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile --non-interactive
-      - run: yarn clang-format -style=Google --Werror -n .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json
+      - run: |
+          for f in $(find . -name *.json)
+          do
+            diff <(python -m json.tool $f) $f
+          done
       - run:
-          command: echo "Run yarn clang-format -style=Google -i .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json"
+          command: |
+            echo "Run
+              for f in $(find . -name *.json)
+              do
+                tmp=$(mktemp)
+                python -m json.tool > $tmp
+                cp $tmp $f
+              done"
           when: on_fail
   check-cc:
     docker:
