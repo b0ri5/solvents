@@ -29,9 +29,9 @@ jobs:
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
-      - run: yarn clang-format -style=Google --Werror -n .eslintrc.json .prettierrc.js package.json renovate.json
+      - run: yarn clang-format -style=Google --Werror -n .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json
       - run:
-          command: echo "Run yarn clang-format -style=Google -i .eslintrc.json .prettierrc.js package.json renovate.json"
+          command: echo "Run yarn clang-format -style=Google -i .eslintrc.json .prettierrc.js package.json renovate.json tsconfig.json"
           when: on_fail
   check-cc:
     docker:
