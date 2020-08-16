@@ -1,8 +1,4 @@
 # See https://docs.bazel.build/versions/master/build-ref.html#workspace
-workspace(
-    name = "wksp",
-    managed_directories = {"@npm": ["node_modules"]},
-)
 
 # Make Go rules available. See https://github.com/bazelbuild/rules_go#initial-project-setup
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -111,21 +107,4 @@ stack_snapshot(
         "hspec",
     ],
     snapshot = "lts-14.27",
-)
-
-# Follow https://bazelbuild.github.io/rules_nodejs/install.html
-http_archive(
-    name = "build_bazel_rules_nodejs",
-    sha256 = "0f2de53628e848c1691e5729b515022f5a77369c76a09fbe55611e12731c90e3",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/2.0.1/rules_nodejs-2.0.1.tar.gz"],
-)
-
-load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
-
-node_repositories(package_json = ["//:package.json"])
-
-yarn_install(
-    name = "npm",
-    package_json = "//:package.json",
-    yarn_lock = "//:yarn.lock",
 )
