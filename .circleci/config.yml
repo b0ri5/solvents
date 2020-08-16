@@ -17,10 +17,10 @@ jobs:
       - image: circleci/node:14.8.0
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile --non-interactive
-      - run: yarn buildifier --lint=warn -r .
+      - run: wget https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier
+      - run: .circleci/check_buildifier
       - run:
-          command: echo "Run yarn buildifier --lint=fix -r ."
+          command: echo "Run .circleci/fix_buildifier"
           when: on_fail
   check-json:
     docker:
