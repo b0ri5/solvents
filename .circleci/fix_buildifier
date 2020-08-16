@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e # Exit on error
+
+for f in WORKSPACE $(find . -name "BUILD.bazel" -not -path "./node_modules/*")
+do
+  echo Fixing $f
+  yarn buildifier --lint=fix --mode=fix --warnings=all $f
+done

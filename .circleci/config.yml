@@ -18,9 +18,9 @@ jobs:
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
-      - run: yarn buildifier --lint=warn -r .
+      - run: .circleci/check_buildifier
       - run:
-          command: echo "Run yarn buildifier --lint=fix -r ."
+          command: echo "Run .circleci/fix_buildifier"
           when: on_fail
   check-json:
     docker:
