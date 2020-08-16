@@ -2,3 +2,8 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # gazelle:prefix github.com/b0ri5/solvents
 gazelle(name = "gazelle")
+
+exports_files(
+    ["tsconfig.json"],
+    visibility = ["//visibility:public"],
+)
