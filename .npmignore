@@ -1,0 +1,3 @@
+# Ignoring all files makes gts happy about importing from dev dependencies (jasmine)
+# See https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-unpublished-import.md for more info
+*

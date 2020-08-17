@@ -1,3 +1,4 @@
+import 'jasmine';
 import {fortytwo} from './fortytwo';
 
 describe('fortytwo', () => {
