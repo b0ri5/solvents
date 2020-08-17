@@ -5,9 +5,9 @@
     "devDependencies": {
         "@bazel/buildifier": "3.4.0",
         "@bazel/ibazel": "0.13.1",
-        "@bazel/jasmine": "^2.0.2",
+        "@bazel/jasmine": "2.0.2",
         "@bazel/typescript": "2.0.2",
-        "@types/jasmine": "^3.5.12",
+        "@types/jasmine": "3.5.12",
         "@types/node": "13.13.15",
         "clang-format": "1.4.0",
         "gts": "2.0.2",
