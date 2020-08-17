@@ -33,7 +33,7 @@
   resolved "https://registry.yarnpkg.com/@bazel/ibazel/-/ibazel-0.13.1.tgz#23788f67a6fbe83d96f2d055691df4917c10ac8d"
   integrity sha512-FO1hBKpzpeBL0adnFYF2Dwl/7gox6ccKM6bb+x26AXrQpLbinXPuTi4zeXRL/MW4383mF6i4RovLCmwUU/YW0w==
 
-"@bazel/jasmine@2.0.2":
+"@bazel/jasmine@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@bazel/jasmine/-/jasmine-2.0.2.tgz#a4ccd3bf0b780d3d617cee07d146d459076385e4"
   integrity sha512-tmQY124GSTJFN67zIjTn34YAUUaPqBcC9MnDhYPyZDWqdbJ5SqDQ4aNQpRDmZvnOV3c14dKKHpXZy28nyFovOA==
@@ -158,6 +158,11 @@
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
   integrity sha512-sz7iLqvVUg1gIedBOvlkxPlc8/uVzyS5OwGz1cKjXzkl3FpL3al0crU8YGU1WoHkxn0Wxbw5tyi6hvzJKNzFsw==
+
+"@types/jasmine@^3.5.12":
+  version "3.5.12"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.5.12.tgz#5c378c1545cdc7cb339cff5578f854b6d1e0a17d"
+  integrity sha512-vJaQ58oceFao+NzpKNqLOWwHPsqA7YEhKv+mOXvYU4/qh+BfVWIxaBtL0Ck5iCS67yOkNwGkDCrzepnzIWF+7g==
 
 "@types/json-schema@^7.0.3":
   version "7.0.5"
