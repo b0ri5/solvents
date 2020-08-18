@@ -1,4 +1,5 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
@@ -8,6 +9,20 @@ load("@rules_python//python:defs.bzl", "py_library", "py_test")
 ts_library(
     name = "fortytwo_ts",
     srcs = ["fortytwo.ts"],
+)
+
+ts_library(
+    name = "fortytwo_ts_test_lib",
+    srcs = ["fortytwo_test.ts"],
+    deps = [
+        ":fortytwo_ts",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "fortytwo_ts_test",
+    deps = [":fortytwo_ts_test_lib"],
 )
 
 haskell_library(
