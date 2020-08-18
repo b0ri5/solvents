@@ -2,7 +2,7 @@
     "extends": "./node_modules/gts/",
     "globals": {
         "describe": "readonly",
-        "expect": "expect",
+        "expect": "readonly",
         "it": "readonly"
     }
 }
