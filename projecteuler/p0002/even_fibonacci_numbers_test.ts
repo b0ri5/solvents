@@ -1,10 +1,6 @@
 import {bruteForce, everyThird} from './even_fibonacci_numbers';
 
 describe('even_fibonacci_numbers', () => {
-  const solutions = {
-    bruteForce: bruteForce,
-    everyThird: everyThird,
-  };
   const describeSolution = function (
     name: string,
     solution: (n: number) => number
