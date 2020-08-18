@@ -4,10 +4,7 @@ import Test.Hspec
 import Projecteuler.P0001.MultiplesOfThreeOrFive
 
 main :: IO ()
-main = hspec spec
-
-spec :: Spec
-spec =
+main = hspec $ do
   describe "multSum" $ do
     it "should solve small example" $
       multSum 10 `shouldBe` 23
