@@ -1,0 +1,21 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "even_fibonacci_numbers_ts",
+    srcs = ["even_fibonacci_numbers.ts"],
+)
+
+ts_library(
+    name = "even_fibonacci_numbers_ts_test_lib",
+    srcs = ["even_fibonacci_numbers_test.ts"],
+    deps = [
+        ":even_fibonacci_numbers_ts",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "even_fibonacci_numbers_test",
+    deps = [":even_fibonacci_numbers_ts_test_lib"],
+)
