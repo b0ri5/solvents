@@ -1,0 +1,21 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "largest_palindrome_product",
+    srcs = ["largest_palindrome_product.ts"],
+)
+
+ts_library(
+    name = "largest_palindrome_product_test_lib",
+    srcs = ["largest_palindrome_product_test.ts"],
+    deps = [
+        ":largest_palindrome_product",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "largest_palindrome_product_test",
+    deps = [":largest_palindrome_product_test_lib"],
+)
