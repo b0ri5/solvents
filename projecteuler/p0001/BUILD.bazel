@@ -1,14 +1,35 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
+
+haskell_library(
+    name = "multiples_of_three_or_five_haskell",
+    srcs = ["MultiplesOfThreeOrFive.hs"],
+    deps = ["@stackage//:base"],
+)
+
+haskell_test(
+    name = "multiples_of_three_or_five_haskell_test",
+    size = "small",
+    srcs = ["MultiplesOfThreeOrFiveSpec.hs"],
+    main_function = "Projecteuler.P0001.MultiplesOfThreeOrFiveSpec.main",
+    deps = [
+        ":multiples_of_three_or_five_haskell",
+        "@stackage//:base",
+        "@stackage//:hspec",
+    ],
+)
 
 go_library(
     name = "go_default_library",
-    srcs = ["multiples_of_3_or_5.go"],
+    srcs = [
+        "multiples_of_3_or_5.go",
+    ],
     importpath = "github.com/b0ri5/solvents/projecteuler/p0001",
-    visibility = ["//visibility:public"],
 )
 
 go_test(
     name = "go_default_test",
+    size = "small",
     srcs = ["multiples_of_3_or_5_test.go"],
     embed = [":go_default_library"],
 )
