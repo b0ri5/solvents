@@ -1,0 +1,23 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "largest_prime_factor",
+    srcs = ["largest_prime_factor.ts"],
+    deps = ["@npm//bignumber.js"],
+)
+
+ts_library(
+    name = "largest_prime_factor_test_lib",
+    srcs = ["largest_prime_factor_test.ts"],
+    deps = [
+        ":largest_prime_factor",
+        "@npm//@types/jasmine",
+        "@npm//bignumber.js",
+    ],
+)
+
+jasmine_node_test(
+    name = "largest_prime_factor_test",
+    deps = [":largest_prime_factor_test_lib"],
+)
