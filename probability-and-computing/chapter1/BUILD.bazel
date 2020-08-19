@@ -19,3 +19,22 @@ jasmine_node_test(
     name = "1.1_test",
     deps = [":1.1_test_lib"],
 )
+
+ts_library(
+    name = "1.2",
+    srcs = ["1.2.ts"],
+)
+
+ts_library(
+    name = "1.2_test_lib",
+    srcs = ["1.2_test.ts"],
+    deps = [
+        ":1.2",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "1.2_test",
+    deps = [":1.2_test_lib"],
+)
