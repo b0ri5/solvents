@@ -1,0 +1,21 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "1.1",
+    srcs = ["1.1.ts"],
+)
+
+ts_library(
+    name = "1.1_test_lib",
+    srcs = ["1.1_test.ts"],
+    deps = [
+        ":1.1",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "1.1_test",
+    deps = [":1.1_test_lib"],
+)
