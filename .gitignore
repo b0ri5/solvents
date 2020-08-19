@@ -34,3 +34,6 @@ lang/js/node_modules/
 
 # Ignore bazel artifacts
 bazel-*
+
+# Ignore vim swp files
+*.swp
