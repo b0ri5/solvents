@@ -9,8 +9,7 @@ export const gcd = function (a: number, b: number) {
 };
 
 export const lcm = function (a: number, b: number) {
-  const c = gcd(a, b);
-  return a * b / c;
+  return a * b / gcd(a, b);
 };
 
 export const bruteForce = function (n: number) {
