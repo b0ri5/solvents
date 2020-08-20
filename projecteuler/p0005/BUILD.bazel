@@ -1,0 +1,21 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "smallest_multiple",
+    srcs = ["smallest_multiple.ts"],
+)
+
+ts_library(
+    name = "smallest_multiple_test_lib",
+    srcs = ["smallest_multiple_test.ts"],
+    deps = [
+        ":smallest_multiple",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "smallest_multiple_test",
+    deps = [":smallest_multiple_test_lib"],
+)
