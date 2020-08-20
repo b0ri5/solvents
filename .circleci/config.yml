@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:13f820df6221e2a016e71f7c88a5b513bd89c57eb9c6d2b24bf0ebd9f3a813e0
+      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:13f820df6221e2a016e71f7c88a5b513bd89c57eb9c6d2b24bf0ebd9f3a813e0
+      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:13f820df6221e2a016e71f7c88a5b513bd89c57eb9c6d2b24bf0ebd9f3a813e0
+      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
