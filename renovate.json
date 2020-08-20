@@ -9,6 +9,7 @@
     "packageRules": [
         {
             "automerge": true,
+            "groupName": "everything",
             "updateTypes": [
                 "minor",
                 "patch",
