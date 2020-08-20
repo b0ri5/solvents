@@ -36,7 +36,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.8.5@sha256:5f2ff149ff5b46bc246ed7166d21dd6dbd6a2da2e15adf9f9a63484be041b2ea
+      - image: circleci/python:3.8.5@sha256:5252927d2be7aae2b49b3eba5fc5d9c4b0f1041b6ba0b0015b2a7a0d09a3a86f
     steps:
       - checkout
       - run: .circleci/check_json
