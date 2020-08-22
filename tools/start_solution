@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# This is intended as a script to help creating project euler typescript
+# solutions easier.
+
+echo -n "What problem number? "
+read -r number
+
+dir=projecteuler/p$(printf "%04d" "${number}")
+
+mkdir -p "${dir}"
+
+echo -n "What file name? "
+read -r filename
+
+touch "${dir}/${filename}.ts" "${dir}/${filename}"_test.ts
+
+echo "https://projecteuler.net/problem=$number" > "${dir}"/README.md
+
+# See https://serverfault.com/questions/72476/clean-way-to-write-complex-multi-line-string-to-a-variable
+IFS='' read -r -d '' buildfile <<EOF
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
+ts_library(
+    name = "${filename}",
+    srcs = ["${filename}.ts"],
+)
+
+ts_library(
+    name = "${filename}_test_lib",
+    srcs = ["${filename}_test.ts"],
+    deps = [
+        ":${filename}",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "${filename}_test",
+    deps = [":${filename}_test_lib"],
+)
+EOF
+
+echo "${buildfile}" > "${dir}"/BUILD.bazel
