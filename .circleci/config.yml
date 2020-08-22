@@ -68,6 +68,14 @@ jobs:
           command: |
             echo "Run find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --replace
           when: on_fail
+  check-shell:
+    docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run: sudo apt-get install shellcheck
+      - run: shellcheck tools/start_solution
 
 workflows:
   test-workflow:
@@ -76,5 +84,6 @@ workflows:
       - check-cc
       - check-java
       - check-json
+      - check-shell
       - check-typescript
       - test
