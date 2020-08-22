@@ -74,6 +74,7 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - checkout
+      - run: sudo apt-get update
       - run: sudo apt-get install shellcheck
       - run: shellcheck tools/start_solution
 
