@@ -11,6 +11,21 @@ type Sampler = () => Deck;
 type Predicate = (deck: Deck) => boolean;
 
 describe('1.3', () => {
+  const pointsAfterDecimal = function (p: number) {
+    let i = 0;
+    while (p < 1) {
+      p *= 10;
+      i++;
+    }
+    return i;
+  };
+  describe('pointsAfterDecimal', () => {
+    it('returns expected values', () => {
+      expect(pointsAfterDecimal(0.5)).toBe(1);
+      expect(pointsAfterDecimal(0.01)).toBe(2);
+      expect(pointsAfterDecimal(0.000001)).toBe(6);
+    });
+  });
   const expectProbabilityConvergesTo = function (
     sampler: Sampler,
     filter: Predicate,
@@ -18,8 +33,8 @@ describe('1.3', () => {
   ) {
     let positiveSamples = 0;
     let numCloseConsecutiveSamples = 0;
-    const precision = 2; // Be within 2 decimal points
-    const maxSamples = 10000000;
+    const precision = pointsAfterDecimal(p) + 2; // Be within 2 decimal points
+    const maxSamples = 100000000;
     for (let numSamples = 1; numSamples <= maxSamples; numSamples++) {
       const sample = sampler();
       if (filter(sample)) {

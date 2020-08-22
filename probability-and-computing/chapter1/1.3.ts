@@ -8,8 +8,9 @@
 
 export type Deck = number[];
 
-const shuffle = function (cards: Deck) {
-  for (let i = 0; i < cards.length - 1; i++) {
+const shuffle = function (cards: Deck, numCards: number) {
+	assert(numCards <= 52);
+  for (let i = 0; i < numCards; i++) {
     const k = Math.floor(Math.random() * (cards.length - i)) + i;
     [cards[i], cards[k]] = [cards[k], cards[i]];
   }
