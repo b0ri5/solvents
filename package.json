@@ -8,7 +8,7 @@
         "@bazel/ibazel": "0.13.1",
         "@bazel/jasmine": "2.0.3",
         "@bazel/typescript": "2.0.3",
-        "@types/jasmine": "3.5.12",
+        "@types/jasmine": "3.5.13",
         "@types/node": "13.13.15",
         "clang-format": "1.4.0",
         "gts": "2.0.2",
