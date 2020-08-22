@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:7d0469509e1e4cd9ac89de573c0726cc180d0534bf287f4b61e0c15fb66e66f6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:7d0469509e1e4cd9ac89de573c0726cc180d0534bf287f4b61e0c15fb66e66f6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -36,7 +36,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.8.5@sha256:5252927d2be7aae2b49b3eba5fc5d9c4b0f1041b6ba0b0015b2a7a0d09a3a86f
+      - image: circleci/python:3.8.5@sha256:e3805041efa37a43e48df0fc51a500af349b91649971629c11fb870f4151f208
     steps:
       - checkout
       - run: .circleci/check_json
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:7d0469509e1e4cd9ac89de573c0726cc180d0534bf287f4b61e0c15fb66e66f6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -59,7 +59,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:14.0.2-buster@sha256:180d385f82be4d5525a166bc59f1512bb243cde4d21075a3eb80f32615750ad9
+      - image: circleci/openjdk:14.0.2-buster@sha256:d96fa145759b6cb40c2ec789d52a161be09f8ad3e64a0cc08e85f4e3aa9c2b68
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
