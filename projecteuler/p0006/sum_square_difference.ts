@@ -1,5 +1,5 @@
 const sumOfSquares = function (n: number) {
-  let sum = 0n;
+  let sum = 0;
   for (let i = 1; i <= n; i++) {
     sum += i * i;
   }
@@ -7,7 +7,7 @@ const sumOfSquares = function (n: number) {
 };
 
 const squareOfSum = function (n: number) {
-  let sum = 0n;
+  let sum = 0;
   for (let i = 1; i <= n; i++) {
     sum += i;
   }
@@ -23,6 +23,6 @@ export const bruteForce = function (n: number) {
 //   expand (n*(n+1)/2)**2 - (n*(n+1)(2n+1)/6)
 // to get
 //   n^4/4 + n^3/6 - n^2/4 - n/6
-export const closedForm = function (n: bigint) {
+export const closedForm = function (n: number) {
   return n ** 4 / 4 + n ** 3 / 6 - n ** 2 / 4 - n / 6;
 };
