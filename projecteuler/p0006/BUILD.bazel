@@ -19,4 +19,3 @@ jasmine_node_test(
     name = "sum_square_difference_test",
     deps = [":sum_square_difference_test_lib"],
 )
-
