@@ -1,7 +1,9 @@
-// This does a simple unbounded sieve
+// This does an unbounded sieve
 export const nthPrime = function (n: number): number {
   // Need a map from number to a list of numbers
   const multiples: {[multiple: number]: number[]} = {};
+  // Create a helper since Javascript doesn't have great multimap or
+  // defaultdict support.
   const addMultiple = function (multiple: number, prime: number): void {
     if (multiple in multiples) {
       multiples[multiple].push(prime);
@@ -14,7 +16,7 @@ export const nthPrime = function (n: number): number {
   for (let i = 3; numPrimes < n; i += 2) {
     if (i in multiples) {
       for (const p of multiples[i]) {
-        // We are skipping evens so ignore 2p next
+        // We are skipping evens so ignore i + 2p next
         addMultiple(i + 2 * p, p);
       }
       delete multiples[i];
