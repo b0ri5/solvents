@@ -19,3 +19,19 @@ jasmine_node_test(
     name = "10001st_prime_test",
     deps = [":10001st_prime_test_lib"],
 )
+
+ts_library(
+    name = "10001st_prime_stress_test_lib",
+    srcs = ["1001st_prime_stress_test.ts"],
+    compiler = ":tsc_wrapped_bin",
+    deps = [
+        ":10001st_prime",
+        "@npm//@types/jasmine",
+    ],
+)
+
+jasmine_node_test(
+    name = "10001st_prime_stress_test",
+    tags = ["manual"],
+    deps = [":10001st_prime_stress_test_lib"],
+)
