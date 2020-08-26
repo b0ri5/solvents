@@ -72,7 +72,6 @@ export const primes = function* () {
   }
 };
 
-
 // This is a generator for all numbers which are multiples
 // of a given prime but not divisible by smaller primes.
 // For example, for 7 this will generate all numbers like
