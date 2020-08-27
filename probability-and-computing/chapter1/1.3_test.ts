@@ -1,14 +1,13 @@
 import {
   Deck,
-  sampler,
+  Predicate,
+  deck,
   predicateA,
   predicateB,
   predicateC,
   predicateD,
+  shuffle,
 } from './1.3';
-
-type Sampler = () => Deck;
-type Predicate = (deck: Deck) => boolean;
 
 describe('1.3', () => {
   const pointsAfterDecimal = function (p: number) {
@@ -27,17 +26,16 @@ describe('1.3', () => {
     });
   });
   const expectProbabilityConvergesTo = function (
-    sampler: Sampler,
-    filter: Predicate,
+    predicate: Predicate,
     p: number
   ) {
     let positiveSamples = 0;
     let numCloseConsecutiveSamples = 0;
     const precision = pointsAfterDecimal(p) + 2; // Be within 2 decimal points
-    const maxSamples = 100000000;
+    const maxSamples = 10_000_000;
     for (let numSamples = 1; numSamples <= maxSamples; numSamples++) {
-      const sample = sampler();
-      if (filter(sample)) {
+      shuffle(deck, predicate.numCardsUsed);
+      if (predicate.predicate(deck)) {
         positiveSamples += 1;
       }
       const observedProbability = positiveSamples / numSamples;
@@ -47,41 +45,32 @@ describe('1.3', () => {
       } else {
         numCloseConsecutiveSamples = 0;
       }
-      // We must have sampled at least 100 decks and been within precision
-      // range for a proportion of the number of samples so far. These
-      // numbers are tuned such that the test should run quickly but also
-      // be fairly confident the predicate is converging.
-      if (numSamples > 100 && numCloseConsecutiveSamples >= numSamples / 10) {
+      if (numCloseConsecutiveSamples >= 100) {
         expect(observedProbability).toBeCloseTo(p, precision);
         return;
       }
     }
     expect(positiveSamples / maxSamples).toBeCloseTo(p, precision);
   };
-  describe('sampler', () => {
-    it('generates a permutation of 0..51', () => {
-      const cards = sampler();
-      expect(cards.length).toBe(52);
-      const seenCards: {[key: number]: boolean} = {};
-      for (let i = 0; i < cards.length; i++) {
-        seenCards[i] = true;
+  describe('deck', () => {
+    it('is a permutation of 0..51', () => {
+      expect(deck.length).toBe(52);
+      const seenCards = new Set();
+      for (let i = 0; i < deck.length; i++) {
+        seenCards.add(i);
       }
-      expect(Object.keys(seenCards).length).toBe(52);
-    });
-  });
-  describe('predicateD', () => {
-    it('should return true for full houses', () => {
-      expect(predicateD([0, 13, 26, 1, 14])).toBe(true);
-      expect(predicateD([0, 13, 39, 1, 14])).toBe(true);
-      expect(predicateD([2, 13, 39, 1, 14])).toBe(false);
+      expect(seenCards.size).toBe(52);
     });
   });
   describe('expectProbabilityConvergesTo', () => {
     it('should converge to 1 / 2', () => {
-      const firstCardIsEven = function (cards: Deck) {
-        return cards[0] % 2 === 0;
+      const firstCardIsEven = {
+        predicate: function (cards: Deck) {
+          return cards[0] % 2 === 0;
+        },
+        numCardsUsed: 1,
       };
-      expectProbabilityConvergesTo(sampler, firstCardIsEven, 1 / 2);
+      expectProbabilityConvergesTo(firstCardIsEven, 1 / 2);
     });
   });
   it('answers a', () => {
@@ -93,11 +82,7 @@ describe('1.3', () => {
     // 1 - (((48 permute 2) * 50!) / 52!)
     // 1 - 48!50! / 46!52!
     // 1 - (48 * 47) / (52 * 51)
-    expectProbabilityConvergesTo(
-      sampler,
-      predicateA,
-      1 - (48 * 47) / (52 * 51)
-    );
+    expectProbabilityConvergesTo(predicateA, 1 - (48 * 47) / (52 * 51));
   });
   it('answers b', () => {
     // (b) The first five cards include at least one ace.
@@ -106,7 +91,6 @@ describe('1.3', () => {
     // 1 - 48!47! / 43!52!
     // 1 - (47 * 46 * 45 * 44) / (52 * 51 * 50 * 49)
     expectProbabilityConvergesTo(
-      sampler,
       predicateB,
       1 - (47 * 46 * 45 * 44) / (52 * 51 * 50 * 49)
     );
@@ -117,18 +101,24 @@ describe('1.3', () => {
     // ((13 choose 1) * (4 permute 2) * 50! / 52!)
     // (13 * 4!/2! * 50!) / 52!
     // (13 * 12) / (52 * 51)
-    expectProbabilityConvergesTo(sampler, predicateC, (13 * 12) / (52 * 51));
+    expectProbabilityConvergesTo(predicateC, (13 * 12) / (52 * 51));
   });
-  it('answers d', () => {
-    // (d) The first five cards form a full house.
-    // Choose two ranks. Choose three of one, two of the other.
-    // Permute the 5 cards. Then permute the rest.
-    // ((13 choose 2) * (4 choose 3) * (4 choose 2) * 5! * 47!) / 52!
-    // 13*12/2 * 4 * 12 * 120 / 52*51*50*49*48
-    expectProbabilityConvergesTo(
-      sampler,
-      predicateD,
-      (13 * 6 * 4 * 12 * 120) / (52 * 51 * 50 * 49 * 48)
-    );
+  describe('predicateD', () => {
+    it('should return true for full houses', () => {
+      expect(predicateD.predicate([0, 13, 26, 1, 14])).toBe(true);
+      expect(predicateD.predicate([0, 13, 39, 1, 14])).toBe(true);
+      expect(predicateD.predicate([2, 13, 39, 1, 14])).toBe(false);
+    });
+    it('answers d', () => {
+      // (d) The first five cards form a full house.
+      // Choose two ranks. Choose three of one, two of the other.
+      // Permute the 5 cards. Then permute the rest.
+      // ((13 choose 2) * (4 choose 3) * (4 choose 2) * 5! * 47!) / 52!
+      // 13*12/2 * 4 * 12 * 120 / 52*51*50*49*48
+      expectProbabilityConvergesTo(
+        predicateD,
+        (13 * 6 * 4 * 12 * 120) / (52 * 51 * 50 * 49 * 48)
+      );
+    });
   });
 });

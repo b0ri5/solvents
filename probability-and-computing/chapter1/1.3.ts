@@ -8,8 +8,7 @@
 
 export type Deck = number[];
 
-const shuffle = function (cards: Deck, numCards: number) {
-	assert(numCards <= 52);
+export const shuffle = function (cards: Deck, numCards: number) {
   for (let i = 0; i < numCards; i++) {
     const k = Math.floor(Math.random() * (cards.length - i)) + i;
     [cards[i], cards[k]] = [cards[k], cards[i]];
@@ -17,48 +16,65 @@ const shuffle = function (cards: Deck, numCards: number) {
   return cards;
 };
 
-export const sampler = (function () {
+export const deck = (function () {
   const cards = new Array(52);
   for (let i = 0; i < cards.length; i++) {
     cards[i] = i;
   }
-  return function () {
-    return shuffle(cards);
-  };
+  return cards;
 })();
+
+export type Predicate = {
+  predicate: (deck: Deck) => boolean;
+  // Knowing the number of cards used by the predicate allows for more efficient
+  // sampling by only selecting a small number of cards, rather than shuffling the whole deck.
+  numCardsUsed: number;
+};
 
 const rank = function (card: number) {
   return card % 13;
 };
 
-export const predicateA = function (cards: Deck) {
-  return rank(cards[0]) === 12 || rank(cards[1]) === 12;
+export const predicateA = {
+  predicate: function (cards: Deck) {
+    return rank(cards[0]) === 12 || rank(cards[1]) === 12;
+  },
+  numCardsUsed: 2,
 };
 
-export const predicateB = function (cards: Deck) {
-  for (let i = 0; i < 5; i++) {
-    if (rank(cards[i]) === 12) {
-      return true;
+export const predicateB = {
+  predicate: function (cards: Deck) {
+    for (let i = 0; i < 5; i++) {
+      if (rank(cards[i]) === 12) {
+        return true;
+      }
     }
-  }
-  return false;
+    return false;
+  },
+  numCardsUsed: 5,
 };
 
-export const predicateC = function (cards: Deck) {
-  return rank(cards[0]) === rank(cards[1]);
+export const predicateC = {
+  predicate: function (cards: Deck) {
+    return rank(cards[0]) === rank(cards[1]);
+  },
+  numCardsUsed: 2,
 };
 
-export const predicateD = function (cards: Deck) {
-  const rankCounts: {[key: number]: number} = {};
-  for (let i = 0; i < 5; i++) {
-    const cardRank = rank(cards[i]);
-    rankCounts[cardRank] = rankCounts[cardRank] + 1 || 1;
-    if (Object.keys(rankCounts).length > 2) {
-      return false;
+export const predicateD = {
+  predicate: function (cards: Deck) {
+    const rankCounts: {[key: number]: number} = {};
+    for (let i = 0; i < 5; i++) {
+      const cardRank = rank(cards[i]);
+      rankCounts[cardRank] = rankCounts[cardRank] + 1 || 1;
+      if (Object.keys(rankCounts).length > 2) {
+        return false;
+      }
+      if (rankCounts[cardRank] === 4) {
+        return false;
+      }
     }
-    if (rankCounts[cardRank] === 4) {
-      return false;
-    }
-  }
-  return true;
+    return true;
+  },
+  numCardsUsed: 5,
 };
