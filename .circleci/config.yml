@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:3af5334886288bc01bea47b161ccb51911628e3b0f6432b9b3a9ea93ceb7d71c
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:3af5334886288bc01bea47b161ccb51911628e3b0f6432b9b3a9ea93ceb7d71c
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -36,7 +36,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.8.5@sha256:5252927d2be7aae2b49b3eba5fc5d9c4b0f1041b6ba0b0015b2a7a0d09a3a86f
+      - image: circleci/python:3.8.5@sha256:78a81ef28fb8ebe3bf99aa42019b4495727fc853aba48bea26f8180f0595529d
     steps:
       - checkout
       - run: .circleci/check_json
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.8.0@sha256:5fc69c691aeaf237837017fcc4a3a3273c37de1b8301ce0b35db3822638b0703
+      - image: circleci/node:14.8.0@sha256:3af5334886288bc01bea47b161ccb51911628e3b0f6432b9b3a9ea93ceb7d71c
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -59,7 +59,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:14.0.2-buster@sha256:180d385f82be4d5525a166bc59f1512bb243cde4d21075a3eb80f32615750ad9
+      - image: circleci/openjdk:14.0.2-buster@sha256:5a2f4dd3a2d027e5b6aa2a3bf77931303b83cd7cb98958799b4a0b97cbeb9b4d
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
@@ -68,6 +68,15 @@ jobs:
           command: |
             echo "Run find . -name *.java | xargs java -jar google-java-format-1.8-all-deps.jar --replace
           when: on_fail
+  check-shell:
+    docker:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: cimg/base:2020.08@sha256:f19c30e3f8019f5c91fe14fc87c9f280293c5baef56f154e82d48fa5b1a21e86
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install shellcheck
+      - run: shellcheck tools/start_solution
 
 workflows:
   test-workflow:
@@ -76,5 +85,6 @@ workflows:
       - check-cc
       - check-java
       - check-json
+      - check-shell
       - check-typescript
       - test
