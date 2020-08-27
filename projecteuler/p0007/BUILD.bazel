@@ -23,7 +23,6 @@ jasmine_node_test(
 ts_library(
     name = "10001st_prime_stress_test_lib",
     srcs = ["1001st_prime_stress_test.ts"],
-    compiler = ":tsc_wrapped_bin",
     deps = [
         ":10001st_prime",
         "@npm//@types/jasmine",
