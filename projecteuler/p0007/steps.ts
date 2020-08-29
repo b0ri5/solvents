@@ -2,7 +2,7 @@ import {List, OrderedMap} from 'immutable';
 
 const createCycle = function (primes: number[], p: number) {
   let remainders = List<number>();
-  for (let i = 0; primes[i] != p; i++) {
+  for (let i = 0; primes[i] !== p; i++) {
     remainders = remainders.push(p % primes[i]);
   }
   let cycle = OrderedMap<List<number>, List<number>>();
@@ -17,7 +17,58 @@ const createCycle = function (primes: number[], p: number) {
   return cycle;
 };
 
-const primes = [3, 5, 7, 11, 13, 17, 19];
+const hasZero = function (remainders: List<number>) {
+  for (let i = 0; i < remainders.size; i++) {
+    if (remainders.get(i) === 0) {
+      return true;
+    }
+  }
+  return false;
+};
 
-console.log(JSON.stringify(createCycle(primes, 5)));
-console.log(JSON.stringify(createCycle(primes, 7)));
+const keysWithZero = function (cycle: OrderedMap<List<number>, List<number>>) {
+  let cnt = 0;
+  for (const k of cycle.keys()) {
+    if (hasZero(k)) {
+      cnt++;
+    }
+  }
+  return cnt;
+};
+
+const calculateSteps = function (
+  cycle: OrderedMap<List<number>, List<number>>
+) {
+  let firstRemainders: List<number>;
+  for (const k of cycle.keys()) {
+    firstRemainders = k;
+    break;
+  }
+  let steps = List<number>();
+  let remainders = firstRemainders;
+  let k = 0;
+  do {
+    remainders = cycle.get(remainders);
+    k++;
+    while (hasZero(remainders)) {
+      remainders = cycle.get(remainders);
+      k++;
+    }
+    steps = steps.push(k);
+    k = 0;
+  } while (!remainders.equals(firstRemainders));
+  return steps;
+};
+
+const primes = [3, 5, 7, 11, 13, 17, 19, 23];
+
+for (const p of [5, 7, 11, 13, 17, 19]) {
+  const cycle = createCycle(primes, p);
+  console.log('cycle size ' + cycle.size);
+  console.log('keys with zero ' + keysWithZero(cycle));
+  //console.log(JSON.stringify(cycle));
+  const steps = calculateSteps(cycle);
+ //  console.log('steps: ' + JSON.stringify(steps));
+  console.log('num steps ' + steps.size);
+  console.log();
+}
