@@ -9,7 +9,9 @@ const createCycle = function (primes: number[], p: number) {
   while (!cycle.has(remainders)) {
     let nextRemainders = List<number>();
     for (let i = 0; i < remainders.size; i++) {
-      nextRemainders = nextRemainders.push((remainders.get(i) + 1) % primes[i]);
+      nextRemainders = nextRemainders.push(
+        (remainders.get(i)! + 1) % primes[i]
+      );
     }
     cycle = cycle.set(List(remainders), nextRemainders);
     remainders = nextRemainders;
@@ -39,19 +41,15 @@ const keysWithZero = function (cycle: OrderedMap<List<number>, List<number>>) {
 const calculateSteps = function (
   cycle: OrderedMap<List<number>, List<number>>
 ) {
-  let firstRemainders: List<number>;
-  for (const k of cycle.keys()) {
-    firstRemainders = k;
-    break;
-  }
-  let steps = List<number>();
+  const firstRemainders = cycle.keySeq().first() as List<number>;
   let remainders = firstRemainders;
+  let steps = List<number>();
   let k = 0;
   do {
-    remainders = cycle.get(remainders);
+    remainders = cycle.get(remainders)!;
     k++;
     while (hasZero(remainders)) {
-      remainders = cycle.get(remainders);
+      remainders = cycle.get(remainders)!;
       k++;
     }
     steps = steps.push(k);
