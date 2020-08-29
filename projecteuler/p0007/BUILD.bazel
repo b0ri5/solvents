@@ -1,3 +1,4 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
 
@@ -33,4 +34,16 @@ jasmine_node_test(
     name = "10001st_prime_stress_test",
     tags = ["manual"],
     deps = [":10001st_prime_stress_test_lib"],
+)
+
+ts_library(
+    name = "steps_lib",
+    srcs = ["steps.ts"],
+    deps = ["@npm//immutable"],
+)
+
+nodejs_binary(
+    name = "steps",
+    data = [":steps_lib"],
+    entry_point = ":steps.ts",
 )
