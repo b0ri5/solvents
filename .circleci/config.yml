@@ -10,7 +10,7 @@ jobs:
       - checkout
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
       - run: go get github.com/bazelbuild/bazelisk
-      - run: bazelisk test //...
+      - run: bazelisk test --test_output=errors //...
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
