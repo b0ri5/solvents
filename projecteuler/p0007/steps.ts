@@ -60,15 +60,19 @@ const calculateSteps = function (
   return steps;
 };
 
-const primes = [3, 5, 7, 11, 13, 17, 19, 23];
+const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23];
 
-for (const p of [5, 7, 11, 13, 17, 19]) {
+for (const p of [3, 5, 7, 11, 13, 17, 19]) {
   const cycle = createCycle(primes, p);
   console.log('cycle size ' + cycle.size);
   console.log('keys with zero ' + keysWithZero(cycle));
-  //console.log(JSON.stringify(cycle));
+  if (cycle.size < 100) {
+    console.log(JSON.stringify(cycle));
+  }
   const steps = calculateSteps(cycle);
- //  console.log('steps: ' + JSON.stringify(steps));
+  if (steps.size < 500) {
+    console.log('steps: ' + JSON.stringify(steps));
+  }
   console.log('num steps ' + steps.size);
   console.log();
 }
