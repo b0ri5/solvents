@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -e # Exit on error
-set -o xtrace
-
-lang/hs/copy_source
-cabal configure --enable-tests 
-cabal build 
-cabal test --show-details=always
