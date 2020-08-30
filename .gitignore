@@ -1,36 +1,11 @@
-# Ignore the empty __init__.py files created for nosetests
-*__init__.py
-
-# Ignore everything in third_party
-third_party/
-
-# Ignore cc generated tests, object files, and makefile
-*_test
-*.o
-lang/cc/Makefile
-
-# https://github.com/github/gitignore/blob/master/Gradle.gitignore
-.gradle
-build/
-build.gradle
-
-# https://github.com/github/gitignore/blob/master/Python.gitignore
-# Byte-compiled / optimized / DLL files
+# From https://github.com/github/gitignore/blob/master/Python.gitignore
 __pycache__/
-*.py[cod]
 
 # Ignore haskell stuff
 lang/hs/src
-*.hi
-solvents.cabal
-dist/
-
-# Ignore copied go src files
-src/
 
 # Ignore node_modules for js
 node_modules/
-lang/js/node_modules/
 
 # Ignore bazel artifacts
 bazel-*
