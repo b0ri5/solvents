@@ -1,3 +1,9 @@
 {
+    "compilerOptions": {
+        "lib": [
+            "es2018",
+            "dom"
+        ]
+    },
     "extends": "./node_modules/gts/tsconfig-google.json"
 }
