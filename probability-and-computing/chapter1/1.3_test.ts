@@ -32,7 +32,7 @@ describe('1.3', () => {
     let positiveSamples = 0;
     let numCloseConsecutiveSamples = 0;
     const precision = pointsAfterDecimal(p) + 2; // Be within a few decimal points
-    const maxSamples = 10_000_000;
+    const maxSamples = 100_000_000;
     for (let numSamples = 1; numSamples <= maxSamples; numSamples++) {
       shuffle(deck, predicate.numCardsUsed);
       if (predicate.predicate(deck)) {
