@@ -62,7 +62,11 @@ const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23];
 
 for (const p of [3, 5, 7, 11, 13, 17, 19]) {
   const cycle = createCycle(primes, p);
+  // The cycle sizes here are the "primorials" which are like factorials
+  // but using primes instead of all integers.
   console.log('cycle size ' + cycle.size);
+  // The number of cycles containing a zero remainder is the cotoitent of the primorial
+  // and produces this sequence https://oeis.org/A053144.
   console.log('keys with zero ' + keysWithZero(cycle));
   if (cycle.size < 100) {
     console.log(JSON.stringify(cycle));
@@ -71,6 +75,8 @@ for (const p of [3, 5, 7, 11, 13, 17, 19]) {
   if (steps.size < 500) {
     console.log('steps: ' + JSON.stringify(steps));
   }
+  // The number of steps is the the sequence https://oeis.org/A005867 which is
+  // the toitent of the primorials
   console.log('num steps ' + steps.size);
   console.log();
 }
