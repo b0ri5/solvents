@@ -15,7 +15,8 @@ The code reporistory is hosted on github at https://github.com/b0ri5/solvents.
 
 There are samples for each language located in the [samples](samples) directory.
 
-The code is checked for style/lint and passing tests via [travis-ci](https://travis-ci.org/b0ri5/solvents).
+The code is checked for style/lint and passing tests via
+[CircleCI](https://app.circleci.com/pipelines/github/b0ri5/solvents).
 
 ## Adding a solution ##
 
@@ -39,28 +40,18 @@ TODO(b0ri5): Add instructions on how to work on stuff from the commandline.
 ## Language support ##
 
 * C++
-  * version 3.5 with c++11
-  * built by [clang](http://clang.llvm.org)
-  * tested with [gtest](https://code.google.com/p/googletest/)
+  * tested with [gtest](https://github.com/google/googletest)
   * checked by [clang-format](http://clang.llvm.org/docs/ClangFormat.html). TODO(b0ri5): Check with [clang-modernize](http://clang.llvm.org/extra/clang-modernize.html) and [cpplint](http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py)
 * Go
-  * built and tested by [go tool](http://golang.org/cmd/go/)
-  * checked by [gofmt](http://golang.org/cmd/gofmt/) and [go vet](http://godoc.org/code.google.com/p/go.tools/cmd/vet)
+  * checked by [gofmt](http://golang.org/cmd/gofmt) and [go vet](https://golang.org/cmd/vet)
 * Haskell
   * TODO(b0ri5): Learn how to do a code+test only setup with haskell on travis-ci. Bug @negativek about this.
 * Java
-  * version 1.7
-  * built by [gradle](http://www.gradle.org/).
   * tested with [junit4](http://junit.org/)
   * TODO(b0ri5): Check style with [checkstyle](http://checkstyle.sourceforge.net/)
-* Javascript
-  * run by [nodejs](http://nodejs.org/)
-  * tested with [mocha](http://visionmedia.github.io/mocha/)
-  * checked by [gjslint](https://developers.google.com/closure/utilities)
-  * TODO(b0ri5): When we have enough js code, evaluate jshint.
+* Typescript
+  * tested with [jasmine](https://jasmine.github.io)
+  * checked by [gts](https://github.com/google/gts)
 * Python
-  * version 3.3
-  * tested with [unittest](http://docs.python.org/3.3/library/unittest.html) run via [nose](http://nose.readthedocs.org/en/latest/)
+  * tested with [unittest](http://docs.python.org/3.3/library/unittest.html)
   * checked by [pylint](http://www.pylint.org/)
-
-
