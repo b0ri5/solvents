@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -e # Exit on error
-set -o xtrace # Trace commands
-
-lang/cc/create_makefile > lang/cc/Makefile
-make --makefile lang/cc/Makefile test

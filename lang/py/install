@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -e # Exit on error
-set -o xtrace
-
-pip install nose
-nosetests --version
-pip install pylint
-pylint --version

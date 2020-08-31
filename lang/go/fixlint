@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-# Display the diff, simplify the code, and write to the file
-gofmt -d -s -w .
