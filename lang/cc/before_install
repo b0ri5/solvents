@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -e # Exit on error
-
-sudo apt-add-repository --yes ppa:ubuntu-toolchain-r/test
-sudo apt-add-repository 'deb http://llvm.org/apt/precise/ llvm-toolchain-precise main'
-wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
