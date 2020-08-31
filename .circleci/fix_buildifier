@@ -2,8 +2,6 @@
 
 set -e # Exit on error
 
-for f in WORKSPACE $(find . -name "BUILD.bazel" -not -path "./node_modules/*")
-do
-  echo Fixing $f
-  yarn buildifier --lint=fix --mode=fix --warnings=all $f
-done
+find . -name "BUILD.bazel" -not -path "./node_modules/*" \
+  | yarn buildifier --lint=fix --mode=fix --warnings=all
+yarn buildifier --lint=fix --mode=fix --warnings=all WORKSPACE
