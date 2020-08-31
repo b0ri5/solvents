@@ -77,6 +77,11 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install shellcheck
       - run: shellcheck tools/start_solution
+  check-python:
+      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
+      - image: circleci/python:3.8.5@sha256:183b501438bc6b9a30861de7bfdc2c53a88893b0484d02b0c19e0b0902dd906f
+      - checkout
+      - run: find . -name *.py | xargs pylint --indent-string='  ' --disable=missing-docstring --disable=too-many-public-methods
 
 workflows:
   test-workflow:
@@ -85,6 +90,7 @@ workflows:
       - check-cc
       - check-java
       - check-json
+      - check-python
       - check-shell
       - check-typescript
       - test
