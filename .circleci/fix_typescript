@@ -2,8 +2,5 @@
 
 set -e # Exit on error
 
-for f in $(find . -name "*.ts" -not -path "./node_modules/*")
-do
-  echo Fixing $f
-  yarn gts fix $f
-done
+find . -name "*.ts" -not -path "./node_modules/*" \
+  | xargs yarn gts fix
