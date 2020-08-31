@@ -1,5 +1,6 @@
-import fortytwo
 import unittest
+
+import fortytwo
 
 class FortytwoTest(unittest.TestCase):
   def test_fortytwo(self):
