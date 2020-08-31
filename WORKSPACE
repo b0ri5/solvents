@@ -66,35 +66,6 @@ load("@maven//:defs.bzl", "pinned_maven_install")
 
 pinned_maven_install()
 
-http_archive(
-    name = "rules_haskell",
-    sha256 = "56a8e6337df8802f1e0e7d2b3d12d12d5d96c929c8daecccc5738a0f41d9c1e4",
-    strip_prefix = "rules_haskell-0.12",
-    urls = ["https://github.com/tweag/rules_haskell/archive/v0.12.tar.gz"],
-)
-
-load("@rules_haskell//haskell:repositories.bzl", "rules_haskell_dependencies")
-
-rules_haskell_dependencies()
-
-load(
-    "@rules_haskell//haskell:ghc_bindist.bzl",
-    "haskell_register_ghc_bindists",
-)
-
-haskell_register_ghc_bindists()
-
-load("@rules_haskell//haskell:cabal.bzl", "stack_snapshot")
-
-stack_snapshot(
-    name = "stackage",
-    packages = [
-        "base",
-        "hspec",
-    ],
-    snapshot = "lts-14.27",
-)
-
 # Follow https://bazelbuild.github.io/rules_nodejs/install.html
 http_archive(
     name = "build_bazel_rules_nodejs",

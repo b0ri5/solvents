@@ -44,8 +44,6 @@ TODO(b0ri5): Add instructions on how to work on stuff from the commandline.
   * checked by [clang-format](http://clang.llvm.org/docs/ClangFormat.html). TODO(b0ri5): Check with [clang-modernize](http://clang.llvm.org/extra/clang-modernize.html) and [cpplint](http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py)
 * Go
   * checked by [gofmt](http://golang.org/cmd/gofmt) and [go vet](https://golang.org/cmd/vet)
-* Haskell
-  * TODO(b0ri5): Learn how to do a code+test only setup with haskell on travis-ci. Bug @negativek about this.
 * Java
   * tested with [junit4](http://junit.org/)
   * TODO(b0ri5): Check style with [checkstyle](http://checkstyle.sourceforge.net/)

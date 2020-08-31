@@ -1,7 +1,6 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
 
 ts_library(
     name = "multiples_of_3_or_5_ts",
@@ -20,24 +19,6 @@ ts_library(
 jasmine_node_test(
     name = "multiples_of_3_or_5_ts_test",
     deps = [":multiples_of_3_or_5_ts_test_lib"],
-)
-
-haskell_library(
-    name = "multiples_of_three_or_five_haskell",
-    srcs = ["MultiplesOfThreeOrFive.hs"],
-    deps = ["@stackage//:base"],
-)
-
-haskell_test(
-    name = "multiples_of_three_or_five_haskell_test",
-    size = "small",
-    srcs = ["MultiplesOfThreeOrFiveSpec.hs"],
-    main_function = "Projecteuler.P0001.MultiplesOfThreeOrFiveSpec.main",
-    deps = [
-        ":multiples_of_three_or_five_haskell",
-        "@stackage//:base",
-        "@stackage//:hspec",
-    ],
 )
 
 go_library(
