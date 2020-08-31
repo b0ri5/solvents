@@ -93,7 +93,7 @@ jobs:
       - checkout
       # C++ files confuse vet
       - run: find . -name *.cc | xargs rm
-      - run: go vet
+      - run: go vet ./...
 
 workflows:
   test-workflow:
