@@ -62,7 +62,6 @@ ts_library(
 # $ node --prof-process <the isloate file> > processed.txt
 nodejs_binary(
     name = "benchmark",
-    configuration_env_vars = ["NODE_ENV=production"],
     data = [":benchmark_lib"],
     entry_point = ":benchmark.ts",
     templated_args = ["--node_options=--prof"],
