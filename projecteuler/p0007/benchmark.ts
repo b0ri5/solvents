@@ -12,24 +12,15 @@ const options = {
   maxTime: 30,
 };
 
-const primesBenchmarks = (...cases: [string, Generator<number>][]) =>
-  cases.map(([name, gen]) => {
-    return add(
-      name,
-      () => {
-        consumeN(gen, 2_000);
-      },
-      options
-    );
-  });
+const addPrimes = function (name: string, gen: Generator<number>) {
+  return add(name, () => consumeN(gen, 2_000), options);
+};
 
 suite(
   'sieves',
-  ...primesBenchmarks(
-    ['simplestPrimes', simplestPrimes()],
-    ['simplerPrimes', simplerPrimes()],
-    ['primes', primes()]
-  ),
+  addPrimes('simplestPrimes', simplestPrimes()),
+  addPrimes('simplerPrimes', simplerPrimes()),
+  addPrimes('primes', primes()),
   cycle(),
   complete(),
   save({file: 'sieves', details: true})
