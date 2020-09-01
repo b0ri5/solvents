@@ -47,3 +47,22 @@ nodejs_binary(
     data = [":steps_lib"],
     entry_point = ":steps.ts",
 )
+
+ts_library(
+    name = "benchmark_lib",
+    srcs = ["benchmark.ts"],
+    deps = [
+        ":10001st_prime",
+        "@npm//benny",
+    ],
+)
+
+# To run this and generate a profile do
+# $ bazel build projecteuler/p0007:benchmark && NODE_ENV=production bazel-bin/projecteuler/p0007/benchmark.sh
+# $ node --prof-process <the isloate file> > processed.txt
+nodejs_binary(
+    name = "benchmark",
+    data = [":benchmark_lib"],
+    entry_point = ":benchmark.ts",
+    templated_args = ["--node_options=--prof"],
+)
