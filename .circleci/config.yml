@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.9.0@sha256:1ac87eac52b183c36d31f4f8267293a06d024dcfb841ff18505ab6c7346fbb55
+      - image: circleci/node:14.9.0@sha256:8ccaad2ddfde03bb3a16e5210ce69372e2a2df9858a4f0ebfc707b657332b2e6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.9.0@sha256:1ac87eac52b183c36d31f4f8267293a06d024dcfb841ff18505ab6c7346fbb55
+      - image: circleci/node:14.9.0@sha256:8ccaad2ddfde03bb3a16e5210ce69372e2a2df9858a4f0ebfc707b657332b2e6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -36,7 +36,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.8.5@sha256:183b501438bc6b9a30861de7bfdc2c53a88893b0484d02b0c19e0b0902dd906f
+      - image: circleci/python:3.8.5@sha256:885c613a51b79d8343d2122f6f564c9c196e9f8ba315e75b0e93b62c068f74f3
     steps:
       - checkout
       - run: .circleci/check_json
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.9.0@sha256:1ac87eac52b183c36d31f4f8267293a06d024dcfb841ff18505ab6c7346fbb55
+      - image: circleci/node:14.9.0@sha256:8ccaad2ddfde03bb3a16e5210ce69372e2a2df9858a4f0ebfc707b657332b2e6
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -59,7 +59,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:14.0.2-buster@sha256:200a9b9afb842d6e95f954255df0ad8f5265a9bc7a154b7856042d9a46ce66ce
+      - image: circleci/openjdk:14.0.2-buster@sha256:fd3a1a3b49111c597ab3bfefe831363fef0fcf26c567ea2ccae485e51b002fde
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/google-java-format-1.8/google-java-format-1.8-all-deps.jar
@@ -80,7 +80,7 @@ jobs:
   check-python:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.8.5@sha256:183b501438bc6b9a30861de7bfdc2c53a88893b0484d02b0c19e0b0902dd906f
+      - image: circleci/python:3.8.5@sha256:885c613a51b79d8343d2122f6f564c9c196e9f8ba315e75b0e93b62c068f74f3
     steps:
       - checkout
       - run: pip install pylint
