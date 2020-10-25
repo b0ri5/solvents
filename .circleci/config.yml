@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.14.0@sha256:d0f41d77c35f60e2434c1f5797a70b02999a8efa8792dd82fbaa421d7050b10a
+      - image: circleci/node:14.14.0@sha256:33a97c0adaa0aa694a436327d833dc021aab7fb1f5621fcb94a34b3d59147aad
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.14.0@sha256:d0f41d77c35f60e2434c1f5797a70b02999a8efa8792dd82fbaa421d7050b10a
+      - image: circleci/node:14.14.0@sha256:33a97c0adaa0aa694a436327d833dc021aab7fb1f5621fcb94a34b3d59147aad
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -36,7 +36,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.9.0@sha256:a6a9d1d655365f79f07840be249849d8d755b274524a5cc0fbb9dd8e8445c25a
+      - image: circleci/python:3.9.0@sha256:5e8d07621167421ec8c51d52c13b332db6c5451b328db8caae10848fd9e9f8b1
     steps:
       - checkout
       - run: .circleci/check_json
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.14.0@sha256:d0f41d77c35f60e2434c1f5797a70b02999a8efa8792dd82fbaa421d7050b10a
+      - image: circleci/node:14.14.0@sha256:33a97c0adaa0aa694a436327d833dc021aab7fb1f5621fcb94a34b3d59147aad
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -80,7 +80,7 @@ jobs:
   check-python:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.9.0@sha256:a6a9d1d655365f79f07840be249849d8d755b274524a5cc0fbb9dd8e8445c25a
+      - image: circleci/python:3.9.0@sha256:5e8d07621167421ec8c51d52c13b332db6c5451b328db8caae10848fd9e9f8b1
     steps:
       - checkout
       - run: pip install pylint
@@ -88,7 +88,7 @@ jobs:
   check-go:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/golang:latest@sha256:6e0c84d952eab3a6afbc9842da29a98aebefc282209fd817bf41c27b4c3499fb
+      - image: circleci/golang:latest@sha256:98ebef6c2d0b0515708eda415c48abe2e5d1fa675ae76c830838f2d346c13a8e
     steps:
       - checkout
       # C++ files confuse vet
