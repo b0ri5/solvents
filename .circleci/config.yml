@@ -14,7 +14,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.15.0@sha256:24f7bef89d8860ad906da94e0925b16e9b8c83ea30850a6ab51fd68dbd26ea5c
+      - image: circleci/node:14.15.0@sha256:bd59fa6c1d7d556ef1f301272fb95380e19e26d62bd9751ec67957c81c1371bf
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -25,7 +25,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.15.0@sha256:24f7bef89d8860ad906da94e0925b16e9b8c83ea30850a6ab51fd68dbd26ea5c
+      - image: circleci/node:14.15.0@sha256:bd59fa6c1d7d556ef1f301272fb95380e19e26d62bd9751ec67957c81c1371bf
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -46,7 +46,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:14.15.0@sha256:24f7bef89d8860ad906da94e0925b16e9b8c83ea30850a6ab51fd68dbd26ea5c
+      - image: circleci/node:14.15.0@sha256:bd59fa6c1d7d556ef1f301272fb95380e19e26d62bd9751ec67957c81c1371bf
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -88,7 +88,7 @@ jobs:
   check-go:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/golang:latest@sha256:340f8bb046fdebce6601b05a352df120a500fa728d0610c20f3a63c05d5f1047
+      - image: circleci/golang:latest@sha256:be0eebbb7de1289d807d6bd514a233bb37747c2179fde70575c0fa16fdfabb78
     steps:
       - checkout
       # C++ files confuse vet
