@@ -9,10 +9,10 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "io_bazel_rules_go",
-    sha256 = "7f1aa43d986df189f7cf30e81dd2dc9d8ed7c74e356341a17267f6d7e5748382",
+    sha256 = "69de5c704a05ff37862f7e0f5534d4f479418afc21806c887db544a316f3cb6b",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.24.1/rules_go-v0.24.1.tar.gz",
-        "https://github.com/bazelbuild/rules_go/releases/download/v0.24.1/rules_go-v0.24.1.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.27.0/rules_go-v0.27.0.tar.gz",
     ],
 )
 
@@ -20,15 +20,15 @@ load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_depe
 
 go_rules_dependencies()
 
-go_register_toolchains()
+go_register_toolchains(version = "1.16")
 
 # Make gazelle available. See https://github.com/bazelbuild/rules_go#generating-build-files
 http_archive(
     name = "bazel_gazelle",
-    sha256 = "d4113967ab451dd4d2d767c3ca5f927fec4b30f3b2c6f8135a2033b9c05a5687",
+    sha256 = "62ca106be173579c0a167deb23358fdfe71ffa1e4cfdddf5582af26520f1c66f",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.22.0/bazel-gazelle-v0.22.0.tar.gz",
-        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.22.0/bazel-gazelle-v0.22.0.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
     ],
 )
 
@@ -38,23 +38,23 @@ gazelle_dependencies()
 
 http_archive(
     name = "gtest",
-    sha256 = "94c634d499558a76fa649edb13721dce6e98fb1e7018dfaeba3cd7a083945e91",
-    strip_prefix = "googletest-release-1.10.0",
-    url = "https://github.com/google/googletest/archive/release-1.10.0.zip",
+    sha256 = "353571c2440176ded91c2de6d6cd88ddd41401d14692ec1f99e35d013feda55a",
+    strip_prefix = "googletest-release-1.11.0",
+    url = "https://github.com/google/googletest/archive/release-1.11.0.zip",
 )
 
 http_archive(
     name = "rules_jvm_external",
-    sha256 = "d85951a92c0908c80bd8551002d66cb23c3434409c814179c0ff026b53544dab",
-    strip_prefix = "rules_jvm_external-3.3",
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/3.3.zip",
+    sha256 = "31701ad93dbfe544d597dbe62c9a1fdd76d81d8a9150c2bf1ecf928ecdf97169",
+    strip_prefix = "rules_jvm_external-4.0",
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/4.0.zip",
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
     artifacts = [
-        "com.google.truth:truth:1.0.1",
+        "com.google.truth:truth:1.1.3",
     ],
     maven_install_json = "//:maven_install.json",
     repositories = [
@@ -86,7 +86,7 @@ yarn_install(
 # Make python rules available. See https://github.com/bazelbuild/rules_python#getting-started
 http_archive(
     name = "rules_python",
-    sha256 = "b5668cde8bb6e3515057ef465a35ad712214962f0b3a314e551204266c7be90c",
-    strip_prefix = "rules_python-0.0.2",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.2/rules_python-0.0.2.tar.gz",
+    sha256 = "778197e26c5fbeb07ac2a2c5ae405b30f6cb7ad1f5510ea6fdac03bded96cc6f",
+    #    strip_prefix = "rules_python-0.2.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.2.0/rules_python-0.2.0.tar.gz",
 )
