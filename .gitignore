@@ -9,3 +9,6 @@ bazel-*
 
 # Ignore vim swp files
 *.swp
+
+# Ignore files ending with tilde
+*~
