@@ -1,15 +1,23 @@
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "largest_prime_factor",
     srcs = ["largest_prime_factor.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = ["@npm//bignumber.js"],
 )
 
-ts_library(
+ts_project(
     name = "largest_prime_factor_test_lib",
     srcs = ["largest_prime_factor_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":largest_prime_factor",
         "@npm//@types/jasmine",
