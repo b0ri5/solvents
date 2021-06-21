@@ -1,15 +1,23 @@
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "10001st_prime",
     srcs = ["10001st_prime.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "10001st_prime_test_lib",
     srcs = ["10001st_prime_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":10001st_prime",
         "@npm//@types/jasmine",
@@ -21,9 +29,13 @@ jasmine_node_test(
     deps = [":10001st_prime_test_lib"],
 )
 
-ts_library(
+ts_project(
     name = "10001st_prime_stress_test_lib",
     srcs = ["1001st_prime_stress_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":10001st_prime",
         "@npm//@types/jasmine",
@@ -36,9 +48,13 @@ jasmine_node_test(
     deps = [":10001st_prime_stress_test_lib"],
 )
 
-ts_library(
+ts_project(
     name = "steps_lib",
     srcs = ["steps.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = ["@npm//immutable"],
 )
 
@@ -48,11 +64,16 @@ nodejs_binary(
     entry_point = ":steps.ts",
 )
 
-ts_library(
+ts_project(
     name = "benchmark_lib",
     srcs = ["benchmark.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":10001st_prime",
+        "@npm//@types/benchmark",
         "@npm//benny",
     ],
 )

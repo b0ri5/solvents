@@ -1,15 +1,23 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "multiples_of_3_or_5_ts",
     srcs = ["multiples_of_3_or_5.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "multiples_of_3_or_5_ts_test_lib",
     srcs = ["multiples_of_3_or_5_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":multiples_of_3_or_5_ts",
         "@npm//@types/jasmine",

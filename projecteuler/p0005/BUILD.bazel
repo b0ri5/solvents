@@ -1,14 +1,22 @@
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "smallest_multiple",
     srcs = ["smallest_multiple.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "smallest_multiple_test_lib",
     srcs = ["smallest_multiple_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":smallest_multiple",
         "@npm//@types/jasmine",

@@ -1,9 +1,14 @@
 {
     "compilerOptions": {
+        "composite": true,
         "lib": [
             "es2018",
             "dom"
-        ]
+        ],
+	"rootDirs": [
+		".",
+		"./bazel-out/k8-fastbuild/bin"
+	]
     },
     "extends": "./node_modules/gts/tsconfig-google.json"
 }

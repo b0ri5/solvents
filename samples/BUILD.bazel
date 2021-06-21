@@ -1,18 +1,26 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rules_java//java:defs.bzl", "java_library", "java_test")
 load("@rules_python//python:defs.bzl", "py_library", "py_test")
 
-ts_library(
+ts_project(
     name = "fortytwo_ts",
     srcs = ["fortytwo.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "fortytwo_ts_test_lib",
     srcs = ["fortytwo_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":fortytwo_ts",
         "@npm//@types/jasmine",

@@ -1,14 +1,22 @@
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "sum_square_difference",
     srcs = ["sum_square_difference.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "sum_square_difference_test_lib",
     srcs = ["sum_square_difference_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":sum_square_difference",
         "@npm//@types/jasmine",

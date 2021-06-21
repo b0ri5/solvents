@@ -1,14 +1,22 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_config", "ts_project")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
 
-ts_library(
+ts_project(
     name = "1.1",
     srcs = ["1.1.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "1.1_test_lib",
     srcs = ["1.1_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":1.1",
         "@npm//@types/jasmine",
@@ -17,17 +25,25 @@ ts_library(
 
 jasmine_node_test(
     name = "1.1_test",
-    deps = [":1.1_test_lib"],
+    srcs = [":1.1_test_lib"],
 )
 
-ts_library(
+ts_project(
     name = "1.2",
     srcs = ["1.2.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "1.2_test_lib",
     srcs = ["1.2_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":1.2",
         "@npm//@types/jasmine",
@@ -39,14 +55,22 @@ jasmine_node_test(
     deps = [":1.2_test_lib"],
 )
 
-ts_library(
+ts_project(
     name = "1.3",
     srcs = ["1.3.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "1.3_test_lib",
     srcs = ["1.3_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":1.3",
         "@npm//@types/jasmine",

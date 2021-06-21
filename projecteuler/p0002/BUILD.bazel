@@ -1,14 +1,22 @@
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "even_fibonacci_numbers_ts",
     srcs = ["even_fibonacci_numbers.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
 )
 
-ts_library(
+ts_project(
     name = "even_fibonacci_numbers_ts_test_lib",
     srcs = ["even_fibonacci_numbers_test.ts"],
+    composite = True,
+    declaration = True,
+    source_map = True,
+    tsconfig = "@wksp//:tsconfig",
     deps = [
         ":even_fibonacci_numbers_ts",
         "@npm//@types/jasmine",
