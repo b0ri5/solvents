@@ -14,7 +14,7 @@
                 "schedule:weekends"
             ],
             "groupName": "everything",
-            "updateTypes": [
+            "matchUpdateTypes": [
                 "minor",
                 "patch",
                 "pin",
