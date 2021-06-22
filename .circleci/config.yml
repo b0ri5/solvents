@@ -94,7 +94,7 @@ jobs:
     steps:
       - checkout
       # C++ files confuse vet
-      - run: find . -not -name *.go | xargs rm
+      - run: find . -type f -not -name *.go | xargs rm
       - run: go vet ./...
 
 workflows:
