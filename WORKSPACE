@@ -20,7 +20,10 @@ load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_depe
 
 go_rules_dependencies()
 
-go_register_toolchains(version = "1.16")
+go_register_toolchains(
+    nogo = "@//:nogo",
+    version = "1.16",
+)
 
 # Make gazelle available. See https://github.com/bazelbuild/rules_go#generating-build-files
 http_archive(
