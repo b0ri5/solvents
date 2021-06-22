@@ -87,22 +87,12 @@ jobs:
       - checkout
       - run: pip install pylint
       - run: find . -name *.py | xargs pylint --indent-string='  ' --disable=missing-docstring --disable=too-many-public-methods
-  check-go:
-    docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/golang:1.16.5
-    steps:
-      - checkout
-      # C++ files confuse vet
-      - run: find . -type f -not -name *.go | xargs rm
-      - run: go vet ./...
 
 workflows:
   test-workflow:
     jobs:
       - check-buildifier
       - check-cc
-      - check-go
       - check-java
       - check-json
       - check-python

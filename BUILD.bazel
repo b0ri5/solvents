@@ -1,5 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@npm//@bazel/typescript:index.bzl", "ts_config")
+load("@io_bazel_rules_go//go:def.bzl", "nogo")
 
 # gazelle:prefix github.com/b0ri5/solvents
 gazelle(name = "gazelle")
@@ -14,4 +15,11 @@ ts_config(
     src = "tsconfig.json",
     visibility = ["//visibility:public"],
     deps = ["@npm//:node_modules/gts/tsconfig-google.json"],
+)
+
+# See https://github.com/bazelbuild/rules_go/blob/master/go/nogo.rst#setup
+nogo(
+    name = "nogo",
+    vet = True,
+    visibility = ["//visibility:public"],  # must have public visibility
 )
