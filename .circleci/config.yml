@@ -61,7 +61,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:14.0.2-buster@sha256:6e1b3a9fb6602885204373149bf3052ed8d0ba6e49f3836034c898d04c95be4e
+      - image: circleci/openjdk:16.0.1-buster@sha256:48c81938169419659e4c45572239af7455653ff09cfb3c30e8d69b83fca49788
     steps:
       - checkout
       - run: wget https://github.com/google/google-java-format/releases/download/v1.10.0/google-java-format-1.10.0-all-deps.jar
