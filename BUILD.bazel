@@ -1,6 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
-load("@npm//@bazel/typescript:index.bzl", "ts_config")
 load("@io_bazel_rules_go//go:def.bzl", "nogo")
+load("@npm//@bazel/typescript:index.bzl", "ts_config")
 
 # gazelle:prefix github.com/b0ri5/solvents
 gazelle(name = "gazelle")
