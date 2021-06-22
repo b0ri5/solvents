@@ -90,7 +90,7 @@ jobs:
   check-go:
     docker:
       # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/golang:latest@sha256:d99db647f9e7feb4194079cdcfedff59f8253c2e7ed23fbca9ab7171f3775968
+      - image: circleci/golang:1.16.5
     steps:
       - checkout
       # C++ files confuse vet
