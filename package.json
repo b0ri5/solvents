@@ -6,7 +6,7 @@
     "devDependencies": {
         "@bazel/buildifier": "4.0.1",
         "@bazel/ibazel": "0.15.10",
-        "@bazel/jasmine": "3.6.0",
+        "@bazel/jasmine": "4.0.0",
         "@bazel/typescript": "3.6.0",
         "@types/benchmark": "2.1.0",
         "@types/jasmine": "3.7.7",
