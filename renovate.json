@@ -16,7 +16,7 @@
             "groupName": "everything",
             "matchUpdateTypes": [
                 "bump",
-                "digest"
+                "digest",
                 "lockFileMaintenance",
                 "major",
                 "minor",
