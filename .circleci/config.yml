@@ -6,8 +6,8 @@ jobs:
   test:
     # Use a machine executor because it most easily supports multiple languages
     machine:
-      # See https://circleci.com/docs/2.0/configuration-reference/#machine for the list of images
-      image: ubuntu-1604:202004-01
+      # See https://circleci.com/docs/2.0/configuration-reference/#available-machine-images for the list of images
+      image: ubuntu-2004:202107-02
     steps:
       - checkout
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
@@ -15,8 +15,8 @@ jobs:
       - run: bazelisk test --test_output=errors //...
   check-buildifier:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:16.3.0@sha256:4597c7d830257123696bb7be68a6970dd4acd5a2365ca2bec4a98a7db9e9e356
+      # See https://circleci.com/developer/images/image/cimg/node for a list of images
+      - image: cimg/node:16.8.0
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -26,8 +26,8 @@ jobs:
           when: on_fail
   check-typescript:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:16.3.0@sha256:4597c7d830257123696bb7be68a6970dd4acd5a2365ca2bec4a98a7db9e9e356
+      # See https://circleci.com/developer/images/image/cimg/node for a list of images
+      - image: cimg/node:16.8.0
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -37,8 +37,8 @@ jobs:
           when: on_fail
   check-json:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.9.5@sha256:61ec6816e173f20d06af243bb20b762a08e5f8ec606377f926ed8a84c9525e01
+      # See https://circleci.com/developer/images/image/cimg/python for a list of images
+      - image: cimg/python:3.9.7
     steps:
       - checkout
       - run: .circleci/check_json
@@ -47,8 +47,8 @@ jobs:
           when: on_fail
   check-cc:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/node:16.3.0@sha256:4597c7d830257123696bb7be68a6970dd4acd5a2365ca2bec4a98a7db9e9e356
+      # See https://circleci.com/developer/images/image/cimg/node for a list of images
+      - image: cimg/node:16.8.0
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -60,8 +60,8 @@ jobs:
           when: on_fail
   check-java:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/openjdk:16.0.1-buster@sha256:48c81938169419659e4c45572239af7455653ff09cfb3c30e8d69b83fca49788
+      # See https://circleci.com/developer/images/image/cimg/openjdk for a list of images
+      - image: cimg/openjdk:16.0.2
     steps:
       - checkout
       - run: |
@@ -73,8 +73,8 @@ jobs:
           when: on_fail
   check-shell:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: cimg/base:2021.05@sha256:25b59998dc10a24453ff8468ec61ad6c3d8e00f81d049bc9f05faf6d130e87e7
+      # See https://circleci.com/developer/images/image/cimg/base for a list of images
+      - image: cimg/base:2021.07
     steps:
       - checkout
       - run: sudo apt-get update
@@ -82,8 +82,8 @@ jobs:
       - run: shellcheck tools/start_solution
   check-python:
     docker:
-      # See https://circleci.com/docs/2.0/docker-image-tags.json for a list of images
-      - image: circleci/python:3.9.5@sha256:61ec6816e173f20d06af243bb20b762a08e5f8ec606377f926ed8a84c9525e01
+      # See https://circleci.com/developer/images/image/cimg/python for a list of images
+      - image: cimg/python:3.9.7
     steps:
       - checkout
       - run: pip install pylint
