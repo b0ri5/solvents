@@ -15,10 +15,14 @@
             ],
             "groupName": "everything",
             "matchUpdateTypes": [
+                "bump",
+                "digest"
+                "lockFileMaintenance",
+                "major",
                 "minor",
                 "patch",
                 "pin",
-                "digest"
+                "rollback"
             ]
         }
     ],
