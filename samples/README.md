@@ -1,7 +1,7 @@
 Sample problem to test building, testing, format checking, and linting in each supported language.
 The `README.md` file for each problem should contain the problem statement along with a link to the original site. 
 
-> From https://github.com/b0ri5/solvents/master
+> From https://github.com/b0ri5/solvents/main
 >
 > Write a function that returns 42.
 
