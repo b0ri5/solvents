@@ -29,9 +29,9 @@ Here's how to do it exclusively via the github web interface.
 5. Commit the file the branch (at the bottom of the editor)
 5. Write the test `projecteuler/0001/sum_divisors_test.js` and commit that as well
 6. You should then be able to check [travis-ci](https://travis-ci.org/b0ri5/solvents) to see if it's started trying to build your newly added solution. It should complain if there are any lint or tests that don't pass.
-7. [Create a pull request](https://help.github.com/articles/creating-a-pull-request) to merge the branch into master.
+7. [Create a pull request](https://help.github.com/articles/creating-a-pull-request) to merge the branch into main.
 8. Bug someone to review the code (assigning should probably work)
-9. Once you get the "Looks good to me" or "LGTM" and travis-ci reports a passing build, merge it into master and delete the remote branch.
+9. Once you get the "Looks good to me" or "LGTM" and travis-ci reports a passing build, merge it into main and delete the remote branch.
 
 And here's how to do it via commandline.
 
