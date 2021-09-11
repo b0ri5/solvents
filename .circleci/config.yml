@@ -16,7 +16,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:16.8.0
+      - image: cimg/node:16.8.0@sha256:4caa18dfb1130e60f25eaf980cb90f92e50f3c40f20ecd95394d5de0567d6c62
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -27,7 +27,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:16.8.0
+      - image: cimg/node:16.8.0@sha256:4caa18dfb1130e60f25eaf980cb90f92e50f3c40f20ecd95394d5de0567d6c62
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -38,7 +38,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/developer/images/image/cimg/python for a list of images
-      - image: cimg/python:3.9.7
+      - image: cimg/python:3.9.7@sha256:9833615c8c454c09f71a629e83507ebdc98d8bc4c69a7c0a567dc89aeac8b3bf
     steps:
       - checkout
       - run: .circleci/check_json
@@ -48,7 +48,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:16.8.0
+      - image: cimg/node:16.8.0@sha256:4caa18dfb1130e60f25eaf980cb90f92e50f3c40f20ecd95394d5de0567d6c62
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -61,7 +61,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/developer/images/image/cimg/openjdk for a list of images
-      - image: cimg/openjdk:16.0.2
+      - image: cimg/openjdk:16.0.2@sha256:224097af1d0a915f807a14031e2d6bce0536f9dd4431018ff7d898e7e5747379
     steps:
       - checkout
       - run: |
@@ -74,7 +74,7 @@ jobs:
   check-shell:
     docker:
       # See https://circleci.com/developer/images/image/cimg/base for a list of images
-      - image: cimg/base:2021.07
+      - image: cimg/base:2021.07@sha256:975215e37934a69efbe1a886c70b09402ca8a6ccd027efa1ef4df5d55132e687
     steps:
       - checkout
       - run: sudo apt-get update
@@ -83,7 +83,7 @@ jobs:
   check-python:
     docker:
       # See https://circleci.com/developer/images/image/cimg/python for a list of images
-      - image: cimg/python:3.9.7
+      - image: cimg/python:3.9.7@sha256:9833615c8c454c09f71a629e83507ebdc98d8bc4c69a7c0a567dc89aeac8b3bf
     steps:
       - checkout
       - run: pip install pylint
