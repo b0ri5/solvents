@@ -1,7 +1,8 @@
 {
     "dependencyDashboard": true,
     "extends": [
-        "config:base"
+        "config:base",
+        "docker:enableMajor"
     ],
     "lockFileMaintenance": {
         "automerge": true,
