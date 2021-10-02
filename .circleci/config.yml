@@ -61,7 +61,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/developer/images/image/cimg/openjdk for a list of images
-      - image: cimg/openjdk:16.0.2@sha256:224097af1d0a915f807a14031e2d6bce0536f9dd4431018ff7d898e7e5747379
+      - image: cimg/openjdk:17.0.0@sha256:258f3d9a2c37623962013b277c1fb12870efc2c84cb5a914a5b400c3d5d6bebf
     steps:
       - checkout
       - run: |
