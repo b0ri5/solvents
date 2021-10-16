@@ -1,2 +1,2 @@
 def fortytwo():
-  return 42
+    return 42

@@ -69,7 +69,7 @@ jobs:
           find . -name *.java | xargs java --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED -jar google-java-format-1.10.0-all-deps.jar --dry-run --set-exit-if-changed
       - run:
           command: |
-            echo "Run find . -name *.java | xargs java -jar google-java-format-1.10.0-all-deps.jar --replace
+            echo "Run find . -name *.java | xargs java -jar google-java-format-1.10.0-all-deps.jar --replace"
           when: on_fail
   check-shell:
     docker:
@@ -87,7 +87,21 @@ jobs:
     steps:
       - checkout
       - run: pip install pylint
-      - run: find . -name *.py | xargs pylint --indent-string='  ' --disable=missing-docstring --disable=too-many-public-methods
+      - run: find . -name *.py | xargs pylint --disable=missing-docstring --disable=too-many-public-methods
+  # See https://github.com/google/yapf
+  check-yapf:
+    docker:
+      # See https://circleci.com/developer/images/image/cimg/python for a list of images
+      - image: cimg/python:3.9.7@sha256:9833615c8c454c09f71a629e83507ebdc98d8bc4c69a7c0a567dc89aeac8b3bf
+    steps:
+      - checkout
+      - run: pip install yapf
+      - run: find . -name *.py | xargs yapf --parallel --style google --diff
+      - run:
+          command: |
+            echo "Run find . -name *.py | xargs yapf --parallel --style google --in-place"
+          when: on_fail
+
 
 workflows:
   test-workflow:
@@ -99,5 +113,6 @@ workflows:
       - check-python
       - check-shell
       - check-typescript
+      - check-yapf
       - renovate/validate-config
       - test
