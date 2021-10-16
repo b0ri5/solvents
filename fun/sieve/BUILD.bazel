@@ -1,0 +1,14 @@
+load("@rules_python//python:defs.bzl", "py_library", "py_test")
+
+py_library(
+    name = "gaps",
+    srcs = ["gaps.py"],
+)
+
+py_test(
+    name = "gaps_test",
+    size = "small",
+    srcs = ["gaps_test.py"],
+    main = "gaps_test.py",
+    deps = [":gaps"],
+)
