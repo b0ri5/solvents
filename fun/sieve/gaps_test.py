@@ -38,6 +38,10 @@ class GapsTest(unittest.TestCase):
               2, 6, 4, 2, 4, 2, 10, 12, 2, 4, 2, 10, 2, 6, 4, 2, 4, 6, 6, 2, 10,
               2, 6, 4, 14, 4, 2, 4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2, 6, 6, 4, 2, 4,
               6, 2, 6, 4, 2, 4, 12, 2, 12)), gaps.gaps(6))
+        p7, g7 = gaps.gaps(7)
+        self.assertEqual((p7, len(g7)), (17, 5760))
+        p8, g8 = gaps.gaps(8)
+        self.assertEqual((p8, len(g8)), (19, 92160))
 
 
 if __name__ == '__main__':

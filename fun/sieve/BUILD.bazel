@@ -12,4 +12,3 @@ py_test(
     main = "gaps_test.py",
     deps = [":gaps"],
 )
-

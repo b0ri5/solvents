@@ -2,23 +2,20 @@ import functools
 
 
 @functools.cache
-def gaps(n):
-    if n == 2:
+def gaps(prime_index):
+    if prime_index == 2:
         return (3, (2,))
-    prev_p, prev_gaps = gaps(n - 1)
-    # Start at the next prime
-    p = prev_p + prev_gaps[0]
+    prev_prime, prev_gaps = gaps(prime_index - 1)
+    next_prime = prev_prime + prev_gaps[0]
     # Rotate the previous gaps one to the right: [g1, g2, ...] -> [g2, ..., g1]
     prev_gaps = prev_gaps[1:] + (prev_gaps[0],)
-    # The running sum
-    s = p
-    # The new gaps
-    g = []
-    for idx in range(prev_p * len(prev_gaps)):
-        prev_gap = prev_gaps[idx % len(prev_gaps)]
-        if s % prev_p == 0:
-            g[-1] += prev_gap
+    sum = next_prime
+    new_gaps = []
+    for gaps_index in range(prev_prime * len(prev_gaps)):
+        prev_gap = prev_gaps[gaps_index % len(prev_gaps)]
+        if sum % prev_prime == 0:
+            new_gaps[-1] += prev_gap
         else:
-            g.append(prev_gap)
-        s += prev_gap
-    return (p, tuple(g))
+            new_gaps.append(prev_gap)
+        sum += prev_gap
+    return (next_prime, tuple(new_gaps))
