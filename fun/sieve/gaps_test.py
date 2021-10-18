@@ -1,18 +1,18 @@
 import unittest
 
-import gaps
+from gaps import prime_gaps
 
 
 class GapsTest(unittest.TestCase):
 
     def test_gaps(self):
-        self.assertEqual((3, (2,)), gaps.gaps(2))
-        self.assertEqual((5, (2, 4)), gaps.gaps(3))
-        self.assertEqual((7, (4, 2, 4, 2, 4, 6, 2, 6)), gaps.gaps(4))
+        self.assertEqual((3, (2,)), prime_gaps(2))
+        self.assertEqual((5, (2, 4)), prime_gaps(3))
+        self.assertEqual((7, (4, 2, 4, 2, 4, 6, 2, 6)), prime_gaps(4))
         self.assertEqual(
             (11, (2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6, 6, 2, 6, 4, 2, 6, 4, 6, 8, 4,
                   2, 4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2, 6, 6, 4, 2, 4, 6, 2, 6, 4,
-                  2, 4, 2, 10, 2, 10)), gaps.gaps(5))
+                  2, 4, 2, 10, 2, 10)), prime_gaps(5))
         self.assertEqual(
             (13,
              (4, 2, 4, 6, 2, 6, 4, 2, 4, 6, 6, 2, 6, 4, 2, 6, 4, 6, 8, 4, 2, 4,
@@ -37,10 +37,10 @@ class GapsTest(unittest.TestCase):
               4, 2, 10, 6, 8, 6, 4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2, 6, 6, 6, 4, 6,
               2, 6, 4, 2, 4, 2, 10, 12, 2, 4, 2, 10, 2, 6, 4, 2, 4, 6, 6, 2, 10,
               2, 6, 4, 14, 4, 2, 4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2, 6, 6, 4, 2, 4,
-              6, 2, 6, 4, 2, 4, 12, 2, 12)), gaps.gaps(6))
-        prime_7, gaps_7 = gaps.gaps(7)
+              6, 2, 6, 4, 2, 4, 12, 2, 12)), prime_gaps(6))
+        prime_7, gaps_7 = prime_gaps(7)
         self.assertEqual((prime_7, len(gaps_7)), (17, 5760))
-        prime_8, gaps_8 = gaps.gaps(8)
+        prime_8, gaps_8 = prime_gaps(8)
         self.assertEqual((prime_8, len(gaps_8)), (19, 92160))
 
 
