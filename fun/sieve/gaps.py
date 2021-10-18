@@ -3,10 +3,10 @@ import itertools
 
 
 @functools.cache
-def gaps(prime_index):
+def prime_gaps(prime_index):
     if prime_index == 2:
         return (3, (2,))
-    prev_prime, prev_gaps = gaps(prime_index - 1)
+    prev_prime, prev_gaps = prime_gaps(prime_index - 1)
     next_prime = prev_prime + prev_gaps[0]
     # Rotate the previous gaps one to the right: [g1, g2, ...] -> [g2, ..., g1]
     prev_gaps = prev_gaps[1:] + (prev_gaps[0],)
