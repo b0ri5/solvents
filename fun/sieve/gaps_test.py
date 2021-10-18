@@ -51,8 +51,6 @@ class GapsTest(unittest.TestCase):
                          tuple(itertools.islice(gaps.apply_gaps(5, (2, 4)), 8)))
 
     def test_applied_gaps_are_not_divisible_by_smaller_primes(self):
-        primes = [2]
-
         prime_2, gaps_2 = gaps.gaps(2)
         for i in itertools.islice(gaps.apply_gaps(prime_2, gaps_2), 20):
             self.assertTrue(i % 2 != 0)
