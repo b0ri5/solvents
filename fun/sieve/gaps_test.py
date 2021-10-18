@@ -65,6 +65,27 @@ class GapsTest(unittest.TestCase):
             self.assertTrue(i % 2 != 0)
             self.assertTrue(i % 3 != 0)
             self.assertTrue(i % 5 != 0)
+            
+        prime_5, gaps_5 = prime_gaps(5)
+        for i in islice(apply_gaps(prime_5, gaps_5), len(gaps_5) * 100):
+            self.assertTrue(i % 2 != 0)
+            self.assertTrue(i % 3 != 0)
+            self.assertTrue(i % 5 != 0)
+            self.assertTrue(i % 7 != 0)
+            
+        prime_6, gaps_6 = prime_gaps(6)
+        for i in islice(apply_gaps(prime_6, gaps_6), len(gaps_6) * 100):
+            self.assertTrue(i % 2 != 0)
+            self.assertTrue(i % 3 != 0)
+            self.assertTrue(i % 5 != 0)
+        
+        prime_5, gaps_5 = prime_gaps(5)
+        for i in islice(apply_gaps(prime_5, gaps_5), len(gaps_5) * 100):
+            self.assertTrue(i % 2 != 0)
+            self.assertTrue(i % 3 != 0)
+            self.assertTrue(i % 5 != 0)
+            self.assertTrue(i % 7 != 0)
+            self.assertTrue(i % 11 != 0)
 
 
 if __name__ == '__main__':
