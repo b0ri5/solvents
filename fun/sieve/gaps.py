@@ -1,4 +1,5 @@
 import functools
+import itertools
 
 
 @functools.cache
@@ -19,3 +20,10 @@ def prime_gaps(prime_index):
             new_gaps.append(prev_gap)
         running_sum += prev_gap
     return (next_prime, tuple(new_gaps))
+
+
+def apply_gaps(start, gaps):
+    current = start
+    for gap in itertools.cycle(gaps):
+        yield current
+        current += gap
