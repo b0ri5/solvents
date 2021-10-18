@@ -44,12 +44,11 @@ class GapsTest(unittest.TestCase):
         prime_8, gaps_8 = gaps.gaps(8)
         self.assertEqual((prime_8, len(gaps_8)), (19, 92160))
 
-
     def test_apply_gaps(self):
         one_to_five = tuple(itertools.islice(gaps.apply_gaps(1, (1,)), 5))
         self.assertEqual((1, 2, 3, 4, 5), one_to_five)
-        self.assertEqual((5, 7, 11, 13, 17, 19, 23, 25), tuple(itertools.islice(gaps.apply_gaps(5, (2, 4)), 8)))
-
+        self.assertEqual((5, 7, 11, 13, 17, 19, 23, 25),
+                         tuple(itertools.islice(gaps.apply_gaps(5, (2, 4)), 8)))
 
     def test_applied_gaps_are_not_divisible_by_smaller_primes(self):
         primes = [2]
@@ -64,7 +63,8 @@ class GapsTest(unittest.TestCase):
             self.assertTrue(i % 3 != 0)
 
         prime_4, gaps_4 = gaps.gaps(4)
-        for i in itertools.islice(gaps.apply_gaps(prime_4, gaps_4), len(gaps_4) * 100):
+        for i in itertools.islice(gaps.apply_gaps(prime_4, gaps_4),
+                                  len(gaps_4) * 100):
             self.assertTrue(i % 2 != 0)
             self.assertTrue(i % 3 != 0)
             self.assertTrue(i % 5 != 0)
