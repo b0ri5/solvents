@@ -7,7 +7,6 @@ py_library(
 
 py_test(
     name = "gaps_test",
-    size = "small",
     srcs = ["gaps_test.py"],
     main = "gaps_test.py",
     deps = [":gaps"],
