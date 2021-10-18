@@ -55,7 +55,6 @@ py_library(
 
 py_test(
     name = "fortytwo_py_test",
-    size = "small",
     srcs = ["fortytwo_test.py"],
     main = "fortytwo_test.py",
     deps = [":fortytwo_py"],
