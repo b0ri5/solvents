@@ -50,7 +50,7 @@ class GapsTest(unittest.TestCase):
         self.assertEqual((5, 7, 11, 13, 17, 19, 23, 25),
                          tuple(islice(apply_gaps(5, (2, 4)), 8)))
 
-    def test_applied_gaps_are_not_divisible_by_smaller_primes(self):
+    def test_applied_prime_gaps_are_not_divisible_by_smaller_primes(self):
         prime_2, gaps_2 = prime_gaps(2)
         for i in islice(apply_gaps(prime_2, gaps_2), 20):
             self.assertTrue(i % 2 != 0)
