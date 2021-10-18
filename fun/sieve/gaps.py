@@ -8,7 +8,7 @@ def prime_gaps(prime_index):
         return (3, (2,))
     prev_prime, prev_gaps = prime_gaps(prime_index - 1)
     next_prime = prev_prime + prev_gaps[0]
-    # Rotate the previous gaps one to the right: [g1, g2, ...] -> [g2, ..., g1]
+    # Rotate the previous gaps one to the left: [g1, g2, ...] -> [g2, ..., g1]
     prev_gaps = prev_gaps[1:] + (prev_gaps[0],)
     running_sum = next_prime
     new_gaps = []
