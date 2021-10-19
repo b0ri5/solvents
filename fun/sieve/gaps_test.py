@@ -79,8 +79,8 @@ class GapsTest(unittest.TestCase):
             self.assertTrue(i % 3 != 0)
             self.assertTrue(i % 5 != 0)
 
-        prime_5, gaps_5 = prime_gaps(5)
-        for i in islice(apply_gaps(prime_5, gaps_5), len(gaps_5) * 100):
+        prime_7, gaps_7 = prime_gaps(7)
+        for i in islice(apply_gaps(prime_7, gaps_7), len(gaps_7) * 100):
             self.assertTrue(i % 2 != 0)
             self.assertTrue(i % 3 != 0)
             self.assertTrue(i % 5 != 0)
