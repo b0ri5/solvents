@@ -1,3 +1,4 @@
+load("@pip//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_library", "py_test")
 
 py_library(
@@ -9,4 +10,18 @@ py_test(
     name = "gaps_test",
     srcs = ["gaps_test.py"],
     deps = [":gaps"],
+)
+
+py_library(
+    name = "reduced_residue_system",
+    srcs = ["reduced_residue_system.py"],
+    deps = [
+        requirement("sympy"),
+    ],
+)
+
+py_test(
+    name = "reduced_residue_system_test",
+    srcs = ["reduced_residue_system_test.py"],
+    deps = [":reduced_residue_system"],
 )
