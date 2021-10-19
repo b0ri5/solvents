@@ -86,6 +86,7 @@ jobs:
       - image: cimg/python:3.9.7@sha256:9833615c8c454c09f71a629e83507ebdc98d8bc4c69a7c0a567dc89aeac8b3bf
     steps:
       - checkout
+      - run: pip install -r requirements.txt
       - run: pip install pylint
       - run: find . -name *.py | xargs pylint --disable=missing-docstring --disable=too-many-public-methods
   # See https://github.com/google/yapf
