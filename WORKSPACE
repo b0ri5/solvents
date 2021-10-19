@@ -92,3 +92,11 @@ http_archive(
     sha256 = "954aa89b491be4a083304a2cb838019c8b8c3720a7abb9c4cb81ac7a24230cea",
     url = "https://github.com/bazelbuild/rules_python/releases/download/0.4.0/rules_python-0.4.0.tar.gz",
 )
+
+# See https://github.com/bazelbuild/rules_python#fetch-pip-dependencies-lazily-experimental
+load("@rules_python//python:pip.bzl", "pip_install")
+
+pip_install(
+    python_interpreter = "python",
+    requirements = "//:requirements.txt",
+)
