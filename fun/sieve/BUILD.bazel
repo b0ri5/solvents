@@ -10,3 +10,14 @@ py_test(
     srcs = ["gaps_test.py"],
     deps = [":gaps"],
 )
+
+py_library(
+    name = "reduced_residue_system",
+    srcs = ["reduced_residue_system.py"],
+)
+
+py_test(
+    name = "reduced_residue_system_test",
+    srcs = ["reduced_residue_system_test.py"],
+    deps = [":reduced_residue_system"],
+)
