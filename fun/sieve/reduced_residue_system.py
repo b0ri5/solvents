@@ -10,4 +10,4 @@ def _reduced_residue_system_primorial_brute_force(i):
     for k in range(1, primorial_i):
         if gcd(primorial_i, k) == 1:
             system.add(k)
-    return system
+    return frozenset(system)
