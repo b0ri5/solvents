@@ -2,8 +2,9 @@ import unittest
 
 from math import gcd
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force, filter_twos,
-    reduced_residue_system_primorial, reduced_residue_system_primorial_twos)
+    _reduced_residue_system_primorial_brute_force, filter_twin_primes,
+    filter_twos, reduced_residue_system_primorial,
+    reduced_residue_system_primorial_twos)
 from sympy import primorial
 
 
@@ -103,6 +104,31 @@ class Test(unittest.TestCase):
         # See https://oeis.org/A059861
         self.assertEqual([1, 1, 3, 15, 135, 1485, 22275, 378675, 7952175],
                          sizes)
+
+    def test_filter_twin_primes(self):
+        twin_primes_1 = filter_twin_primes(
+            reduced_residue_system_primorial_twos(1))
+        self.assertEqual(set(), twin_primes_1)
+        twin_primes_1 = filter_twin_primes(
+            reduced_residue_system_primorial_twos(2))
+        self.assertEqual({5}, twin_primes_1)
+        twin_primes_1 = filter_twin_primes(
+            reduced_residue_system_primorial_twos(3))
+        self.assertEqual({11, 17, 29}, twin_primes_1)
+        twin_primes_1 = filter_twin_primes(
+            reduced_residue_system_primorial_twos(4))
+        self.assertEqual(
+            {11, 17, 29, 41, 59, 71, 101, 107, 137, 149, 179, 191, 197},
+            twin_primes_1)
+
+    def test_filter_twin_primes_sizes(self):
+        sizes = []
+        for i in range(1, 8):
+            size = len(
+                filter_twin_primes(reduced_residue_system_primorial_twos(i)))
+            sizes.append(size)
+        # Not an OEIS sequence yet but I'll submit it as one.
+        self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
 
 
 if __name__ == '__main__':
