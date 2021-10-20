@@ -36,3 +36,19 @@ def filter_twos(rrs):
     twos = {r for r in rrs if r + 2 in rrs}
     twos.add(max(rrs))
     return frozenset(twos)
+
+
+@cache
+def reduced_residue_system_primorial_twos(i):
+    if i == 1:
+        return frozenset({1})
+    previous_rrs = reduced_residue_system_primorial_twos(i - 1)
+    prime_i = prime(i)
+    previous_primorial = primorial(i - 1)
+    rrs = set()
+    for residue in previous_rrs:
+        for k in range(0, prime_i):
+            candidate = previous_primorial * k + residue
+            if candidate % prime_i != 0 and (candidate + 2) % prime_i != 0:
+                rrs.add(candidate)
+    return frozenset(rrs)

@@ -3,7 +3,7 @@ import unittest
 from math import gcd
 from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force, filter_twos,
-    reduced_residue_system_primorial)
+    reduced_residue_system_primorial, reduced_residue_system_primorial_twos)
 from sympy import primorial
 
 
@@ -80,6 +80,29 @@ class Test(unittest.TestCase):
             sizes.append(size)
         # See https://oeis.org/A059861
         self.assertEqual([1, 1, 3, 15, 135, 1485, 22275, 378675], sizes)
+
+    def test_reduced_residue_system_primorial_twos(self):
+        twos_1 = reduced_residue_system_primorial_twos(1)
+        self.assertEqual({1}, twos_1)
+        twos_2 = reduced_residue_system_primorial_twos(2)
+        self.assertEqual({5}, twos_2)
+        twos_3 = reduced_residue_system_primorial_twos(3)
+        self.assertEqual({11, 17, 29}, twos_3)
+        twos_4 = reduced_residue_system_primorial_twos(4)
+        self.assertEqual(
+            {
+                11, 17, 29, 41, 59, 71, 101, 107, 137, 149, 167, 179, 191, 197,
+                209
+            }, twos_4)
+
+    def test_test_reduced_residue_system_primorial_twos_sizes(self):
+        sizes = []
+        for i in range(1, 10):
+            size = len(reduced_residue_system_primorial_twos(i))
+            sizes.append(size)
+        # See https://oeis.org/A059861
+        self.assertEqual([1, 1, 3, 15, 135, 1485, 22275, 378675, 7952175],
+                         sizes)
 
 
 if __name__ == '__main__':
