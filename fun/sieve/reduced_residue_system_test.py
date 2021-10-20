@@ -128,7 +128,7 @@ class Test(unittest.TestCase):
                 filter_twin_primes(reduced_residue_system_primorial_twos(i)))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 1, 3, 13, 67, 465, 4632, 57449], sizes)
+        self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
 
 
 if __name__ == '__main__':
