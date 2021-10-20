@@ -57,3 +57,14 @@ def reduced_residue_system_primorial_twos(i):
 def filter_twin_primes(rrs):
     twin_primes = {r for r in rrs if isprime(r) and isprime(r + 2)}
     return frozenset(twin_primes)
+
+
+# The elements that the residue r in rss(i) contributes from rss(i + 1) 
+def descendants(r, i):
+  primorial_i = primorial(i)
+  next_prime = prime(i + 1)
+  for k in range(0, next_prime):
+    candidate = primorial_i * k + r
+    if candidate % next_prime != 0:
+      yield candidate
+
