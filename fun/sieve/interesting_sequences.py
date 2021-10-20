@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 from math import gcd
+=======
+>>>>>>> Stashed changes
 from itertools import islice
 from sympy import isprime, prime, primorial, sieve
 
@@ -37,17 +40,26 @@ def apply_gaps(start, gaps):
 
 def f2():
     seen_twins = [3]
+<<<<<<< Updated upstream
     # num_twos is https://oeis.org/A059861
     print('num_twins', 'new_twins', 'num_primes', 'num_twos')
     for i in range(2, 12):
         prime, gaps = prime_gaps(i)
    #     print([k for k in range(1, primorial(i)) if gcd(k, primorial(i)) == 1])
   #      print(prime, gaps)
+=======
+    print('num_twins', 'new_twins')
+    for i in range(2, 8):
+        prime, gaps = prime_gaps(i)
+>>>>>>> Stashed changes
         #print(prime, len(gaps))
         candidates = list(islice(apply_gaps(prime, gaps), len(gaps) * prime))
         #print(list(candidates))
         twins = [p for p in candidates if is_twin_prime(p)]
+<<<<<<< Updated upstream
  #       print(twins)
+=======
+>>>>>>> Stashed changes
         new_twins = []
         for t in twins:
             if t not in seen_twins:
@@ -56,6 +68,7 @@ def f2():
         #print('twins ', twins)
         #print('seen_twins', seen_twins)
         #print('new_twins', new_twins)
+<<<<<<< Updated upstream
         num_primes = sum(isprime(k) for k in candidates)
         num_twos = sum(g == 2 for g in prime_gaps(i + 1)[1])
         print(len(twins), len(new_twins), num_primes, num_twos)
@@ -83,6 +96,12 @@ def f3():
 f2()
 #f3()
 #print([i for i in range(1, primorial(2)) if gcd(i, primorial(i)) == 1])
+=======
+        num_2s = sum(k == 2 for k in candidates)
+        print(len(twins), len(new_twins))
+
+f2()
+>>>>>>> Stashed changes
 
 
 def f1():
