@@ -3,9 +3,9 @@ import unittest
 from math import gcd
 from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force,
-    reduced_residue_system_primorial
-)
+    reduced_residue_system_primorial)
 from sympy import primorial
+
 
 class Test(unittest.TestCase):
 
@@ -31,11 +31,9 @@ class Test(unittest.TestCase):
         # See https://oeis.org/A005867
         self.assertEqual({1, 2, 8, 48, 480, 5760}, sizes)
 
-
     def test_reduced_residue_system_primorial(self):
         self.assertEqual({1}, reduced_residue_system_primorial(1))
-        self.assertEqual({1, 5},
-                         reduced_residue_system_primorial(2))
+        self.assertEqual({1, 5}, reduced_residue_system_primorial(2))
         self.assertEqual({1, 7, 11, 13, 17, 19, 23, 29},
                          reduced_residue_system_primorial(3))
         self.assertEqual(
@@ -46,15 +44,10 @@ class Test(unittest.TestCase):
                 103, 107, 109, 113, 121, 127
             }, reduced_residue_system_primorial(4))
 
-
     def test_reduced_residue_system_primorial_sizes(self):
-        sizes = {
-            len(reduced_residue_system_primorial(i))
-            for i in range(1, 9)
-        }
+        sizes = {len(reduced_residue_system_primorial(i)) for i in range(1, 9)}
         # See https://oeis.org/A005867
         self.assertEqual({1, 2, 8, 48, 480, 5760, 92160, 1658880}, sizes)
-
 
     def test_reduced_residue_system_primorial_is_rrs(self):
         for i in range(1, 8):
