@@ -59,7 +59,7 @@ def filter_twin_primes(rrs):
     return frozenset(twin_primes)
 
 
-# The elements that the residue r in rss(i) contributes from rss(i + 1) 
+# The elements that the residue r in rss(i) contributes to rss(i + 1) 
 def descendants(r, i):
   primorial_i = primorial(i)
   next_prime = prime(i + 1)
