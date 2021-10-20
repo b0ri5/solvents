@@ -2,8 +2,8 @@ import unittest
 
 from math import gcd
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force, filter_twin_primes,
-    filter_twos, reduced_residue_system_primorial,
+    _reduced_residue_system_primorial_brute_force, descendants,
+    filter_twin_primes, filter_twos, reduced_residue_system_primorial,
     reduced_residue_system_primorial_twos)
 from sympy import primorial
 
@@ -130,6 +130,9 @@ class Test(unittest.TestCase):
         # Not an OEIS sequence yet but I'll submit it as one.
         self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
 
+    def test_descendants(self):
+        self.assertEqual([11, 17, 29], descendants(5, 2))
+        
 
 if __name__ == '__main__':
     unittest.main()
