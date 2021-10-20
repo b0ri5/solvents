@@ -28,3 +28,11 @@ def reduced_residue_system_primorial(i):
             if candidate % prime_i != 0:
                 rrs.add(candidate)
     return frozenset(rrs)
+
+
+def filter_twos(rrs):
+    # A "two" is a residue that corresponds to a 2 in the corresponding dRRS.
+    # That means that r and r + 2 is in the RRS.
+    twos = {r for r in rrs if r + 2 in rrs}
+    twos.add(max(rrs))
+    return frozenset(twos)

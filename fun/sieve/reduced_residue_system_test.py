@@ -2,7 +2,7 @@ import unittest
 
 from math import gcd
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force,
+    _reduced_residue_system_primorial_brute_force, filter_twos,
     reduced_residue_system_primorial)
 from sympy import primorial
 
@@ -58,6 +58,28 @@ class Test(unittest.TestCase):
                 self.assertLess(residue, primorial_i)
                 # And relatively prime to primorial_i
                 self.assertEqual(1, gcd(residue, primorial_i))
+
+    def test_filter_twos(self):
+        twos_1 = filter_twos(reduced_residue_system_primorial(1))
+        self.assertEqual({1}, twos_1)
+        twos_2 = filter_twos(reduced_residue_system_primorial(2))
+        self.assertEqual({5}, twos_2)
+        twos_3 = filter_twos(reduced_residue_system_primorial(3))
+        self.assertEqual({11, 17, 29}, twos_3)
+        twos_4 = filter_twos(reduced_residue_system_primorial(4))
+        self.assertEqual(
+            {
+                11, 17, 29, 41, 59, 71, 101, 107, 137, 149, 167, 179, 191, 197,
+                209
+            }, twos_4)
+
+    def test_filter_twos_sizes(self):
+        sizes = []
+        for i in range(1, 9):
+            size = len(filter_twos(reduced_residue_system_primorial(i)))
+            sizes.append(size)
+        # See https://oeis.org/A059861
+        self.assertEqual([1, 1, 3, 15, 135, 1485, 22275, 378675], sizes)
 
 
 if __name__ == '__main__':
