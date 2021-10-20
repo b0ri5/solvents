@@ -131,7 +131,7 @@ class Test(unittest.TestCase):
         self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
 
     def test_descendants(self):
-        self.assertEqual([11, 17, 29], descendants(5, 2))
+        self.assertEqual([11, 17, 29], list(descendants(5, 2)))
         
 
 if __name__ == '__main__':
