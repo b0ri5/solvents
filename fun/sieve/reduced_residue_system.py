@@ -28,4 +28,3 @@ def reduced_residue_system_primorial(i):
             if candidate % prime_i != 0:
                 rrs.add(candidate)
     return frozenset(rrs)
-  
