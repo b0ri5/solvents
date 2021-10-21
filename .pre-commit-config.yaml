@@ -6,5 +6,5 @@ repos:
         name: yapf
         language: python
         entry: yapf
-        args: [--in-place, --verbose]
+        args: [--style=google, --in-place, --verbose]
         types: [python]

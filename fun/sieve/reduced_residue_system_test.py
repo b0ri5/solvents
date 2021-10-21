@@ -9,6 +9,7 @@ from sympy import primorial
 
 
 class Test(unittest.TestCase):
+
     def test_reduced_residue_system_primorial_brute_force(self):
         self.assertEqual({1}, _reduced_residue_system_primorial_brute_force(1))
         self.assertEqual({1, 5},
@@ -19,8 +20,8 @@ class Test(unittest.TestCase):
             {
                 1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
                 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131,
-                137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181,
-                187, 191, 193, 197, 199, 209
+                137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187,
+                191, 193, 197, 199, 209
             }, _reduced_residue_system_primorial_brute_force(4))
 
     def test_reduced_residue_system_primorial_brute_force_sizes(self):
@@ -40,8 +41,8 @@ class Test(unittest.TestCase):
             {
                 1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
                 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131,
-                137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181,
-                187, 191, 193, 197, 199, 209
+                137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187,
+                191, 193, 197, 199, 209
             }, reduced_residue_system_primorial(4))
 
     def test_reduced_residue_system_primorial_sizes(self):
