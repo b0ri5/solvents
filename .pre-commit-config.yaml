@@ -1,0 +1,10 @@
+repos:
+  - repo: https://github.com/google/yapf
+    rev: v0.31.0
+    hooks:
+      - id: yapf
+        name: yapf
+        language: python
+        entry: yapf
+        args: [--style=google, --in-place, --verbose]
+        types: [python]
