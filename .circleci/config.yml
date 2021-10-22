@@ -14,7 +14,7 @@ jobs:
       - run: pyenv global 3.9.4
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
       - run: go get github.com/bazelbuild/bazelisk
-      - run: bazelisk test --test_output=errors //fun/sieve/...
+      - run: bazelisk test --test_output=errors //...
   check-buildifier:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
