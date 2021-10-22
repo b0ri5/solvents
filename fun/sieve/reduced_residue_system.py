@@ -60,10 +60,10 @@ def filter_twin_primes(rrs):
 
 
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
-def descendants(r, i):
+def descendants(residue, i):
     primorial_i = primorial(i)
     next_prime = prime(i + 1)
     for k in range(0, next_prime):
-        candidate = primorial_i * k + r
+        candidate = primorial_i * k + residue
         if candidate % next_prime != 0:
             yield candidate
