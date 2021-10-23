@@ -128,8 +128,11 @@ def reduced_residue_system_primorial_two_classification(i):
                                  composite_to_prime=0,
                                  prime_to_composite=0,
                                  prime_to_prime=1)
-    rrs = reduced_residue_system_twos(i)
-    composite_to_composite, compostte_to_prime, prime_to_composite, prime_to_prime = 0
+    rrs = reduced_residue_system_primorial_twos(i)
+    composite_to_composite = 0
+    composite_to_prime = 0
+    prime_to_composite = 0
+    prime_to_prime = 0
     for r in rrs:
         if isprime(r):
             if isprime(r + 2):
@@ -140,7 +143,7 @@ def reduced_residue_system_primorial_two_classification(i):
             if isprime(r + 2):
                 composite_to_prime += 1
             else:
-                composite_to_commposite += 1
+                composite_to_composite += 1
     return TwoClassification(composite_to_composite=composite_to_composite,
                              composite_to_prime=composite_to_prime,
                              prime_to_composite=prime_to_composite,
