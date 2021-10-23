@@ -160,9 +160,9 @@ class Test(unittest.TestCase):
     def test_sum_of_classification_of_two_between_prime_and_primorial(self):
         sizes = []
         for i in range(1, 7):
-            size = len(composite_and_prime_between_prime_and_primorial(i))
-            +len(prime_and_composite_between_prime_and_primorial(i))
-            +len(twin_primes_between_prime_and_primorial(i))
+            size = (len(composite_and_prime_between_prime_and_primorial(i)) +
+                    len(prime_and_composite_between_prime_and_primorial(i)) +
+                    len(twin_primes_between_prime_and_primorial(i)))
             sizes.append(size)
 
         # See https://oeis.org/A059861
