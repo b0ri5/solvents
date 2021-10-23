@@ -155,7 +155,7 @@ class Test(unittest.TestCase):
             size = len(composite_and_prime_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
+        self.assertEqual([0, 0, 0, 1, 28, 358], sizes)
 
     def test_sum_of_classification_of_two_between_prime_and_primorial(self):
         sizes = []
@@ -166,7 +166,7 @@ class Test(unittest.TestCase):
             sizes.append(size)
 
         # See https://oeis.org/A059861
-        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
+        self.assertEqual([1, 1, 3, 15, 135, 1485, 22275], sizes)
 
     def test_descendants(self):
         self.assertEqual([1, 5], list(descendants(1, 1)))

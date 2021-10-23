@@ -60,15 +60,13 @@ def filter_twin_primes(rrs):
 
 
 def twin_primes_between_prime_and_primorial(i):
-    return [
-        p for p in primerange(prime(i + 1), primorial(i))
-        if isprime(p) and isprime(p + 2)
-    ]
+    return [p for p in primerange(prime(i + 1), primorial(i)) if isprime(p + 2)]
 
 
 def prime_and_composite_between_prime_and_primorial(i):
     return [
-        p for p in primerange(prime(i + 1), primorial(i)) if not isprime(p + 2)
+        p for p in primerange(prime(i + 1), primorial(i))
+        if not isprime(p + 2) and gcd(p + 2, primorial(i)) == 1
     ]
 
 
