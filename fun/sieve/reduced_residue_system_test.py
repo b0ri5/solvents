@@ -3,6 +3,7 @@ import unittest
 from math import gcd
 from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force,
+    composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, descendants,
     filter_twin_primes, filter_twos, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial,
@@ -161,9 +162,11 @@ class Test(unittest.TestCase):
     def test_sum_of_classification_of_two_between_prime_and_primorial(self):
         sizes = []
         for i in range(1, 6):
-            size = (len(composite_and_prime_between_prime_and_primorial(i)) +
-                    len(prime_and_composite_between_prime_and_primorial(i)) +
-                    len(twin_primes_between_prime_and_primorial(i)))
+            size = (
+                len(composite_and_composite_between_prime_and_primorial(i)) +
+                len(composite_and_prime_between_prime_and_primorial(i)) +
+                len(prime_and_composite_between_prime_and_primorial(i)) +
+                len(twin_primes_between_prime_and_primorial(i)))
             sizes.append(size)
 
         # See https://oeis.org/A059861
