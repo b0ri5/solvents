@@ -59,6 +59,13 @@ def filter_twin_primes(rrs):
     return frozenset(twin_primes)
 
 
+def twin_primes_between_prime_and_primorial(i):
+    return [
+        p for p in primerange(prime(i + 1), primorial(i))
+        if isprime(p) and isprime(p + 2)
+    ]
+
+
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
 def descendants(residue, i):
     primorial_i = primorial(i)
