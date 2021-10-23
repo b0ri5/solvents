@@ -2,7 +2,7 @@
 
 from functools import cache
 from math import gcd
-from sympy import isprime, prime, primorial
+from sympy import isprime, prime, primerange, primorial
 
 
 def _reduced_residue_system_primorial_brute_force(i):
