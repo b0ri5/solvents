@@ -1,5 +1,6 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
+from collections import namedtuple
 from functools import cache
 from math import gcd
 from sympy import isprime, prime, primerange, primorial
@@ -111,3 +112,9 @@ def reduced_residue_system_primorial_applied_gaps(i):
     rrs = sorted(reduced_residue_system_primorial(i))
     gaps = reduced_residue_system_primorial_gaps(i)
     return [rrs[k] + gaps[k] for k in range(len(rrs))]
+
+
+TwoClassification = namedtuple('TwoClassification', [
+    'composite_to_composite', 'composite_to_prime', 'prime_to_composite',
+    'prime_to_prime'
+])

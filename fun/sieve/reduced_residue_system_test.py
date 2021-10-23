@@ -215,6 +215,15 @@ class Test(unittest.TestCase):
             197, 199, 209, 211
         ], reduced_residue_system_primorial_applied_gaps(4))
 
+    def test_reduced_residue_system_primorial_two_classification(self):
+        two_classification1 = reduced_residue_system_primorial_two_classification
+        self.assertEqual(
+            two_classification1,
+            TwoClassification(composite_to_composite=0,
+                              composite_to_prime=0,
+                              prime_to_composite=0,
+                              prime_to_prime=1))
+
 
 if __name__ == '__main__':
     unittest.main()
