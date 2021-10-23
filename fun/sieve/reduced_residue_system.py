@@ -133,14 +133,14 @@ def reduced_residue_system_primorial_two_classification(i):
     composite_to_prime = 0
     prime_to_composite = 0
     prime_to_prime = 0
-    for r in rrs:
-        if isprime(r):
-            if isprime(r + 2):
+    for residue in rrs:
+        if isprime(residue):
+            if isprime(residue + 2):
                 prime_to_prime += 1
             else:
                 prime_to_composite += 1
         else:
-            if isprime(r + 2):
+            if isprime(residue + 2):
                 composite_to_prime += 1
             else:
                 composite_to_composite += 1
