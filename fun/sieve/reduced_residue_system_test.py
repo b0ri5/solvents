@@ -130,7 +130,8 @@ class Test(unittest.TestCase):
             size = len(
                 filter_twin_primes(reduced_residue_system_primorial_twos(i)))
             sizes.append(size)
-        # Not an OEIS sequence yet but I'll submit it as one.
+        # Not an OEIS sequence and it shouldn't be one since the first term is
+        # a bit misleading in that the applied gap is {3}.
         self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
 
     def test_twin_primes_between_prime_and_primorial(self):
@@ -139,34 +140,34 @@ class Test(unittest.TestCase):
             size = len(twin_primes_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
+        self.assertEqual([1, 1, 3, 13, 67, 465, 4632], sizes)
 
     def test_prime_and_composite_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 8):
+        for i in range(1, 6):
             size = len(prime_and_composite_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
+        self.assertEqual([0, 0, 4, 29, 271], sizes)
 
     def test_composite_and_prime_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 7):
+        for i in range(1, 6):
             size = len(composite_and_prime_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 0, 0, 1, 28, 358], sizes)
+        self.assertEqual([0, 0, 0, 1, 28], sizes)
 
     def test_sum_of_classification_of_two_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 7):
+        for i in range(1, 6):
             size = (len(composite_and_prime_between_prime_and_primorial(i)) +
                     len(prime_and_composite_between_prime_and_primorial(i)) +
                     len(twin_primes_between_prime_and_primorial(i)))
             sizes.append(size)
 
         # See https://oeis.org/A059861
-        self.assertEqual([1, 1, 3, 15, 135, 1485, 22275], sizes)
+        self.assertEqual([1, 1, 3, 15, 135, 1485], sizes)
 
     def test_descendants(self):
         self.assertEqual([1, 5], list(descendants(1, 1)))

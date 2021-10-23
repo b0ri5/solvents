@@ -60,6 +60,9 @@ def filter_twin_primes(rrs):
 
 
 def twin_primes_between_prime_and_primorial(i):
+    if i == 1:
+        # The applied gap of rrs(1) = {1} is {3} so it still should count
+        return {1}
     return [p for p in primerange(prime(i + 1), primorial(i)) if isprime(p + 2)]
 
 
@@ -74,6 +77,14 @@ def composite_and_prime_between_prime_and_primorial(i):
     return [
         r for r in range(prime(i + 1), primorial(i))
         if not isprime(r) and isprime(r + 2) and gcd(r, primorial(i)) == 1
+    ]
+
+
+def composite_and_composite_between_prime_and_primorial(i):
+    return [
+        r for r in range(prime(i + 1), primorial(i))
+        if not isprime(r) and not isprime(r + 2) and
+        gcd(r, primorial(i)) == 1 and gcd(r + 2, primorial(i)) == 1
     ]
 
 
