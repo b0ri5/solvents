@@ -145,23 +145,31 @@ class Test(unittest.TestCase):
 
     def test_prime_and_composite_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 6):
+        for i in range(1, 7):
             size = len(prime_and_composite_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 0, 4, 29, 271], sizes)
+        self.assertEqual([0, 0, 0, 1, 28, 383], sizes)
 
     def test_composite_and_prime_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 6):
+        for i in range(1, 7):
             size = len(composite_and_prime_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
-        self.assertEqual([0, 0, 0, 1, 28], sizes)
+        self.assertEqual([0, 0, 0, 1, 28, 358], sizes)
+
+    def test_composite_and_composite_between_prime_and_primorial(self):
+        sizes = []
+        for i in range(1, 7):
+            size = len(composite_and_composite_between_prime_and_primorial(i))
+            sizes.append(size)
+        # Not an OEIS sequence yet but I'll submit it as one.
+        self.assertEqual([0, 0, 0, 0, 12, 279], sizes)
 
     def test_sum_of_classification_of_two_between_prime_and_primorial(self):
         sizes = []
-        for i in range(1, 6):
+        for i in range(1, 7):
             size = (
                 len(composite_and_composite_between_prime_and_primorial(i)) +
                 len(composite_and_prime_between_prime_and_primorial(i)) +
