@@ -2,7 +2,7 @@
 
 from functools import cache
 from math import gcd
-from sympy import isprime, prime, primorial
+from sympy import isprime, prime, primerange, primorial
 
 
 def _reduced_residue_system_primorial_brute_force(i):
@@ -57,6 +57,13 @@ def reduced_residue_system_primorial_twos(i):
 def filter_twin_primes(rrs):
     twin_primes = {r for r in rrs if isprime(r) and isprime(r + 2)}
     return frozenset(twin_primes)
+
+
+def twin_primes_between_prime_and_primorial(i):
+    return [
+        p for p in primerange(prime(i + 1), primorial(i))
+        if isprime(p) and isprime(p + 2)
+    ]
 
 
 # The elements that the residue r in rss(i) contributes to rss(i + 1)

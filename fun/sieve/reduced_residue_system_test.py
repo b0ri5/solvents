@@ -4,7 +4,8 @@ from math import gcd
 from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force, descendants,
     filter_twin_primes, filter_twos, reduced_residue_system_primorial,
-    reduced_residue_system_primorial_twos)
+    reduced_residue_system_primorial_twos,
+    twin_primes_between_prime_and_primorial)
 from sympy import primorial
 
 
@@ -126,6 +127,14 @@ class Test(unittest.TestCase):
         for i in range(1, 8):
             size = len(
                 filter_twin_primes(reduced_residue_system_primorial_twos(i)))
+            sizes.append(size)
+        # Not an OEIS sequence yet but I'll submit it as one.
+        self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
+
+    def test_twin_primes_between_prime_and_primorial(self):
+        sizes = []
+        for i in range(1, 8):
+            size = len(twin_primes_between_prime_and_primorial(i))
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
         self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
