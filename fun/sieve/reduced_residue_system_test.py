@@ -8,6 +8,7 @@ from reduced_residue_system import (
     filter_twin_primes, filter_twos, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial,
     reduced_residue_system_primorial_twos,
+    reduced_residue_system_primorial_applied_gaps,
     reduced_residue_system_primorial_gaps,
     twin_primes_between_prime_and_primorial)
 from sympy import primorial
@@ -199,6 +200,20 @@ class Test(unittest.TestCase):
             2, 4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2, 6, 6, 4, 2, 4, 6, 2, 6, 4, 2, 4,
             2, 10, 2
         ], reduced_residue_system_primorial_gaps(4))
+
+    def test_reduced_residue_system_primorial_applied_gaps(self):
+        self.assertEqual([3], reduced_residue_system_primorial_applied_gaps(1))
+        self.assertEqual([5, 7],
+                         reduced_residue_system_primorial_applied_gaps(2))
+        self.assertEqual([7, 11, 13, 17, 19, 23, 29, 31],
+                         reduced_residue_system_primorial_applied_gaps(3))
+        print(reduced_residue_system_primorial_applied_gaps(4))
+        self.assertEqual([
+            11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73,
+            79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131, 137, 139,
+            143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187, 191, 193,
+            197, 199, 209, 211
+        ], reduced_residue_system_primorial_applied_gaps(4))
 
 
 if __name__ == '__main__':

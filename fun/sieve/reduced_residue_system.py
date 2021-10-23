@@ -105,3 +105,9 @@ def reduced_residue_system_primorial_gaps(i):
         gaps.append(rrs[k] - rrs[k - 1])
     gaps.append(2)
     return gaps
+
+
+def reduced_residue_system_primorial_applied_gaps(i):
+    rrs = sorted(reduced_residue_system_primorial(i))
+    gaps = reduced_residue_system_primorial_gaps(i)
+    return [rrs[k] + gaps[k] for k in range(len(rrs))]
