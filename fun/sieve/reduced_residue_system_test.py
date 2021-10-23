@@ -233,7 +233,6 @@ class Test(unittest.TestCase):
                               composite_to_prime=0,
                               prime_to_composite=0,
                               prime_to_prime=1))
-
         two_classification3 = reduced_residue_system_primorial_two_classification(
             3)
         self.assertEqual(
