@@ -2,8 +2,10 @@ import unittest
 
 from math import gcd
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force, descendants,
+    _reduced_residue_system_primorial_brute_force,
+    composite_and_prime_between_prime_and_primorial, descendants,
     filter_twin_primes, filter_twos, reduced_residue_system_primorial,
+    prime_and_composite_between_prime_and_primorial,
     reduced_residue_system_primorial_twos,
     twin_primes_between_prime_and_primorial)
 from sympy import primorial
@@ -138,6 +140,33 @@ class Test(unittest.TestCase):
             sizes.append(size)
         # Not an OEIS sequence yet but I'll submit it as one.
         self.assertEqual([0, 1, 3, 13, 67, 465, 4632], sizes)
+
+    def test_prime_and_composite_between_prime_and_primorial(self):
+        sizes = []
+        for i in range(1, 8):
+            size = len(prime_and_composite_between_prime_and_primorial(i))
+            sizes.append(size)
+        # Not an OEIS sequence yet but I'll submit it as one.
+        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
+
+    def test_composite_and_prime_between_prime_and_primorial(self):
+        sizes = []
+        for i in range(1, 8):
+            size = len(composite_and_prime_between_prime_and_primorial(i))
+            sizes.append(size)
+        # Not an OEIS sequence yet but I'll submit it as one.
+        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
+
+    def test_sum_of_classification_of_two_between_prime_and_primorial(self):
+        sizes = []
+        for i in range(1, 8):
+            size = len(composite_and_prime_between_prime_and_primorial(i))
+            +len(prime_and_composite_between_prime_and_primorial(i))
+            +len(twin_primes_between_prime_and_primorial(i))
+            sizes.append(size)
+
+        # See https://oeis.org/A059861
+        self.assertEqual([0, 0, 4, 29, 271, 2777, 37692], sizes)
 
     def test_descendants(self):
         self.assertEqual([1, 5], list(descendants(1, 1)))

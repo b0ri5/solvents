@@ -72,6 +72,13 @@ def prime_and_composite_between_prime_and_primorial(i):
     ]
 
 
+def composite_and_prime_between_prime_and_primorial(i):
+    return [
+        r for r in range(prime(i + 1), primorial(i))
+        if not isprime(r) and isprime(r + 2) and gcd(r, primorial(i)) == 1
+    ]
+
+
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
 def descendants(residue, i):
     primorial_i = primorial(i)
