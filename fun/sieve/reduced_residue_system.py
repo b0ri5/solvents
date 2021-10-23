@@ -1,5 +1,6 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
+from collections import namedtuple
 from functools import cache
 from math import gcd
 from sympy import isprime, prime, primerange, primorial
@@ -111,3 +112,39 @@ def reduced_residue_system_primorial_applied_gaps(i):
     rrs = sorted(reduced_residue_system_primorial(i))
     gaps = reduced_residue_system_primorial_gaps(i)
     return [rrs[k] + gaps[k] for k in range(len(rrs))]
+
+
+TwoClassification = namedtuple('TwoClassification', [
+    'composite_to_composite', 'composite_to_prime', 'prime_to_composite',
+    'prime_to_prime'
+])
+
+
+def reduced_residue_system_primorial_two_classification(i):
+    # One needs to be special-cased because this is implemented via RRS
+    # and not applied gaps.
+    if i == 1:
+        return TwoClassification(composite_to_composite=0,
+                                 composite_to_prime=0,
+                                 prime_to_composite=0,
+                                 prime_to_prime=1)
+    rrs = reduced_residue_system_primorial_twos(i)
+    composite_to_composite = 0
+    composite_to_prime = 0
+    prime_to_composite = 0
+    prime_to_prime = 0
+    for residue in rrs:
+        if isprime(residue):
+            if isprime(residue + 2):
+                prime_to_prime += 1
+            else:
+                prime_to_composite += 1
+        else:
+            if isprime(residue + 2):
+                composite_to_prime += 1
+            else:
+                composite_to_composite += 1
+    return TwoClassification(composite_to_composite=composite_to_composite,
+                             composite_to_prime=composite_to_prime,
+                             prime_to_composite=prime_to_composite,
+                             prime_to_prime=prime_to_prime)

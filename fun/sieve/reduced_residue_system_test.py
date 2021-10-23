@@ -7,10 +7,11 @@ from reduced_residue_system import (
     composite_and_prime_between_prime_and_primorial, descendants,
     filter_twin_primes, filter_twos, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial,
+    reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
     reduced_residue_system_primorial_gaps,
-    twin_primes_between_prime_and_primorial)
+    twin_primes_between_prime_and_primorial, TwoClassification)
 from sympy import primorial
 
 
@@ -207,13 +208,73 @@ class Test(unittest.TestCase):
                          reduced_residue_system_primorial_applied_gaps(2))
         self.assertEqual([7, 11, 13, 17, 19, 23, 29, 31],
                          reduced_residue_system_primorial_applied_gaps(3))
-        print(reduced_residue_system_primorial_applied_gaps(4))
         self.assertEqual([
             11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73,
             79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131, 137, 139,
             143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187, 191, 193,
             197, 199, 209, 211
         ], reduced_residue_system_primorial_applied_gaps(4))
+
+    def test_reduced_residue_system_primorial_two_classification(self):
+        two_classification1 = reduced_residue_system_primorial_two_classification(
+            1)
+        self.assertEqual(
+            two_classification1,
+            TwoClassification(composite_to_composite=0,
+                              composite_to_prime=0,
+                              prime_to_composite=0,
+                              prime_to_prime=1))
+        self.assertEqual(1, sum(two_classification1))
+
+        two_classification2 = reduced_residue_system_primorial_two_classification(
+            2)
+        self.assertEqual(
+            two_classification2,
+            TwoClassification(composite_to_composite=0,
+                              composite_to_prime=0,
+                              prime_to_composite=0,
+                              prime_to_prime=1))
+        self.assertEqual(1, sum(two_classification2))
+
+        two_classification3 = reduced_residue_system_primorial_two_classification(
+            3)
+        self.assertEqual(
+            two_classification3,
+            TwoClassification(composite_to_composite=0,
+                              composite_to_prime=0,
+                              prime_to_composite=0,
+                              prime_to_prime=3))
+        self.assertEqual(3, sum(two_classification3))
+
+        two_classification4 = reduced_residue_system_primorial_two_classification(
+            4)
+        self.assertEqual(
+            two_classification4,
+            TwoClassification(composite_to_composite=0,
+                              composite_to_prime=1,
+                              prime_to_composite=1,
+                              prime_to_prime=13))
+        self.assertEqual(15, sum(two_classification4))
+
+        two_classification5 = reduced_residue_system_primorial_two_classification(
+            5)
+        self.assertEqual(
+            two_classification5,
+            TwoClassification(composite_to_composite=12,
+                              composite_to_prime=28,
+                              prime_to_composite=28,
+                              prime_to_prime=67))
+        self.assertEqual(135, sum(two_classification5))
+
+        two_classification6 = reduced_residue_system_primorial_two_classification(
+            6)
+        self.assertEqual(
+            two_classification6,
+            TwoClassification(composite_to_composite=279,
+                              composite_to_prime=358,
+                              prime_to_composite=383,
+                              prime_to_prime=465))
+        self.assertEqual(1485, sum(two_classification6))
 
 
 if __name__ == '__main__':
