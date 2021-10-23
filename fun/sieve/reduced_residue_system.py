@@ -96,3 +96,12 @@ def descendants(residue, i):
         candidate = primorial_i * k + residue
         if candidate % next_prime != 0:
             yield candidate
+
+
+def reduced_residue_system_primorial_gaps(i):
+    rrs = sorted(reduced_residue_system_primorial(i))
+    gaps = []
+    for k in range(1, len(rrs)):
+        gaps.append(rrs[k] - rrs[k - 1])
+    gaps.append(2)
+    return gaps
