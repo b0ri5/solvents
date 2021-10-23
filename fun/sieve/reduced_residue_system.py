@@ -66,6 +66,12 @@ def twin_primes_between_prime_and_primorial(i):
     ]
 
 
+def prime_and_composite_between_prime_and_primorial(i):
+    return [
+        p for p in primerange(prime(i + 1), primorial(i)) if not isprime(p + 2)
+    ]
+
+
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
 def descendants(residue, i):
     primorial_i = primorial(i)
