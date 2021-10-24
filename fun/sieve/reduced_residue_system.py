@@ -148,3 +148,10 @@ def reduced_residue_system_primorial_two_classification(i):
                              composite_to_prime=composite_to_prime,
                              prime_to_composite=prime_to_composite,
                              prime_to_prime=prime_to_prime)
+
+
+def prime_residues(num, i):
+    residues = []
+    for k in range(1, i + 1):
+        residues.append(num % prime(k))
+    return tuple(residues)
