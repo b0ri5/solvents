@@ -192,23 +192,35 @@ class Test(unittest.TestCase):
         self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
 
     def test_children_residues(self):
+        self.assertEqual((1,), prime_residues(1, 1))
         self.assertEqual([(1, 1), (1, 2)],
                          [prime_residues(c, 2) for c in children(1, 1)])
-        self.assertEqual([(1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 1, 4)],
-                         [prime_residues(c, 3) for c in children(1, 2)])
+
+        self.assertEqual((1, 1), prime_residues(1, 2))
+        self.assertEqual({(1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 1, 4)},
+                         {prime_residues(c, 3) for c in children(1, 2)})
 
         self.assertEqual((1, 2), prime_residues(5, 2))
-        self.assertEqual([(1, 2, 1), (1, 2, 2), (1, 2, 3), (1, 2, 4)],
-                         [prime_residues(c, 3) for c in children(5, 2)])
+        self.assertEqual({(1, 2, 1), (1, 2, 2), (1, 2, 3), (1, 2, 4)},
+                         {prime_residues(c, 3) for c in children(5, 2)})
 
         self.assertEqual((1, 1, 1), prime_residues(1, 3))
-        self.assertEqual([(1, 1, 1, 1), (1, 1, 1, 2), (1, 1, 1, 3),
-                          (1, 1, 1, 4), (1, 1, 1, 5), (1, 1, 1, 6)],
-                         [prime_residues(c, 4) for c in children(1, 3)])
+        self.assertEqual(
+            {(1, 1, 1, 1), (1, 1, 1, 2), (1, 1, 1, 3), (1, 1, 1, 4),
+             (1, 1, 1, 5), (1, 1, 1, 6)},
+            {prime_residues(c, 4) for c in children(1, 3)})
 
-        self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
+        self.assertEqual((1, 1, 2), prime_residues(7, 3))
+        self.assertEqual(
+            {(1, 1, 2, 1), (1, 1, 2, 2), (1, 1, 2, 3), (1, 1, 2, 3),
+             (1, 1, 2, 4), (1, 1, 2, 5)},
+            {prime_residues(c, 4) for c in children(7, 3)})
 
-        self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
+        self.assertEqual((1, 2, 1), prime_residues(11, 3))
+        self.assertEqual(
+            {(1, 2, 1, 1), (1, 2, 1, 2), (1, 2, 1, 3), (1, 2, 1, 4),
+             (1, 2, 1, 5), (1, 2, 1, 6)},
+            {prime_residues(c, 4) for c in children(11, 3)})
 
     def test_reduced_residue_system_primorial_gaps(self):
         self.assertEqual([2], reduced_residue_system_primorial_gaps(1))
