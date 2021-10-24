@@ -1,5 +1,5 @@
 load("@pip//:requirements.bzl", "requirement")
-load("@rules_python//python:defs.bzl", "py_library", "py_test")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library", "py_test")
 
 py_library(
     name = "gaps",
@@ -26,5 +26,13 @@ py_test(
     deps = [
         ":reduced_residue_system",
         requirement("sympy"),
+    ],
+)
+
+py_binary(
+    name = "two_classification_sequence",
+    srcs = ["two_classification_sequence.py"],
+    deps = [
+        "reduced_residue_system",
     ],
 )
