@@ -6,7 +6,7 @@ from reduced_residue_system import (
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, reduced_residue_system_primorial,
-    prime_and_composite_between_prime_and_primorial,
+    prime_and_composite_between_prime_and_primorial, prime_residues,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
@@ -191,6 +191,25 @@ class Test(unittest.TestCase):
         self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
         self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
 
+    def test_children_residues(self):
+        self.assertEqual([(1, 1), (1, 2)],
+                         [prime_residues(c, 2) for c in children(1, 1)])
+        self.assertEqual([(1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 1, 4)],
+                         [prime_residues(c, 3) for c in children(1, 2)])
+
+        self.assertEqual((1, 2), prime_residues(5, 2))
+        self.assertEqual([(1, 2, 1), (1, 2, 2), (1, 2, 3), (1, 2, 4)],
+                         [prime_residues(c, 3) for c in children(5, 2)])
+
+        self.assertEqual((1, 1, 1), prime_residues(1, 3))
+        self.assertEqual([(1, 1, 1, 1), (1, 1, 1, 2), (1, 1, 1, 3),
+                          (1, 1, 1, 4), (1, 1, 1, 5), (1, 1, 1, 6)],
+                         [prime_residues(c, 4) for c in children(1, 3)])
+
+        self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
+
+        self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
+
     def test_reduced_residue_system_primorial_gaps(self):
         self.assertEqual([2], reduced_residue_system_primorial_gaps(1))
         self.assertEqual([4, 2], reduced_residue_system_primorial_gaps(2))
@@ -275,6 +294,15 @@ class Test(unittest.TestCase):
                               prime_to_composite=383,
                               prime_to_prime=465))
         self.assertEqual(1485, sum(two_classification6))
+
+    def test_prime_residues(self):
+        self.assertEqual((1,), prime_residues(1, 1))
+        self.assertEqual((1, 1), prime_residues(1, 2))
+        self.assertEqual((1, 1, 1), prime_residues(1, 3))
+
+        self.assertEqual((0,), prime_residues(2, 1))
+        self.assertEqual((0, 2), prime_residues(2, 2))
+        self.assertEqual((0, 2, 2), prime_residues(2, 3))
 
 
 if __name__ == '__main__':
