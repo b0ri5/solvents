@@ -24,10 +24,8 @@ def reduced_residue_system_primorial(i):
     previous_primorial = primorial(i - 1)
     rrs = set()
     for residue in previous_rrs:
-        for k in range(0, prime_i):
-            candidate = previous_primorial * k + residue
-            if candidate % prime_i != 0:
-                rrs.add(candidate)
+        for k in range(prime_i):
+            rrs.add(previous_primorial * k + residue)
     return frozenset(rrs)
 
 
@@ -93,10 +91,8 @@ def composite_and_composite_between_prime_and_primorial(i):
 def children(residue, i):
     primorial_i = primorial(i)
     next_prime = prime(i + 1)
-    for k in range(0, next_prime):
-        candidate = primorial_i * k + residue
-        if candidate % next_prime != 0:
-            yield candidate
+    for k in range(next_prime):
+        yield primorial_i * k + residue
 
 
 def reduced_residue_system_primorial_gaps(i):
