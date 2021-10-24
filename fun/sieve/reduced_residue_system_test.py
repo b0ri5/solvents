@@ -212,8 +212,8 @@ class Test(unittest.TestCase):
 
         self.assertEqual((1, 1, 2), prime_residues(7, 3))
         self.assertEqual(
-            {(1, 1, 2, 1), (1, 1, 2, 2), (1, 1, 2, 3), (1, 1, 2, 3),
-             (1, 1, 2, 4), (1, 1, 2, 5)},
+            {(1, 1, 2, 1), (1, 1, 2, 2), (1, 1, 2, 3), (1, 1, 2, 4),
+             (1, 1, 2, 5), (1, 1, 2, 6)},
             {prime_residues(c, 4) for c in children(7, 3)})
 
         self.assertEqual((1, 2, 1), prime_residues(11, 3))
