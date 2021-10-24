@@ -30,7 +30,8 @@ py_test(
 )
 
 py_binary(
-    name = "two_classification_sequence.py",
+    name = "two_classification_sequence",
+    srcs = ["two_classification_sequence.py"],
     deps = [
         "reduced_residue_system",
     ],

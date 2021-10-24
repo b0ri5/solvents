@@ -5,4 +5,4 @@ for i in range(1, 20):
     print(i, two_classification.composite_to_composite,
           two_classification.composite_to_prime,
           two_classification.prime_to_composite,
-          two_classification.prime_to_prime)
+          two_classification.prime_to_prime, sum(two_classification))
