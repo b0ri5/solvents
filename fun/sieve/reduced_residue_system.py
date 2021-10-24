@@ -90,7 +90,7 @@ def composite_and_composite_between_prime_and_primorial(i):
 
 
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
-def descendants(residue, i):
+def children(residue, i):
     primorial_i = primorial(i)
     next_prime = prime(i + 1)
     for k in range(0, next_prime):

@@ -2,10 +2,10 @@ import unittest
 
 from math import gcd
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force,
+    _reduced_residue_system_primorial_brute_force, children,
     composite_and_composite_between_prime_and_primorial,
-    composite_and_prime_between_prime_and_primorial, descendants,
-    filter_twin_primes, filter_twos, reduced_residue_system_primorial,
+    composite_and_prime_between_prime_and_primorial, filter_twin_primes,
+    filter_twos, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
@@ -183,13 +183,13 @@ class Test(unittest.TestCase):
         # See https://oeis.org/A059861
         self.assertEqual([1, 1, 3, 15, 135, 1485], sizes)
 
-    def test_descendants(self):
-        self.assertEqual([1, 5], list(descendants(1, 1)))
-        self.assertEqual([1, 7, 13, 19], list(descendants(1, 2)))
-        self.assertEqual([11, 17, 23, 29], list(descendants(5, 2)))
-        self.assertEqual([1, 31, 61, 121, 151, 181], list(descendants(1, 3)))
-        self.assertEqual([37, 67, 97, 127, 157, 187], list(descendants(7, 3)))
-        self.assertEqual([11, 41, 71, 101, 131, 191], list(descendants(11, 3)))
+    def test_children(self):
+        self.assertEqual([1, 5], list(children(1, 1)))
+        self.assertEqual([1, 7, 13, 19], list(children(1, 2)))
+        self.assertEqual([11, 17, 23, 29], list(children(5, 2)))
+        self.assertEqual([1, 31, 61, 121, 151, 181], list(children(1, 3)))
+        self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
+        self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
 
     def test_reduced_residue_system_primorial_gaps(self):
         self.assertEqual([2], reduced_residue_system_primorial_gaps(1))
