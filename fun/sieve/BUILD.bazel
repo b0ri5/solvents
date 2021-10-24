@@ -28,3 +28,10 @@ py_test(
         requirement("sympy"),
     ],
 )
+
+py_binary(
+    name = "two_classification_sequence.py",
+    deps = [
+        "reduced_residue_system",
+    ],
+)
