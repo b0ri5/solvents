@@ -31,9 +31,9 @@ def reduced_residue_system_primorial(i):
     inv = pow(previous_primorial % prime_i, -1, prime_i)
     for residue in previous_rrs:
         skipped = (inv * (prime_i - (residue % prime_i))) % prime_i
-        for k in range(skipped):
-            rrs.add(previous_primorial * k + residue)
-        for k in range(skipped + 1, prime_i):
+        ks = set(range(prime_i))
+        ks.remove(skipped)
+        for k in ks:
             rrs.add(previous_primorial * k + residue)
     return frozenset(rrs)
 
@@ -107,9 +107,9 @@ def children(residue, i):
     # The k to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
     inv = pow(primorial_i % next_prime, -1, next_prime)
     skipped = (inv * (next_prime - (residue % next_prime))) % next_prime
-    for k in range(skipped):
-        yield primorial_i * k + residue
-    for k in range(skipped + 1, next_prime):
+    ks = set(range(next_prime))
+    ks.remove(skipped)
+    for k in ks:
         yield primorial_i * k + residue
 
 
