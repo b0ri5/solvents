@@ -173,6 +173,6 @@ def prime_residues(num, i):
 
 
 def prime_residues_inverse(residues):
-    moduli = ((prime(i) for i in range(1, len(residues) + 1)))
-    value, _ = crt(moduli, residues)
+    moduli = [prime(i) for i in range(1, len(residues) + 1)]
+    value, _ = crt(moduli, residues, check=False)
     return value

@@ -318,7 +318,7 @@ class Test(unittest.TestCase):
 
     def test_prime_residues_inverse(self):
         self.assertEqual(29, prime_residues_inverse((1, 2, 4)))
-        self.assertEqual(97, prime_residues_inverse((1, 1, 2, 3)))
+        self.assertEqual(157, prime_residues_inverse((1, 1, 2, 3)))
 
 
 if __name__ == '__main__':
