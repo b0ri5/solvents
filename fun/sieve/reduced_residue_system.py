@@ -24,10 +24,10 @@ def reduced_residue_system_primorial(i):
     previous_primorial = primorial(i - 1)
     rrs = set()
     # The children are all of
-    #   primorial(i) * k + r
-    # for 0 <= k < prime(i + 1) excepting the single k that results in a value
-    # congruent to 0 modulo prime(i + 1).
-    # The k to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
+    #   primorial(i - 1) * k + r
+    # for 0 <= k < prime(i) excepting the single k that results in a value
+    # congruent to 0 modulo prime(i).
+    # The k to skip is (primorial(i - 1) % prime(i)) * k + r = 0 (mod prime(i))
     inv = pow(previous_primorial % prime_i, -1, prime_i)
     for residue in previous_rrs:
         skipped = (inv * (prime_i - (residue % prime_i))) % prime_i
