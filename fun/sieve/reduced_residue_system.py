@@ -23,8 +23,17 @@ def reduced_residue_system_primorial(i):
     prime_i = prime(i)
     previous_primorial = primorial(i - 1)
     rrs = set()
+    # The children are all of
+    #   primorial(i) * k + r
+    # for 0 <= k < prime(i + 1) excepting the single k that results in a value
+    # congruent to 0 modulo prime(i + 1).
+    # The k to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
+    inv = pow(previous_primorial % prime_i, -1, prime_i)
     for residue in previous_rrs:
-        for k in range(prime_i):
+        skipped = (inv * (prime_i - (residue % prime_i))) % prime_i
+        for k in range(skipped):
+            rrs.add(previous_primorial * k + residue)
+        for k in range(skipped + 1, prime_i):
             rrs.add(previous_primorial * k + residue)
     return frozenset(rrs)
 
@@ -91,7 +100,16 @@ def composite_and_composite_between_prime_and_primorial(i):
 def children(residue, i):
     primorial_i = primorial(i)
     next_prime = prime(i + 1)
-    for k in range(next_prime):
+    # The children are all of
+    #   primorial(i) * k + r
+    # for 0 <= k < prime(i + 1) excepting the single k that results in a value
+    # congruent to 0 modulo prime(i + 1).
+    # The k to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
+    inv = pow(primorial_i % next_prime, -1, next_prime)
+    skipped = (inv * (next_prime - (residue % next_prime))) % next_prime
+    for k in range(skipped):
+        yield primorial_i * k + residue
+    for k in range(skipped + 1, next_prime):
         yield primorial_i * k + residue
 
 
