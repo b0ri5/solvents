@@ -3,6 +3,7 @@
 from collections import namedtuple
 from functools import cache
 from math import gcd
+from sympy.ntheory.modular import crt
 from sympy import isprime, prime, primerange, primorial
 
 
@@ -169,3 +170,9 @@ def prime_residues(num, i):
     for k in range(1, i + 1):
         residues.append(num % prime(k))
     return tuple(residues)
+
+
+def prime_residues_inverse(residues):
+    moduli = ((prime(i) for i in range(1, len(residues) + 1)))
+    value, _ = crt(moduli, residues)
+    return value

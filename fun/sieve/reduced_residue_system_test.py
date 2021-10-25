@@ -7,7 +7,7 @@ from reduced_residue_system import (
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial, prime_residues,
-    reduced_residue_system_primorial_two_classification,
+    prime_residues_inverse, reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
     reduced_residue_system_primorial_gaps,
@@ -315,6 +315,10 @@ class Test(unittest.TestCase):
         self.assertEqual((0,), prime_residues(2, 1))
         self.assertEqual((0, 2), prime_residues(2, 2))
         self.assertEqual((0, 2, 2), prime_residues(2, 3))
+
+    def test_prime_residues_inverse(self):
+        self.assertEqual(29, prime_residues_inverse((1, 2, 4)))
+        self.assertEqual(97, prime_residues_inverse((1, 1, 2, 3)))
 
 
 if __name__ == '__main__':
