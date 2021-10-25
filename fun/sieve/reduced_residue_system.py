@@ -55,11 +55,21 @@ def reduced_residue_system_primorial_twos(i):
     prime_i = prime(i)
     previous_primorial = primorial(i - 1)
     rrs = set()
+    # The children are all of
+    #   primorial(i - 1) * k + r
+    # for 0 <= k < prime(i) excepting the single k that results in a value
+    # congruent to 0 modulo prime(i).
+    # The ks to skip are (primorial(i - 1) % prime(i)) * k + r = 0 or -2 (mod prime(i))
+    inv = pow(previous_primorial % prime_i, -1, prime_i)
     for residue in previous_rrs:
-        for k in range(0, prime_i):
-            candidate = previous_primorial * k + residue
-            if candidate % prime_i != 0 and (candidate + 2) % prime_i != 0:
-                rrs.add(candidate)
+        skipped_zero = (inv * (prime_i - (residue % prime_i))) % prime_i
+        skipped_negative_two = (inv * (prime_i -
+                                       ((residue + 2) % prime_i))) % prime_i
+        primorial_multiples = set(range(prime_i))
+        primorial_multiples.remove(skipped_zero)
+        primorial_multiples.remove(skipped_negative_two)
+        for k in primorial_multiples:
+            rrs.add(previous_primorial * k + residue)
     return frozenset(rrs)
 
 
