@@ -4,7 +4,7 @@ from collections import namedtuple
 from functools import cache
 from math import gcd
 from sympy.ntheory.modular import crt
-from sympy import isprime, prime, primerange, primorial
+from sympy import isprime, prime, primepi, primerange, primorial
 
 
 def _reduced_residue_system_primorial_brute_force(i):
@@ -186,3 +186,7 @@ def prime_residues_inverse(residues):
     moduli = [prime(i) for i in range(1, len(residues) + 1)]
     value, _ = crt(moduli, residues, check=False)
     return value
+
+
+def full_prime_residues(num):
+    return prime_residues(num, primepi(num))
