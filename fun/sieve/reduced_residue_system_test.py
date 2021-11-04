@@ -5,7 +5,7 @@ from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, reduced_residue_system_primorial,
+    filter_twos, full_prime_residues, reduced_residue_system_primorial,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
@@ -319,6 +319,21 @@ class Test(unittest.TestCase):
     def test_prime_residues_inverse(self):
         self.assertEqual(29, prime_residues_inverse((1, 2, 4)))
         self.assertEqual(157, prime_residues_inverse((1, 1, 2, 3)))
+
+    def test_full_prime_residues(self):
+        # In order to not have a "0" appended to each result
+        # 1 and 2 need to be the empty tuple.
+        self.assertEqual((), full_prime_residues(1))
+        self.assertEqual((0,), full_prime_residues(2))
+
+        self.assertEqual((1, 0), full_prime_residues(3))
+        self.assertEqual((0, 1), full_prime_residues(4))
+        self.assertEqual((1, 2, 0), full_prime_residues(5))
+        self.assertEqual((0, 0, 1), full_prime_residues(6))
+        self.assertEqual((1, 1, 2, 0), full_prime_residues(7))
+        self.assertEqual((0, 2, 3, 1), full_prime_residues(8))
+        self.assertEqual((1, 0, 4, 2), full_prime_residues(9))
+        self.assertEqual((0, 1, 0, 3), full_prime_residues(10))
 
 
 if __name__ == '__main__':
