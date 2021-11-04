@@ -7,7 +7,7 @@ from sympy.ntheory.modular import crt
 from sympy import isprime, prime, primepi, primerange, primorial
 
 
-def _reduced_residue_system_primorial_brute_force(i):
+def reduced_residue_system_primorial_brute_force(i):
     system = set()
     primorial_i = primorial(i)
     for k in range(1, primorial_i):

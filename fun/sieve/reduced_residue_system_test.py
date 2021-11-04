@@ -1,39 +1,29 @@
 import unittest
 
 from math import gcd
-from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force, children,
-    composite_and_composite_between_prime_and_primorial,
-    composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, full_prime_residues, reduced_residue_system_primorial,
-    prime_and_composite_between_prime_and_primorial, prime_residues,
-    prime_residues_inverse, reduced_residue_system_primorial_two_classification,
-    reduced_residue_system_primorial_twos,
-    reduced_residue_system_primorial_applied_gaps,
-    reduced_residue_system_primorial_gaps,
-    twin_primes_between_prime_and_primorial, TwoClassification)
+from reduced_residue_system import *
 from sympy import primorial
 
 
 class Test(unittest.TestCase):
 
     def test_reduced_residue_system_primorial_brute_force(self):
-        self.assertEqual({1}, _reduced_residue_system_primorial_brute_force(1))
+        self.assertEqual({1}, reduced_residue_system_primorial_brute_force(1))
         self.assertEqual({1, 5},
-                         _reduced_residue_system_primorial_brute_force(2))
+                         reduced_residue_system_primorial_brute_force(2))
         self.assertEqual({1, 7, 11, 13, 17, 19, 23, 29},
-                         _reduced_residue_system_primorial_brute_force(3))
+                         reduced_residue_system_primorial_brute_force(3))
         self.assertEqual(
             {
                 1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
                 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131,
                 137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187,
                 191, 193, 197, 199, 209
-            }, _reduced_residue_system_primorial_brute_force(4))
+            }, reduced_residue_system_primorial_brute_force(4))
 
     def test_reduced_residue_system_primorial_brute_force_sizes(self):
         sizes = {
-            len(_reduced_residue_system_primorial_brute_force(i))
+            len(reduced_residue_system_primorial_brute_force(i))
             for i in range(1, 7)
         }
         # See https://oeis.org/A005867
@@ -321,11 +311,8 @@ class Test(unittest.TestCase):
         self.assertEqual(157, prime_residues_inverse((1, 1, 2, 3)))
 
     def test_full_prime_residues(self):
-        # In order to not have a "0" appended to each result
-        # 1 and 2 need to be the empty tuple.
         self.assertEqual((), full_prime_residues(1))
         self.assertEqual((0,), full_prime_residues(2))
-
         self.assertEqual((1, 0), full_prime_residues(3))
         self.assertEqual((0, 1), full_prime_residues(4))
         self.assertEqual((1, 2, 0), full_prime_residues(5))
