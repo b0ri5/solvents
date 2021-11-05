@@ -137,6 +137,13 @@ def min_child(residue, i):
     return residue
 
 
+# Keep taking the min child until a prime is found.
+def min_extension(residue, i):
+    if residue == 1 or isprime(residue):
+        return (residue, i)
+    return min_extension(min_child(residue, i), i + 1)
+
+
 def reduced_residue_system_primorial_gaps(i):
     rrs = sorted(reduced_residue_system_primorial(i))
     gaps = []
