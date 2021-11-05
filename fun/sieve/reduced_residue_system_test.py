@@ -211,7 +211,7 @@ class Test(unittest.TestCase):
         # 169 = 13 * 13 and 13 is the 6th prime so 169 is not in rrs(6).
         # Then its smallest child is 169 + primorial(5) = 169 + 2310 = 2479.
         # Then 2479 = 37 * 67 and 37 is the 12th prime so the min child of 2479
-        # in rrs(11) is 2479 + primorial(11) = 200560492609 = 89 * 20479 *  110039.
+        # in rrs(11) is 2479 + primorial(11) = 200560492609 = 89 * 20479 * 110039.
         # 89 is the 24th prime so the child of 200560492609 in rrs(23) is
         # 200560492609 + primorial(23) = 267064515689275851355824578485399
         self.assertEqual(
