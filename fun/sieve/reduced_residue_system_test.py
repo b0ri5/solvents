@@ -5,7 +5,7 @@ from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, full_prime_residues,
+    filter_twos, full_prime_residues, min_child,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, reduced_residue_system_primorial,
     reduced_residue_system_primorial_two_classification,
@@ -191,6 +191,12 @@ class Test(unittest.TestCase):
         self.assertEqual([1, 31, 61, 121, 151, 181], list(children(1, 3)))
         self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
         self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
+
+    def test_min_child(self):
+        self.assertEqual(1, min_child(1, 1))
+        self.assertEqual(11, min_child(5, 2))
+        self.assertEqual(37, min_child(7, 3))
+        self.assertEqual(11, min_child(11, 3))
 
     def test_children_residues(self):
         self.assertEqual((1,), prime_residues(1, 1))

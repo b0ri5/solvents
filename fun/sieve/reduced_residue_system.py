@@ -124,6 +124,19 @@ def children(residue, i):
         yield primorial_i * k + residue
 
 
+# The minimum element that the residue r in rss(i) contributes to rss(i + 1)
+def min_child(residue, i):
+    primorial_i = primorial(i)
+    next_prime = prime(i + 1)
+    # The minimum child is r or primorial(i) + r.
+    # The one to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
+    inv = pow(primorial_i % next_prime, -1, next_prime)
+    skipped = (inv * (next_prime - (residue % next_prime))) % next_prime
+    if skipped == 0:
+        return primorial_i + residue
+    return residue
+
+
 def reduced_residue_system_primorial_gaps(i):
     rrs = sorted(reduced_residue_system_primorial(i))
     gaps = []
