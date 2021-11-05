@@ -5,7 +5,7 @@ from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, full_prime_residues, min_child,
+    filter_twos, full_prime_residues, min_child, min_extension,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, reduced_residue_system_primorial,
     reduced_residue_system_primorial_two_classification,
@@ -197,6 +197,28 @@ class Test(unittest.TestCase):
         self.assertEqual(11, min_child(5, 2))
         self.assertEqual(37, min_child(7, 3))
         self.assertEqual(11, min_child(11, 3))
+
+    def test_min_extension(self):
+        # Primes are already considered fully extended
+        self.assertEqual((1, 1), min_extension(1, 1))
+        self.assertEqual((5, 2), min_extension(5, 2))
+
+        # 121 = 11 * 11 and 7 is the 4th prime and 11 is the 5th.
+        # So 121 is not in rrs(5) and so its smallest child is
+        # 121 + primorial(4) = 121 + (2 * 3 * 5 * 7) = 121 + 210 = 331.
+        self.assertEqual((331, 5), min_extension(121, 4))
+
+        # 169 = 13 * 13 and 13 is the 6th prime so 169 is not in rrs(6).
+        # Then its smallest child is 169 + primorial(5) = 169 + 2310 = 2479.
+        # Then 2479 = 37 * 67 and 37 is the 12th prime so the min child of 2479
+        # in rrs(11) is 2479 + primorial(11) = 200560492609 = 89 * 20479 *  110039.
+        # 89 is the 24th prime so the child of 200560492609 in rrs(23) is
+        # 200560492609 + primorial(23) = 267064515689275851355824578485399
+        self.assertEqual(
+            (169 + primorial(5) + primorial(11) + primorial(23), 24),
+            min_extension(169, 4))
+        self.assertEqual((267064515689275851355824578485399, 24),
+                         min_extension(169, 4))
 
     def test_children_residues(self):
         self.assertEqual((1,), prime_residues(1, 1))
