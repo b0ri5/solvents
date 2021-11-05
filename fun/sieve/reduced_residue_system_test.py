@@ -220,6 +220,11 @@ class Test(unittest.TestCase):
         self.assertEqual((267064515689275851355824578485399, 24),
                          min_extension(169, 4))
 
+        # The composite elements of rrs(4) are {121, 143, 169, 187, 209}.
+        self.assertEqual((353, 5), min_extension(143, 4))
+        self.assertEqual((397, 5), min_extension(187, 4))
+        self.assertEqual((419, 5), min_extension(209, 4))
+
     def test_children_residues(self):
         self.assertEqual((1,), prime_residues(1, 1))
         self.assertEqual([(1, 1), (1, 2)],
