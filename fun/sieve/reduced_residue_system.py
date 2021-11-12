@@ -1,6 +1,6 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
-from collections import namedtuple
+from collections import deque, namedtuple
 from functools import cache
 from math import gcd
 from sympy.ntheory.modular import crt
@@ -108,6 +108,7 @@ def composite_and_composite_between_prime_and_primorial(i):
 
 
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
+# Children are yielded in sorted order.
 def children(residue, i):
     primorial_i = primorial(i)
     next_prime = prime(i + 1)
@@ -142,6 +143,24 @@ def min_extension(residue, i):
     if residue == 1 or isprime(residue):
         return (residue, i)
     return min_extension(min_child(residue, i), i + 1)
+
+
+# Look at each descendant in a breadth first manner until a prime is found.
+def min_prime_descendant(residue, i):
+    if isprime(residue):
+        return (residue, i)
+    queue = deque()
+    queue.appendleft((residue, i))
+    while True:
+        residue, i = queue.pop()
+        for child in children(residue, i):
+            if isprime(child):
+                return (child, i + 1)
+            queue.appendleft((child, i + 1))
+
+    # Idea is to go one level deep, check all children for primality.
+    # Then go two levels deep starting with the first child and check all of its
+    # children for primality and continue for the other children.
 
 
 def reduced_residue_system_primorial_gaps(i):
