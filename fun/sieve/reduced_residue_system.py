@@ -158,10 +158,6 @@ def min_prime_descendant(residue, i):
                 return (child, i + 1)
             queue.appendleft((child, i + 1))
 
-    # Idea is to go one level deep, check all children for primality.
-    # Then go two levels deep starting with the first child and check all of its
-    # children for primality and continue for the other children.
-
 
 def reduced_residue_system_primorial_gaps(i):
     rrs = sorted(reduced_residue_system_primorial(i))
