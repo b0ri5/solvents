@@ -12,7 +12,7 @@ def main():
                 continue
             seen_residues[residue] = i
             descendant, j = min_prime_descendant(residue, i)
-            if j - i > 1 or len(seen_residues) % 1000 == 0:
+            if j - i > 1:
                 print(residue, i, descendant, j)
 
 
