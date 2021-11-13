@@ -45,3 +45,11 @@ py_binary(
         requirement("sympy"),
     ],
 )
+
+py_binary(
+    name = "max_num_factors_in_rrs_primorial",
+    srcs = ["max_num_factors_in_rrs_primorial.py"],
+    deps = [
+        requirement("sympy"),
+    ],
+)
