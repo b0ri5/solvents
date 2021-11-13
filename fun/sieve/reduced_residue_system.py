@@ -1,12 +1,12 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
-import sympy
-
 from collections import deque, namedtuple
 from functools import cache
 from math import gcd
 from sympy.ntheory.modular import crt
 from sympy import isprime, nextprime, primepi, primerange
+
+import sympy
 
 
 @cache
