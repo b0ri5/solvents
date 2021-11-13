@@ -9,14 +9,15 @@ def main():
         larger_prime = prime(i + 1)
         product = larger_prime
         num_factors = 0
-        while product < primorial(i):
+        primorial_value = primorial(i)
+        while product < primorial_value:
             num_factors += 1
             larger_prime = nextprime(larger_prime)
             product *= larger_prime
 
         all_num_factors.append(num_factors)
         all_products.append(product // larger_prime)
-        print(i, num_factors, primorial(i), product // larger_prime)
+        print(i, num_factors, primorial_value, product // larger_prime)
 
     print(all_num_factors)
     print(all_products)
