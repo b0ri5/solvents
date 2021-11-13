@@ -1,10 +1,24 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
+import sympy
+
 from collections import deque, namedtuple
 from functools import cache
 from math import gcd
 from sympy.ntheory.modular import crt
-from sympy import isprime, nextprime, prime, primepi, primerange, primorial
+from sympy import isprime, nextprime, primepi, primerange
+
+
+@cache
+def prime(i):
+    return sympy.prime(i)
+
+
+@cache
+def primorial(i):
+    if i == 1:
+        return 2
+    return prime(i) * sympy.primorial(i - 1)
 
 
 def _reduced_residue_system_primorial_brute_force(i):
