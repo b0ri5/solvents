@@ -159,16 +159,16 @@ def min_prime_descendant(residue, i):
             queue.appendleft((child, i + 1))
 
 
-def primoradic(n):
-    if n == 0:
+def primoradic(num):
+    if num == 0:
         return (0,)
     # Couldn't help myself
     primegits = []
-    p = 2
-    while n > 0:
-        primegits.append(n % p)
-        n //= p
-        p = nextprime(p)
+    base = 2
+    while num > 0:
+        primegits.append(num % base)
+        num //= base
+        base = nextprime(base)
     return tuple(primegits)
 
 
