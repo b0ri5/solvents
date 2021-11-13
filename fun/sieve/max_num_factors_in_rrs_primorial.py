@@ -1,4 +1,3 @@
-from itertools import count
 from sympy import nextprime, prime, primorial
 
 
