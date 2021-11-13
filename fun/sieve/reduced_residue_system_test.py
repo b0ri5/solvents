@@ -7,7 +7,8 @@ from reduced_residue_system import (
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, full_prime_residues, min_child, min_extension,
     min_prime_descendant, prime_and_composite_between_prime_and_primorial,
-    prime_residues, prime_residues_inverse, reduced_residue_system_primorial,
+    prime_residues, prime_residues_inverse, primoradic,
+    reduced_residue_system_primorial,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
@@ -387,6 +388,22 @@ class Test(unittest.TestCase):
         self.assertEqual((0, 2, 3, 1), full_prime_residues(8))
         self.assertEqual((1, 0, 4, 2), full_prime_residues(9))
         self.assertEqual((0, 1, 0, 3), full_prime_residues(10))
+
+    def test_primoradic(self):
+        # Start with http://oeis.org/A049345
+        # 0, 1, 10, 11, 20, 21, 100, 101, 110, 111
+        self.assertEqual((0,), primoradic(0))
+        self.assertEqual((1,), primoradic(1))
+        self.assertEqual((0, 1), primoradic(2))
+        self.assertEqual((1, 1), primoradic(3))
+        self.assertEqual((0, 2), primoradic(4))
+        self.assertEqual((1, 2), primoradic(5))
+        self.assertEqual((0, 0, 1), primoradic(6))
+        self.assertEqual((1, 0, 1), primoradic(7))
+
+        # And some larger interesting numbers
+        self.assertEqual((1, 2, 4, 0, 8, 2, 4), primoradic(126449))
+        self.assertEqual((1, 2, 4, 0, 8, 2, 4, 0, 2), primoradic(19525829))
 
 
 if __name__ == '__main__':

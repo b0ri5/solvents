@@ -4,7 +4,7 @@ from collections import deque, namedtuple
 from functools import cache
 from math import gcd
 from sympy.ntheory.modular import crt
-from sympy import isprime, prime, primepi, primerange, primorial
+from sympy import isprime, nextprime, prime, primepi, primerange, primorial
 
 
 def _reduced_residue_system_primorial_brute_force(i):
@@ -157,6 +157,19 @@ def min_prime_descendant(residue, i):
             if isprime(child):
                 return (child, i + 1)
             queue.appendleft((child, i + 1))
+
+
+def primoradic(num):
+    if num == 0:
+        return (0,)
+    # Couldn't help myself
+    primegits = []
+    base = 2
+    while num > 0:
+        primegits.append(num % base)
+        num //= base
+        base = nextprime(base)
+    return tuple(primegits)
 
 
 def reduced_residue_system_primorial_gaps(i):
