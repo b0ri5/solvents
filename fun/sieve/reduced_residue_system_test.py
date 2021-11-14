@@ -9,6 +9,7 @@ from reduced_residue_system import (
     min_prime_descendant, prime_and_composite_between_prime_and_primorial,
     prime_residues, prime_residues_inverse, primoradic,
     primorial_multiplicative_inverse, reduced_residue_system_primorial,
+    reduced_residue_system_primorial_new,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
@@ -52,6 +53,17 @@ class Test(unittest.TestCase):
             139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187, 191,
             193, 197, 199, 209
         ], sorted(reduced_residue_system_primorial(4)))
+
+    def test_reduced_residue_system_primorial_new(self):
+        self.assertEqual([1], sorted(reduced_residue_system_primorial_new(1)))
+        self.assertEqual([5], sorted(reduced_residue_system_primorial_new(2)))
+        self.assertEqual([7, 11, 13, 17, 19, 23, 29],
+                         sorted(reduced_residue_system_primorial_new(3)))
+        self.assertEqual([
+            31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
+            103, 107, 109, 113, 121, 127, 131, 137, 139, 143, 149, 151, 157,
+            163, 167, 169, 173, 179, 181, 187, 191, 193, 197, 199, 209
+        ], sorted(reduced_residue_system_primorial_new(4)))
 
     def test_reduced_residue_system_primorial_sizes(self):
         sizes = {

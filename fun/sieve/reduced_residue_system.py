@@ -39,6 +39,20 @@ def reduced_residue_system_primorial(i):
             yield child
 
 
+def reduced_residue_system_primorial_new(i):
+    """
+    Like reduced_residue_system_primorial(i) but only only yields elements not
+    in reduced_residue_system_primorial(i - 1).
+    """
+    if i == 1:
+        yield 1
+        return
+    for residue in reduced_residue_system_primorial(i - 1):
+        for child in children(residue, i - 1):
+            if child != residue:
+                yield child
+
+
 def filter_twos(rrs):
     # A "two" is a residue that corresponds to a 2 in the corresponding dRRS.
     # That means that r and r + 2 is in the RRS.
