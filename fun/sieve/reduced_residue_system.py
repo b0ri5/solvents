@@ -43,7 +43,7 @@ def reduced_residue_system_primorial(i):
     # for 0 <= k < prime(i) excepting the single k that results in a value
     # congruent to 0 modulo prime(i).
     # The k to skip is (primorial(i - 1) % prime(i)) * k + r = 0 (mod prime(i))
-    inv = pow(previous_primorial % prime_i, -1, prime_i)
+    inv = primorial_multiplicative_inverse(i - 1)
     for residue in previous_rrs:
         skipped = (inv * (prime_i - (residue % prime_i))) % prime_i
         primorial_multiples = set(range(prime_i))
@@ -61,6 +61,12 @@ def filter_twos(rrs):
     return frozenset(twos)
 
 
+# This is https://oeis.org/A079276
+@cache
+def primorial_multiplicative_inverse(i):
+    return pow(primorial(i) % prime(i + 1), -1, prime(i + 1))
+
+
 @cache
 def reduced_residue_system_primorial_twos(i):
     if i == 1:
@@ -74,7 +80,7 @@ def reduced_residue_system_primorial_twos(i):
     # for 0 <= k < prime(i) excepting the single k that results in a value
     # congruent to 0 modulo prime(i).
     # The ks to skip are (primorial(i - 1) % prime(i)) * k + r = 0 or -2 (mod prime(i))
-    inv = pow(previous_primorial % prime_i, -1, prime_i)
+    inv = primorial_multiplicative_inverse(i - 1)
     for residue in previous_rrs:
         skipped_zero = (inv * (prime_i - (residue % prime_i))) % prime_i
         skipped_negative_two = (inv * (prime_i -
@@ -124,29 +130,29 @@ def composite_and_composite_between_prime_and_primorial(i):
 # The elements that the residue r in rss(i) contributes to rss(i + 1)
 # Children are yielded in sorted order.
 def children(residue, i):
-    primorial_i = primorial(i)
     next_prime = prime(i + 1)
     # The children are all of
     #   primorial(i) * k + r
     # for 0 <= k < prime(i + 1) excepting the single k that results in a value
     # congruent to 0 modulo prime(i + 1).
     # The k to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
-    inv = pow(primorial_i % next_prime, -1, next_prime)
+    inv = primorial_multiplicative_inverse(i)
     skipped = (inv * (next_prime - (residue % next_prime))) % next_prime
     primorial_multiples = set(range(next_prime))
     primorial_multiples.remove(skipped)
+    primorial_i = primorial(i)
     for k in primorial_multiples:
         yield primorial_i * k + residue
 
 
 # The minimum element that the residue r in rss(i) contributes to rss(i + 1)
 def min_child(residue, i):
-    primorial_i = primorial(i)
     next_prime = prime(i + 1)
     # The minimum child is r or primorial(i) + r.
     # The one to skip is (primorial(i) % prime(i + 1)) * k + r = 0 (mod prime(i + 1))
-    inv = pow(primorial_i % next_prime, -1, next_prime)
+    inv = primorial_multiplicative_inverse(i)
     skipped = (inv * (next_prime - (residue % next_prime))) % next_prime
+    primorial_i = primorial(i)
     if skipped == 0:
         return primorial_i + residue
     return residue
