@@ -54,7 +54,11 @@ class Test(unittest.TestCase):
         ], sorted(reduced_residue_system_primorial(4)))
 
     def test_reduced_residue_system_primorial_sizes(self):
-        sizes = {len(reduced_residue_system_primorial(i)) for i in range(1, 9)}
+        sizes = {
+            sum(1
+                for _ in reduced_residue_system_primorial(i))
+            for i in range(1, 9)
+        }
         # See https://oeis.org/A005867
         self.assertEqual({1, 2, 8, 48, 480, 5760, 92160, 1658880}, sizes)
 
@@ -69,13 +73,13 @@ class Test(unittest.TestCase):
                 self.assertEqual(1, gcd(residue, primorial_i))
 
     def test_filter_twos(self):
-        twos_1 = filter_twos(reduced_residue_system_primorial(1))
+        twos_1 = filter_twos(set(reduced_residue_system_primorial(1)))
         self.assertEqual({1}, twos_1)
-        twos_2 = filter_twos(reduced_residue_system_primorial(2))
+        twos_2 = filter_twos(set(reduced_residue_system_primorial(2)))
         self.assertEqual({5}, twos_2)
-        twos_3 = filter_twos(reduced_residue_system_primorial(3))
+        twos_3 = filter_twos(set(reduced_residue_system_primorial(3)))
         self.assertEqual({11, 17, 29}, twos_3)
-        twos_4 = filter_twos(reduced_residue_system_primorial(4))
+        twos_4 = filter_twos(set(reduced_residue_system_primorial(4)))
         self.assertEqual(
             {
                 11, 17, 29, 41, 59, 71, 101, 107, 137, 149, 167, 179, 191, 197,
@@ -85,7 +89,7 @@ class Test(unittest.TestCase):
     def test_filter_twos_sizes(self):
         sizes = []
         for i in range(1, 9):
-            size = len(filter_twos(reduced_residue_system_primorial(i)))
+            size = len(filter_twos(set(reduced_residue_system_primorial(i))))
             sizes.append(size)
         # See https://oeis.org/A059861
         self.assertEqual([1, 1, 3, 15, 135, 1485, 22275, 378675], sizes)

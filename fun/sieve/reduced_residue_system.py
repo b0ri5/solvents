@@ -32,7 +32,8 @@ def _reduced_residue_system_primorial_brute_force(i):
 
 def reduced_residue_system_primorial(i):
     if i == 1:
-        return 1
+        yield 1
+        return
     for residue in reduced_residue_system_primorial(i - 1):
         for child in children(residue, i - 1):
             yield child
