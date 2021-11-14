@@ -8,7 +8,7 @@ from reduced_residue_system import (
     filter_twos, full_prime_residues, min_child, min_extension,
     min_prime_descendant, prime_and_composite_between_prime_and_primorial,
     prime_residues, prime_residues_inverse, primoradic,
-    reduced_residue_system_primorial,
+    primorial_multiplicative_inverse, reduced_residue_system_primorial,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
@@ -391,7 +391,6 @@ class Test(unittest.TestCase):
 
     def test_primoradic(self):
         # Start with http://oeis.org/A049345
-        # 0, 1, 10, 11, 20, 21, 100, 101, 110, 111
         self.assertEqual((0,), primoradic(0))
         self.assertEqual((1,), primoradic(1))
         self.assertEqual((0, 1), primoradic(2))
@@ -404,6 +403,16 @@ class Test(unittest.TestCase):
         # And some larger interesting numbers
         self.assertEqual((1, 2, 4, 0, 8, 2, 4), primoradic(126449))
         self.assertEqual((1, 2, 4, 0, 8, 2, 4, 0, 2), primoradic(19525829))
+
+    def test_primorial_multiplicative_inverse(self):
+        # https://oeis.org/A079276
+        self.assertEqual(2, primorial_multiplicative_inverse(1))
+        self.assertEqual(1, primorial_multiplicative_inverse(2))
+        self.assertEqual(4, primorial_multiplicative_inverse(3))
+        self.assertEqual(1, primorial_multiplicative_inverse(4))
+        self.assertEqual(3, primorial_multiplicative_inverse(5))
+        self.assertEqual(15, primorial_multiplicative_inverse(6))
+        self.assertEqual(18, primorial_multiplicative_inverse(7))
 
 
 if __name__ == '__main__':
