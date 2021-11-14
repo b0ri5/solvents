@@ -35,21 +35,10 @@ def reduced_residue_system_primorial(i):
     if i == 1:
         return frozenset({1})
     previous_rrs = reduced_residue_system_primorial(i - 1)
-    prime_i = prime(i)
-    previous_primorial = primorial(i - 1)
     rrs = set()
-    # The children are all of
-    #   primorial(i - 1) * k + r
-    # for 0 <= k < prime(i) excepting the single k that results in a value
-    # congruent to 0 modulo prime(i).
-    # The k to skip is (primorial(i - 1) % prime(i)) * k + r = 0 (mod prime(i))
-    inv = primorial_multiplicative_inverse(i - 1)
     for residue in previous_rrs:
-        skipped = (inv * (prime_i - (residue % prime_i))) % prime_i
-        primorial_multiples = set(range(prime_i))
-        primorial_multiples.remove(skipped)
-        for k in primorial_multiples:
-            rrs.add(previous_primorial * k + residue)
+        for child in children(residue, i - 1):
+            rrs.add(child)
     return frozenset(rrs)
 
 
