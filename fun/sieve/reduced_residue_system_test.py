@@ -42,17 +42,16 @@ class Test(unittest.TestCase):
         self.assertEqual({1, 2, 8, 48, 480, 5760}, sizes)
 
     def test_reduced_residue_system_primorial(self):
-        self.assertEqual({1}, reduced_residue_system_primorial(1))
-        self.assertEqual({1, 5}, reduced_residue_system_primorial(2))
-        self.assertEqual({1, 7, 11, 13, 17, 19, 23, 29},
-                         reduced_residue_system_primorial(3))
-        self.assertEqual(
-            {
-                1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
-                71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131,
-                137, 139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187,
-                191, 193, 197, 199, 209
-            }, reduced_residue_system_primorial(4))
+        self.assertEqual((1,), tuple(reduced_residue_system_primorial(1)))
+        self.assertEqual((1, 5), tuple(reduced_residue_system_primorial(2)))
+        self.assertEqual([1, 7, 11, 13, 17, 19, 23, 29],
+                         sorted(reduced_residue_system_primorial(3)))
+        self.assertEqual([
+            1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+            73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 121, 127, 131, 137,
+            139, 143, 149, 151, 157, 163, 167, 169, 173, 179, 181, 187, 191,
+            193, 197, 199, 209
+        ], sorted(reduced_residue_system_primorial(4)))
 
     def test_reduced_residue_system_primorial_sizes(self):
         sizes = {len(reduced_residue_system_primorial(i)) for i in range(1, 9)}

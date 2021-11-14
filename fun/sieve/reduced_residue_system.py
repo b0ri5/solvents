@@ -33,13 +33,10 @@ def _reduced_residue_system_primorial_brute_force(i):
 @cache
 def reduced_residue_system_primorial(i):
     if i == 1:
-        return frozenset({1})
-    previous_rrs = reduced_residue_system_primorial(i - 1)
-    rrs = set()
-    for residue in previous_rrs:
+        yield 1
+    for residue in reduced_residue_system_primorial(i - 1):
         for child in children(residue, i - 1):
-            rrs.add(child)
-    return frozenset(rrs)
+            yield child
 
 
 def filter_twos(rrs):
