@@ -42,8 +42,8 @@ class Test(unittest.TestCase):
         self.assertEqual({1, 2, 8, 48, 480, 5760}, sizes)
 
     def test_reduced_residue_system_primorial(self):
-        self.assertEqual((1,), tuple(reduced_residue_system_primorial(1)))
-        self.assertEqual((1, 5), tuple(reduced_residue_system_primorial(2)))
+        self.assertEqual([1], sorted(reduced_residue_system_primorial(1)))
+        self.assertEqual([1, 5], sorted(reduced_residue_system_primorial(2)))
         self.assertEqual([1, 7, 11, 13, 17, 19, 23, 29],
                          sorted(reduced_residue_system_primorial(3)))
         self.assertEqual([
