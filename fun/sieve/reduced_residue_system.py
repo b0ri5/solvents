@@ -30,7 +30,6 @@ def _reduced_residue_system_primorial_brute_force(i):
     return frozenset(system)
 
 
-@cache
 def reduced_residue_system_primorial(i):
     if i == 1:
         return 1
