@@ -7,7 +7,7 @@ def main():
     # A map from residues to the i at which they were first seen
     seen_residues = {}
     for i in count(start=2):
-        for residue in sorted(reduced_residue_system_primorial(i)):
+        for residue in reduced_residue_system_primorial(i):
             if residue in seen_residues or isprime(residue):
                 continue
             seen_residues[residue] = i
