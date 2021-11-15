@@ -42,7 +42,6 @@ py_binary(
     srcs = ["min_prime_descendants.py"],
     deps = [
         "reduced_residue_system",
-        requirement("sympy"),
     ],
 )
 
