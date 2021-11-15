@@ -69,7 +69,7 @@ class Test(unittest.TestCase):
 
     def test_all_reduced_residue_system_primorial(self):
         first_several = sorted(
-            islice(all_reduced_residue_system_primorial(), 11))
+            islice(all_reduced_residue_system_primorial(), 50))
         self.assertEqual([(1, 1), (5, 2), (7, 3), (11, 3), (13, 3), (17, 3),
                           (19, 3), (23, 3), (29, 3), (31, 4), (37, 4), (41, 4),
                           (43, 4), (47, 4), (53, 4), (59, 4), (61, 4), (67, 4),
