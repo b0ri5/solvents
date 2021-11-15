@@ -1,6 +1,6 @@
 from concurrent.futures import ProcessPoolExecutor
-from itertools import count, islice
-from multiprocessing import Manager, Queue
+from itertools import islice
+from multiprocessing import Manager
 from reduced_residue_system import min_prime_descendant, all_reduced_residue_system_primorial
 
 
