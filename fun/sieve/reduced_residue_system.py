@@ -3,6 +3,7 @@
 from collections import deque, namedtuple
 from functools import cache
 from math import gcd
+from itertools import count
 from sympy.ntheory.modular import crt
 from sympy import isprime, nextprime, primepi, primerange
 
@@ -51,6 +52,18 @@ def reduced_residue_system_primorial_new(i):
         for child in children(residue, i - 1):
             if child != residue:
                 yield child
+
+
+def all_reduced_residue_system_primorial():
+    """
+    Iterates through all unique elements of all primorial reduced residue systems.
+    Each residue is returned only for the first system it is a member of.
+
+    Yields tuples (r, i) where r is the residue and i is the system it is first seen in.
+    """
+    for i in count(start=1):
+        for residue in reduced_residue_system_primorial_new(i):
+            yield (residue, i)
 
 
 def filter_twos(rrs):

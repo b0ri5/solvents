@@ -1,8 +1,10 @@
 import unittest
 
 from math import gcd
+from itertools import islice
 from reduced_residue_system import (
-    _reduced_residue_system_primorial_brute_force, children,
+    _reduced_residue_system_primorial_brute_force,
+    all_reduced_residue_system_primorial, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, full_prime_residues, min_child, min_extension,
@@ -64,6 +66,12 @@ class Test(unittest.TestCase):
             103, 107, 109, 113, 121, 127, 131, 137, 139, 143, 149, 151, 157,
             163, 167, 169, 173, 179, 181, 187, 191, 193, 197, 199, 209
         ], sorted(reduced_residue_system_primorial_new(4)))
+
+    def test_all_reduced_residue_system_primorial(self):
+        self.assertEqual([(1, 1), (5, 2)],
+                         sorted(
+                             islice(all_reduced_residue_system_primorial(),
+                                    10),))
 
     def test_reduced_residue_system_primorial_sizes(self):
         sizes = {
