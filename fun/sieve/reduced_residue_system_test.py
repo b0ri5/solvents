@@ -68,10 +68,18 @@ class Test(unittest.TestCase):
         ], sorted(reduced_residue_system_primorial_new(4)))
 
     def test_all_reduced_residue_system_primorial(self):
-        first_several = islice(all_reduced_residue_system_primorial(), 11)
-        self.assertEqual([(1, 1), (5, 2)(7, 3), (11, 3), (17, 3), (19, 3),
-                          (23, 3), (29, 3), (31, 4), (37, 4), (41, 4)],
-                         first_several)
+        first_several = sorted(
+            islice(all_reduced_residue_system_primorial(), 11))
+        self.assertEqual([(1, 1), (5, 2), (7, 3), (11, 3), (13, 3), (17, 3),
+                          (19, 3), (23, 3), (29, 3), (31, 4), (37, 4), (41, 4),
+                          (43, 4), (47, 4), (53, 4), (59, 4), (61, 4), (67, 4),
+                          (71, 4), (73, 4), (79, 4), (83, 4), (89, 4), (97, 4),
+                          (101, 4), (103, 4), (107, 4), (109, 4), (113, 4),
+                          (121, 4), (127, 4), (131, 4), (137, 4), (139, 4),
+                          (143, 4), (149, 4), (151, 4), (157, 4), (163, 4),
+                          (167, 4), (169, 4), (173, 4), (179, 4), (181, 4),
+                          (187, 4), (191, 4), (193, 4), (197, 4), (199, 4),
+                          (209, 4)], first_several)
 
     def test_reduced_residue_system_primorial_sizes(self):
         sizes = {
