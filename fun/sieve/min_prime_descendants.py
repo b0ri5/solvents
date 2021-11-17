@@ -33,7 +33,7 @@ def main():
         while True:
             # Drain the completion queue to get the number of outstanding processes.
             while not completion_queue.empty():
-                completion_queue.get_nowait()
+                completion_queue.get()
                 num_outstanding -= 1
 
             # Wait until a process completes if the number of outstanding
