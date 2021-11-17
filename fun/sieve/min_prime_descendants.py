@@ -1,7 +1,10 @@
 from concurrent.futures import ProcessPoolExecutor
-from itertools import islice
+from itertools import islice, repeat
 from multiprocessing import Manager
-from reduced_residue_system import min_prime_descendant, all_reduced_residue_system_primorial
+from reduced_residue_system import all_reduced_residue_system_primorial, min_prime_descendant, reduced_residue_system_primorial_new
+
+import queue
+import sys
 
 
 def report_intersting_descendants(chunk, result_queue, completion_queue):
@@ -15,16 +18,21 @@ def report_intersting_descendants(chunk, result_queue, completion_queue):
 def main():
     chunksize = 10000
     max_outstanding = 100
-    manager = Manager()
-    result_queue = manager.Queue()
-    completion_queue = manager.Queue()
-    with ProcessPoolExecutor() as executor:
+    if len(sys.argv) > 1:
+        i = int(sys.argv[1])
+        generator = zip(reduced_residue_system_primorial_new(i), repeat(i))
+    else:
         generator = all_reduced_residue_system_primorial()
+
+    with Manager() as manager, ProcessPoolExecutor() as executor:
+        result_queue = manager.Queue()
+        completion_queue = manager.Queue()
         num_outstanding = 0
+
         while True:
             # Drain the completion queue to get the number of outstanding processes.
             while not completion_queue.empty():
-                completion_queue.get()
+                completion_queue.get_nowait()
                 num_outstanding -= 1
 
             # Wait until a process completes if the number of outstanding
