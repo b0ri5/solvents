@@ -4,7 +4,7 @@ from concurrent.futures import ProcessPoolExecutor
 from itertools import islice, repeat
 from multiprocessing import Manager
 from reduced_residue_system import (all_reduced_residue_system_primorial,
-                                    min_prime_descendant,
+                                    min_prime_descendant, primoradic,
                                     reduced_residue_system_primorial_new)
 
 
@@ -43,14 +43,18 @@ def main():
                 num_outstanding -= 1
 
             chunk = tuple(islice(generator, chunksize))
-            executor.submit(report_intersting_descendants, chunk, result_queue,
-                            completion_queue)
-            num_outstanding += 1
+            if len(chunk) > 0:
+                executor.submit(report_intersting_descendants, chunk,
+                                result_queue, completion_queue)
+                num_outstanding += 1
             while not result_queue.empty():
                 residue, i, descendant, j = result_queue.get()
-                print(residue, i, descendant, j)
+                print(residue, i, descendant, j, primoradic(residue),
+                      primoradic(descendant))
                 if j - i > 2:
                     return
+            if num_outstanding == 0:
+                return
 
 
 if __name__ == '__main__':
