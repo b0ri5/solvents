@@ -11,7 +11,7 @@ from reduced_residue_system import (all_reduced_residue_system_primorial,
 def report_intersting_descendants(chunk, result_queue, completion_queue):
     for residue, i in chunk:
         descendant, j = min_prime_descendant(residue, i)
-        if j - i > 1 and primoradic(descendant)[-2] != 0:
+        if j - i > 1:
             result_queue.put((residue, i, descendant, j))
     completion_queue.put(None)
 
@@ -54,7 +54,7 @@ def main():
                 if j - i > 2:
                     return
             if num_outstanding == 0:
-                break
+                return
 
 
 if __name__ == '__main__':
