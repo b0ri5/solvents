@@ -4,7 +4,9 @@ import sys
 from concurrent.futures import ProcessPoolExecutor
 from itertools import islice, repeat
 from multiprocessing import Manager
-from reduced_residue_system import all_reduced_residue_system_primorial, min_prime_descendant, reduced_residue_system_primorial_new
+from reduced_residue_system import (all_reduced_residue_system_primorial,
+                                    min_prime_descendant,
+                                    reduced_residue_system_primorial_new)
 
 
 def report_intersting_descendants(chunk, result_queue, completion_queue):
