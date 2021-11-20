@@ -158,6 +158,10 @@ def children(residue, i):
         yield primorial_i * k + residue
 
 
+def parent(residue):
+    return primoradic_to_int(primoradic(residue)[:-1])
+
+
 # The minimum element that the residue r in rss(i) contributes to rss(i + 1)
 def min_child(residue, i):
     next_prime = prime(i + 1)
@@ -203,6 +207,13 @@ def primoradic(num):
         num //= base
         base = nextprime(base)
     return tuple(primegits)
+
+
+def primoradic_to_int(primegits):
+    num = primegits[0]
+    for i, primegit in enumerate(primegits[1:]):
+        num += primegit * primorial(i + 1)
+    return num
 
 
 def reduced_residue_system_primorial_gaps(i):

@@ -8,8 +8,9 @@ from reduced_residue_system import (
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, full_prime_residues, min_child, min_extension,
-    min_prime_descendant, prime_and_composite_between_prime_and_primorial,
-    prime_residues, prime_residues_inverse, primoradic,
+    min_prime_descendant, parent,
+    prime_and_composite_between_prime_and_primorial, prime_residues,
+    prime_residues_inverse, primoradic, primoradic_to_int,
     primorial_multiplicative_inverse, reduced_residue_system_primorial,
     reduced_residue_system_primorial_new,
     reduced_residue_system_primorial_two_classification,
@@ -224,6 +225,20 @@ class Test(unittest.TestCase):
         self.assertEqual([37, 67, 97, 127, 157, 187], list(children(7, 3)))
         self.assertEqual([11, 41, 71, 101, 131, 191], list(children(11, 3)))
 
+    def test_parent(self):
+        self.assertEqual(1, parent(5))
+        self.assertEqual(1, parent(7))
+        self.assertEqual(1, parent(13))
+        self.assertEqual(1, parent(19))
+        self.assertEqual(5, parent(11))
+        self.assertEqual(5, parent(17))
+        self.assertEqual(5, parent(23))
+        self.assertEqual(5, parent(29))
+
+        # Some interesting min prime descendants
+        self.assertEqual(864271, parent(parent(456749701)))
+        self.assertEqual(1271003, parent(parent(234063563)))
+
     def test_min_child(self):
         self.assertEqual(1, min_child(1, 1))
         self.assertEqual(11, min_child(5, 2))
@@ -434,6 +449,20 @@ class Test(unittest.TestCase):
         # And some larger interesting numbers
         self.assertEqual((1, 2, 4, 0, 8, 2, 4), primoradic(126449))
         self.assertEqual((1, 2, 4, 0, 8, 2, 4, 0, 2), primoradic(19525829))
+
+    def test_primoradic_to_int(self):
+        self.assertEqual(0, primoradic_to_int((0,)))
+        self.assertEqual(1, primoradic_to_int((1,)))
+        self.assertEqual(2, primoradic_to_int((0, 1)))
+        self.assertEqual(3, primoradic_to_int((1, 1)))
+        self.assertEqual(4, primoradic_to_int((0, 2)))
+        self.assertEqual(5, primoradic_to_int((1, 2)))
+        self.assertEqual(6, primoradic_to_int((0, 0, 1)))
+        self.assertEqual(7, primoradic_to_int((1, 0, 1)))
+
+        self.assertEqual(126449, primoradic_to_int((1, 2, 4, 0, 8, 2, 4)))
+        self.assertEqual(19525829, primoradic_to_int(
+            (1, 2, 4, 0, 8, 2, 4, 0, 2)))
 
     def test_primorial_multiplicative_inverse(self):
         # https://oeis.org/A079276
