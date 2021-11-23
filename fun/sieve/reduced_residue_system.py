@@ -5,7 +5,7 @@ from functools import cache
 from math import gcd
 from itertools import count
 from sympy.ntheory.modular import crt
-from sympy import isprime, nextprime, primepi, primerange
+from sympy import isprime, nextprime, prevprime, primepi, primerange
 
 import sympy
 
@@ -282,3 +282,57 @@ def prime_residues_inverse(residues):
 
 def full_prime_residues(num):
     return prime_residues(num, primepi(num))
+
+
+def min_composite(i):
+    # There are no composites in rrsp(1..3)
+    if i < 4:
+        return None
+    return prime(i + 1) * prime(i + 1)
+
+
+def max_power_composite(i):
+    if i < 4:
+        return None
+    num = prime(i + 1) * prime(i + 1)
+    while num * prime(i + 1) < primorial(i):
+        num *= prime(i + 1)
+    return num
+
+
+def most_unique_factors_composite(i):
+    if i < 4:
+        return None
+    next_prime = prime(i + 1)
+    num = next_prime
+    while num < primorial(i):
+        next_prime = nextprime(next_prime)
+        num *= next_prime
+    return num // next_prime
+
+
+def max_square_composite(i):
+    if i < 4:
+        return None
+    prime_index = i + 1
+    while prime(prime_index)**2 < primorial(i):
+        prime_index += 1
+    return prime(prime_index - 1)**2
+
+
+def max_consecutive_primes_composite(i):
+    if i < 4:
+        return None
+    prime_index = i + 1
+    while prime(prime_index) * prime(prime_index + 1) < primorial(i):
+        prime_index += 1
+    return prime(prime_index - 1) * prime(prime_index)
+
+
+def longest_prime_gap_composite(i):
+    if i < 4:
+        return None
+    quotient = primorial(i) // prime(i + 1)
+    if isprime(quotient):
+        return quotient * prime(i + 1)
+    return prevprime(quotient) * prime(i + 1)
