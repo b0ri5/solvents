@@ -336,3 +336,14 @@ def longest_prime_gap_composite(i):
     if isprime(quotient):
         return quotient * prime(i + 1)
     return prevprime(quotient) * prime(i + 1)
+
+
+def interesting_composites(i):
+    if i < 4:
+        return None
+    yield min_composite(i)
+    yield max_power_composite(i)
+    yield most_unique_factors_composite(i)
+    yield max_square_composite(i)
+    yield max_consecutive_primes_composite(i)
+    yield longest_prime_gap_composite(i)
