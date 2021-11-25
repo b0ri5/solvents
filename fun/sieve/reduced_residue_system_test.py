@@ -7,9 +7,10 @@ from reduced_residue_system import (
     all_reduced_residue_system_primorial, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, full_prime_residues, longest_prime_gap_composite,
-    max_power_composite, max_consecutive_primes_composite, max_square_composite,
-    min_child, min_composite, min_extension, min_prime_descendant,
+    filter_twos, full_prime_residues, interesting_composites,
+    longest_prime_gap_composite, max_power_composite,
+    max_consecutive_primes_composite, max_square_composite, min_child,
+    min_composite, min_extension, min_prime_descendant,
     most_unique_factors_composite, parent,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, primoradic, primoradic_to_int,
@@ -488,6 +489,8 @@ class Test(unittest.TestCase):
         self.assertEqual(13**3, max_power_composite(5))
         self.assertEqual(17**3, max_power_composite(6))
         self.assertEqual(19**4, max_power_composite(7))
+        self.assertEqual(71**13, max_power_composite(19))
+        self.assertEqual(179**30, max_power_composite(40))
 
     def test_most_unique_factors_composite(self):
         self.assertEqual(None, most_unique_factors_composite(3))
@@ -503,6 +506,7 @@ class Test(unittest.TestCase):
         self.assertEqual(47**2, max_square_composite(5))
         self.assertEqual(173**2, max_square_composite(6))
         self.assertEqual(709**2, max_square_composite(7))
+        self.assertEqual(3109**2, max_square_composite(8))
 
     def test_max_consecutive_primes_composite(self):
         self.assertEqual(None, max_consecutive_primes_composite(3))
@@ -510,6 +514,7 @@ class Test(unittest.TestCase):
         self.assertEqual(43 * 47, max_consecutive_primes_composite(5))
         self.assertEqual(167 * 173, max_consecutive_primes_composite(6))
         self.assertEqual(709 * 719, max_consecutive_primes_composite(7))
+        self.assertEqual(3109 * 3119, max_consecutive_primes_composite(8))
 
     def test_longest_prime_gap_composite(self):
         self.assertEqual(None, longest_prime_gap_composite(3))
@@ -517,6 +522,9 @@ class Test(unittest.TestCase):
         self.assertEqual(13 * 173, longest_prime_gap_composite(5))
         self.assertEqual(17 * 1759, longest_prime_gap_composite(6))
         self.assertEqual(19 * 26863, longest_prime_gap_composite(7))
+
+    def test_interesting_composites(self):
+        self.assertEqual([], list(interesting_composites(3)))
 
 
 if __name__ == '__main__':
