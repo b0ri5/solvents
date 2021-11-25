@@ -357,7 +357,7 @@ def longest_prime_gap_composite(i):
 
 def interesting_composites(i):
     if i < 4:
-        return None
+        return
     yield min_composite(i)
     yield max_power_composite(i)
     yield most_unique_factors_composite(i)
