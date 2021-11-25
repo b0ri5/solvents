@@ -60,7 +60,9 @@ def exhaustive():
 
 def interesting():
     for i in count(start=4):
+        print('Checking interesting at', i)
         for residue in interesting_composites(i):
+            print(residue)
             descendant, j = min_prime_descendant(residue, i)
             if j - i > 1:
                 print(residue, i, descendant, j, primoradic(residue),
@@ -70,7 +72,7 @@ def interesting():
 
 
 def main():
-    if argv[1] == 'interesting':
+    if sys.argv[1] == 'interesting':
         interesting()
     else:
         exhaustive()

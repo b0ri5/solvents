@@ -314,19 +314,27 @@ def most_unique_factors_composite(i):
 def max_square_composite(i):
     if i < 4:
         return None
-    prime_index = i + 1
-    while prime(prime_index)**2 < primorial(i):
-        prime_index += 1
-    return prime(prime_index - 1)**2
+    sqrt = sympy.floor(sympy.sqrt(primorial(i)))
+    if isprime(sqrt):
+        largest_prime_factor = sqrt
+    else:
+        largest_prime_factor = prevprime(sqrt)
+    return largest_prime_factor**2
 
 
 def max_consecutive_primes_composite(i):
     if i < 4:
         return None
-    prime_index = i + 1
-    while prime(prime_index) * prime(prime_index + 1) < primorial(i):
-        prime_index += 1
-    return prime(prime_index - 1) * prime(prime_index)
+    sqrt = sympy.floor(sympy.sqrt(primorial(i)))
+    if isprime(sqrt):
+        largest_prime_factor = sqrt
+    else:
+        largest_prime_factor = prevprime(sqrt)
+    second_largest_prime_factor = prevprime(largest_prime_factor)
+    one_larger_prime_factor = nextprime(largest_prime_factor)
+    if largest_prime_factor * one_larger_prime_factor < primorial(i):
+        return largest_prime_factor * one_larger_prime_factor
+    return largest_prime_factor * second_largest_prime_factor
 
 
 def longest_prime_gap_composite(i):
