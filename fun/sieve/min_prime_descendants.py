@@ -60,7 +60,7 @@ def exhaustive():
 
 def interesting():
     for i in count(start=4):
-        print('Checking interesting at', i)
+        print('Checking interesting composites at', i)
         for residue in interesting_composites(i):
             print(residue)
             descendant, j = min_prime_descendant(residue, i)

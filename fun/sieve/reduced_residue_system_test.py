@@ -488,6 +488,8 @@ class Test(unittest.TestCase):
         self.assertEqual(13**3, max_power_composite(5))
         self.assertEqual(17**3, max_power_composite(6))
         self.assertEqual(19**4, max_power_composite(7))
+        self.assertEqual(71**13, max_power_composite(19))
+        self.assertEqual(179**30, max_power_composite(40))
 
     def test_most_unique_factors_composite(self):
         self.assertEqual(None, most_unique_factors_composite(3))

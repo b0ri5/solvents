@@ -294,10 +294,19 @@ def min_composite(i):
 def max_power_composite(i):
     if i < 4:
         return None
-    num = prime(i + 1) * prime(i + 1)
-    while num * prime(i + 1) < primorial(i):
-        num *= prime(i + 1)
-    return num
+    low = 2
+    high = i
+    next_prime = prime(i + 1)
+    primorial_i = primorial(i)
+    while low <= high:
+        mid = low + ((high - low) // 2)
+        power = next_prime**mid
+        if power < primorial_i:
+            low = mid + 1
+        elif power > primorial_i:
+            high = mid - 1
+
+    return next_prime**(low - 1)
 
 
 def most_unique_factors_composite(i):
