@@ -1,9 +1,10 @@
 import sys
 
 from concurrent.futures import ProcessPoolExecutor
-from itertools import islice, repeat
+from itertools import count, islice, repeat
 from multiprocessing import Manager
 from reduced_residue_system import (all_reduced_residue_system_primorial,
+                                    interesting_composites,
                                     min_prime_descendant, primoradic,
                                     reduced_residue_system_primorial_new)
 
@@ -16,7 +17,7 @@ def report_intersting_descendants(chunk, result_queue, completion_queue):
     completion_queue.put(None)
 
 
-def main():
+def exhaustive():
     chunksize = 10000
     max_outstanding = 100
     if len(sys.argv) > 1:
@@ -55,6 +56,26 @@ def main():
                     return
             if num_outstanding == 0:
                 return
+
+
+def interesting():
+    for i in count(start=4):
+        print('Checking interesting composites at', i)
+        for residue in interesting_composites(i):
+            print(residue)
+            descendant, j = min_prime_descendant(residue, i)
+            if j - i > 1:
+                print(residue, i, descendant, j, primoradic(residue),
+                      primoradic(descendant))
+            if j - i > 2:
+                return
+
+
+def main():
+    if sys.argv[1] == 'interesting':
+        interesting()
+    else:
+        exhaustive()
 
 
 if __name__ == '__main__':
