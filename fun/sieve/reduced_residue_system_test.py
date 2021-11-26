@@ -7,7 +7,7 @@ from reduced_residue_system import (
     all_reduced_residue_system_primorial, children,
     composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
-    filter_twos, full_prime_residues, interesting_composites,
+    filter_twos, floor_sqrt, full_prime_residues, interesting_composites,
     longest_prime_gap_composite, max_power_composite,
     max_consecutive_primes_composite, max_square_composite, min_child,
     min_composite, min_extension, min_prime_descendant,
@@ -22,6 +22,8 @@ from reduced_residue_system import (
     reduced_residue_system_primorial_gaps,
     twin_primes_between_prime_and_primorial, TwoClassification)
 from sympy import primorial
+
+import sympy
 
 
 class Test(unittest.TestCase):
@@ -489,6 +491,15 @@ class Test(unittest.TestCase):
         self.assertEqual(13**3, max_power_composite(5))
         self.assertEqual(17**3, max_power_composite(6))
         self.assertEqual(19**4, max_power_composite(7))
+
+        for i in range(8, 19):
+            answer = max_power_composite(i)
+            factors = sympy.factorint(answer)
+            self.assertEqual(1, len(factors))
+            factor, exp = min(factors.items())
+            self.assertTrue(factor**exp < primorial(i))
+            self.assertFalse(factor**(exp + 1) < primorial(i))
+
         self.assertEqual(71**13, max_power_composite(19))
         self.assertEqual(179**30, max_power_composite(40))
 
@@ -508,6 +519,22 @@ class Test(unittest.TestCase):
         self.assertEqual(709**2, max_square_composite(7))
         self.assertEqual(3109**2, max_square_composite(8))
 
+        for i in range(9, 20):
+            answer = max_square_composite(i)
+            factors = sympy.factorint(answer)
+            self.assertEqual(1, len(factors))
+            root = min(factors)
+            self.assertTrue(root**2 < primorial(i))
+            next_prime = sympy.nextprime(root)
+            self.assertFalse(next_prime**2 < primorial(i))
+
+        # This throws an exception with an implementation using sympy.floor and sympy.sqrt
+        self.assertEqual(
+            # pylint: disable=line-too-long
+            5653678562422601024983966085615290679229176074053614085130233910635105330778160104881957322003532367106319
+            **2,
+            max_square_composite(97))
+
     def test_max_consecutive_primes_composite(self):
         self.assertEqual(None, max_consecutive_primes_composite(3))
         self.assertEqual(11 * 13, max_consecutive_primes_composite(4))
@@ -525,6 +552,23 @@ class Test(unittest.TestCase):
 
     def test_interesting_composites(self):
         self.assertEqual([], list(interesting_composites(3)))
+
+    def test_floor_sqrt(self):
+        self.assertEqual(1, floor_sqrt(1))
+        self.assertEqual(1, floor_sqrt(2))
+        self.assertEqual(1, floor_sqrt(3))
+        self.assertEqual(2, floor_sqrt(4))
+        for i in range(1, 100):
+            self.assertEqual(sympy.floor(sympy.sqrt(i)), floor_sqrt(i))
+        # sympy.floor(sympy.sqrt(num)) throws an exception on this input
+        cases = [(
+            # pylint: disable=line-too-long
+            5653678562422601024983966085615290679229176074053614085130233910635105330778160104881957322003532367106381,
+            primorial(97))]
+        for root, num in cases:
+            self.assertEqual(root, floor_sqrt(num))
+            self.assertTrue(root**2 <= num)
+            self.assertTrue((root + 1)**2 > num)
 
 
 if __name__ == '__main__':
