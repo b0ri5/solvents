@@ -1,4 +1,3 @@
-import sympy
 import unittest
 
 from math import gcd
@@ -23,6 +22,8 @@ from reduced_residue_system import (
     reduced_residue_system_primorial_gaps,
     twin_primes_between_prime_and_primorial, TwoClassification)
 from sympy import primorial
+
+import sympy
 
 
 class Test(unittest.TestCase):
@@ -529,8 +530,10 @@ class Test(unittest.TestCase):
 
         # This throws an exception with an implementation using sympy.floor and sympy.sqrt
         self.assertEqual(
+            # pylint: disable=line-too-long
             5653678562422601024983966085615290679229176074053614085130233910635105330778160104881957322003532367106319
-            **2, max_square_composite(97))
+            **2,
+            max_square_composite(97))
 
     def test_max_consecutive_primes_composite(self):
         self.assertEqual(None, max_consecutive_primes_composite(3))
@@ -559,6 +562,7 @@ class Test(unittest.TestCase):
             self.assertEqual(sympy.floor(sympy.sqrt(i)), floor_sqrt(i))
         # sympy.floor(sympy.sqrt(num)) throws an exception on this input
         cases = [(
+            # pylint: disable=line-too-long
             5653678562422601024983966085615290679229176074053614085130233910635105330778160104881957322003532367106381,
             primorial(97))]
         for root, num in cases:
