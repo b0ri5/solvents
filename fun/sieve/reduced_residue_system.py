@@ -323,7 +323,7 @@ def most_unique_factors_composite(i):
 def max_square_composite(i):
     if i < 4:
         return None
-    sqrt = sympy.floor(sympy.sqrt(primorial(i)))
+    sqrt = floor_sqrt(primorial(i))
     if isprime(sqrt):
         largest_prime_factor = sqrt
     else:
@@ -334,7 +334,7 @@ def max_square_composite(i):
 def max_consecutive_primes_composite(i):
     if i < 4:
         return None
-    sqrt = sympy.floor(sympy.sqrt(primorial(i)))
+    sqrt = floor_sqrt(primorial(i))
     if isprime(sqrt):
         largest_prime_factor = sqrt
     else:
@@ -364,3 +364,28 @@ def interesting_composites(i):
     yield max_square_composite(i)
     yield max_consecutive_primes_composite(i)
     yield longest_prime_gap_composite(i)
+
+
+def floor_sqrt(num):
+    # Determine the bounds
+    low = 1
+    for i in count(start=0):
+        root = 2**i
+        if root**2 > num:
+            high = root
+            break
+        low = root
+
+    # low**2 <= num and high**2 < num
+    while low < high:
+        # The "+ 1" favors reducing high to ensure low**2 <= num
+        mid = low + ((high - low + 1) // 2)
+        square = mid**2
+        if square < num:
+            low = mid
+        elif square > num:
+            high = mid - 1
+        else:
+            return mid
+
+    return low
