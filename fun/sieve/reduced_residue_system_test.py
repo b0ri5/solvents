@@ -518,8 +518,19 @@ class Test(unittest.TestCase):
         self.assertEqual(709**2, max_square_composite(7))
         self.assertEqual(3109**2, max_square_composite(8))
 
-        # This throws an exception when using sympy.floor and sympy.sqrt
-        #self.assertEqual(17**2, max_square_composite(97))
+        for i in range(9, 20):
+            answer = max_square_composite(i)
+            factors = sympy.factorint(answer)
+            self.assertEqual(1, len(factors))
+            root = min(factors)
+            self.assertTrue(root**2 < primorial(i))
+            next_prime = sympy.nextprime(root)
+            self.assertFalse(next_prime**2 < primorial(i))
+
+        # This throws an exception with an implementation using sympy.floor and sympy.sqrt
+        self.assertEqual(
+            5653678562422601024983966085615290679229176074053614085130233910635105330778160104881957322003532367106319
+            **2, max_square_composite(97))
 
     def test_max_consecutive_primes_composite(self):
         self.assertEqual(None, max_consecutive_primes_composite(3))
