@@ -7,6 +7,7 @@ from itertools import count
 from sympy.ntheory.modular import crt
 from sympy import isprime, nextprime, prevprime, primepi, primerange
 
+import random
 import sympy
 
 
@@ -389,3 +390,11 @@ def floor_sqrt(num):
             return mid
 
     return low
+
+
+def random_rrsp(i):
+    if i == 1:
+        return 1
+    residue = random_rrsp(i - 1)
+    children_list = list(children(residue, i - 1))
+    return random.choice(children_list)
