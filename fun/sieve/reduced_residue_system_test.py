@@ -14,8 +14,8 @@ from reduced_residue_system import (
     most_unique_factors_composite, parent,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, primoradic, primoradic_to_int,
-    primorial_multiplicative_inverse, reduced_residue_system_primorial,
-    reduced_residue_system_primorial_new,
+    primorial_multiplicative_inverse, random_rrsp,
+    reduced_residue_system_primorial, reduced_residue_system_primorial_new,
     reduced_residue_system_primorial_two_classification,
     reduced_residue_system_primorial_twos,
     reduced_residue_system_primorial_applied_gaps,
@@ -569,6 +569,17 @@ class Test(unittest.TestCase):
             self.assertEqual(root, floor_sqrt(num))
             self.assertTrue(root**2 <= num)
             self.assertTrue((root + 1)**2 > num)
+
+    def test_random_rrsp(self):
+        for i in range(1, 5):
+            rrsp = set(reduced_residue_system_primorial(i))
+            remaining = set(rrsp)
+            # All elements are eventually removed
+            while remaining:
+                residue = random_rrsp(i)
+                # Each element is in the reduced residue system
+                self.assertIn(residue, rrsp)
+                remaining.discard(residue)
 
 
 if __name__ == '__main__':
