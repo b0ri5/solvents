@@ -1,5 +1,7 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
+import random
+
 from collections import deque, namedtuple
 from functools import cache
 from math import gcd
@@ -389,3 +391,11 @@ def floor_sqrt(num):
             return mid
 
     return low
+
+
+def random_rrsp(i):
+    if i == 1:
+        return 1
+    residue = random_rrsp(i - 1)
+    children_list = list(children(residue, i - 1))
+    return random.choice(children_list)
