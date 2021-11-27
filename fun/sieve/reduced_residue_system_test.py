@@ -577,7 +577,6 @@ class Test(unittest.TestCase):
             # All elements are eventually removed
             while remaining:
                 residue = random_rrsp(i)
-                print(residue, i)
                 # Each element is in the reduced residue system
                 self.assertIn(residue, rrsp)
                 remaining.discard(residue)

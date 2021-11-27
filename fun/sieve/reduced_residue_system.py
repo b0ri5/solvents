@@ -1,5 +1,7 @@
 # See https://en.wikipedia.org/wiki/Reduced_residue_system
 
+import random
+
 from collections import deque, namedtuple
 from functools import cache
 from math import gcd
@@ -7,7 +9,6 @@ from itertools import count
 from sympy.ntheory.modular import crt
 from sympy import isprime, nextprime, prevprime, primepi, primerange
 
-import random
 import sympy
 
 
