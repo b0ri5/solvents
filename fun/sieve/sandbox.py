@@ -2,11 +2,11 @@ from reduced_residue_system import ancestors_compositeness, random_rrsp
 
 
 def main():
-    n = 80
+    depth = 80
     counts = [0 for _ in range(n)]
     for i in range(1000):
-        for j, is_composite in enumerate(ancestors_compositeness(
-                random_rrsp(n))):
+        for j, is_composite in enumerate(
+                ancestors_compositeness(random_rrsp(depth))):
             if is_composite:
                 counts[j] += 1
         print(i, counts)
