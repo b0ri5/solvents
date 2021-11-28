@@ -4,8 +4,8 @@ from math import gcd
 from itertools import islice
 from reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force,
-    all_reduced_residue_system_primorial, children,
-    composite_and_composite_between_prime_and_primorial,
+    all_reduced_residue_system_primorial, ancestors, ancestors_compositeness,
+    children, composite_and_composite_between_prime_and_primorial,
     composite_and_prime_between_prime_and_primorial, filter_twin_primes,
     filter_twos, floor_sqrt, full_prime_residues, interesting_composites,
     longest_prime_gap_composite, max_power_composite,
@@ -580,6 +580,23 @@ class Test(unittest.TestCase):
                 # Each element is in the reduced residue system
                 self.assertIn(residue, rrsp)
                 remaining.discard(residue)
+
+    def test_ancestors(self):
+        self.assertEqual((1,), ancestors(1))
+        self.assertEqual((1, 1, 1, 121), ancestors(121))
+        self.assertEqual((1, 5, 23, 143), ancestors(143))
+        self.assertEqual((1, 5, 29, 209), ancestors(209))
+        self.assertEqual(
+            (1, 1, 1, 121, 331, 23431, 353761, 864271, 10563961, 456749701),
+            ancestors(456749701))
+
+    def test_ancestors_compositeness(self):
+        self.assertEqual((False,), ancestors_compositeness(1))
+        self.assertEqual((False, False, False, True),
+                         ancestors_compositeness(121))
+        self.assertEqual(
+            (False, False, False, True, False, False, True, True, True, False),
+            ancestors_compositeness(456749701))
 
 
 if __name__ == '__main__':
