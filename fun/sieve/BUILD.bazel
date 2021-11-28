@@ -33,7 +33,7 @@ py_binary(
     name = "two_classification_sequence",
     srcs = ["two_classification_sequence.py"],
     deps = [
-        "reduced_residue_system",
+        ":reduced_residue_system",
     ],
 )
 
@@ -41,7 +41,7 @@ py_binary(
     name = "min_prime_descendants",
     srcs = ["min_prime_descendants.py"],
     deps = [
-        "reduced_residue_system",
+        ":reduced_residue_system",
     ],
 )
 
@@ -51,4 +51,10 @@ py_binary(
     deps = [
         requirement("sympy"),
     ],
+)
+
+py_binary(
+    name = "sandbox",
+    srcs = ["sandbox.py"],
+    deps = [":reduced_residue_system"],
 )
