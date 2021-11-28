@@ -399,3 +399,17 @@ def random_rrsp(i):
     residue = random_rrsp(i - 1)
     children_list = list(children(residue, i - 1))
     return random.choice(children_list)
+
+
+# Also include the residue
+def ancestors(residue):
+    primegits = primoradic(residue)
+    ancestors_list = []
+    for i in range(1, len(primegits) + 1):
+        ancestors_list.append(primoradic_to_int(primegits[:i]))
+    return tuple(ancestors_list)
+
+
+def ancestors_compositeness(residue):
+    is_composite = lambda num: num != 1 and not isprime(num)
+    return tuple(map(is_composite, ancestors(residue)))
