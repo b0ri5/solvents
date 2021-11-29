@@ -426,10 +426,8 @@ def random_rrsp_prefer_composite_grandchildren(i):
         filter(all_children_are_composite, composite_children))
     if composite_grandchildren:
         return random.choice(composite_grandchildren)
-
-
-#    if composite_children:
-#        return random.choice(composite_children)
+    if composite_children:
+        return random.choice(composite_children)
     return random.choice(children_list)
 
 
