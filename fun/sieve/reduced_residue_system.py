@@ -401,6 +401,40 @@ def random_rrsp(i):
     return random.choice(children_list)
 
 
+def random_rrsp_prefer_composites(i):
+    if i == 1:
+        return 1
+    residue = random_rrsp_prefer_composites(i - 1)
+    children_list = list(children(residue, i - 1))
+    composite_children = list(filter(is_composite, children_list))
+    if composite_children:
+        return random.choice(composite_children)
+    return random.choice(children_list)
+
+
+def random_rrsp_prefer_composite_grandchildren(i):
+    if i == 1:
+        return 1
+    residue = random_rrsp_prefer_composites(i - 1)
+    children_list = list(children(residue, i - 1))
+    composite_children = list(filter(is_composite, children_list))
+
+    def all_children_are_composite(child):
+        return all(map(is_composite, children(child, i)))
+
+    composite_grandchildren = list(
+        filter(all_children_are_composite, composite_children))
+    if composite_grandchildren:
+        return random.choice(composite_grandchildren)
+    if composite_children:
+        return random.choice(composite_children)
+    return random.choice(children_list)
+
+
+def is_composite(num):
+    return num != 1 and not isprime(num)
+
+
 # Also include the residue
 def ancestors(residue):
     primegits = primoradic(residue)
@@ -411,5 +445,4 @@ def ancestors(residue):
 
 
 def ancestors_compositeness(residue):
-    is_composite = lambda num: num != 1 and not isprime(num)
     return tuple(map(is_composite, ancestors(residue)))
