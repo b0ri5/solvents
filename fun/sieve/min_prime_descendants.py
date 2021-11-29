@@ -6,7 +6,8 @@ from multiprocessing import Manager
 from reduced_residue_system import (all_reduced_residue_system_primorial,
                                     ancestors, interesting_composites,
                                     min_prime_descendant, primoradic,
-                                    random_rrsp,
+                                    random_rrsp, random_rrsp_prefer_composites,
+                                    random_rrsp_prefer_composite_grandchildren,
                                     reduced_residue_system_primorial_new)
 
 
@@ -73,8 +74,14 @@ def interesting():
 
 
 def random():
+    if len(sys.argv) < 3:
+        random_generator = random_rrsp
+    elif sys.argv[2] == 'children':
+        random_generator = random_rrsp_prefer_composites
+    elif sys.argv[2] == 'grandchildren':
+        random_generator = random_rrsp_prefer_composite_grandchildren
     while True:
-        residue = random_rrsp(80)
+        residue = random_generator(40)
         print('Trying out', residue)
         for i, ancestor in enumerate(ancestors(residue), start=1):
             descendant, j = min_prime_descendant(ancestor, i)
