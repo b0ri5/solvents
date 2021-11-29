@@ -4,8 +4,9 @@ from concurrent.futures import ProcessPoolExecutor
 from itertools import count, islice, repeat
 from multiprocessing import Manager
 from reduced_residue_system import (all_reduced_residue_system_primorial,
-                                    interesting_composites,
+                                    ancestors, interesting_composites,
                                     min_prime_descendant, primoradic,
+                                    random_rrsp,
                                     reduced_residue_system_primorial_new)
 
 
@@ -71,9 +72,24 @@ def interesting():
                 return
 
 
+def random():
+    while True:
+        residue = random_rrsp(80)
+        print('Trying out', residue)
+        for i, ancestor in enumerate(ancestors(residue), start=1):
+            descendant, j = min_prime_descendant(ancestor, i)
+            if j - i > 1:
+                print(ancestor, i, descendant, j, primoradic(ancestor),
+                      primoradic(descendant))
+            if j - i > 2:
+                return
+
+
 def main():
     if sys.argv[1] == 'interesting':
         interesting()
+    elif sys.argv[1] == 'random':
+        random()
     else:
         exhaustive()
 
