@@ -306,8 +306,7 @@ class Test(unittest.TestCase):
             for residue in reduced_residue_system_primorial(i):
                 descendant, _ = min_prime_descendant(residue, i)
                 self.assertEqual(descendant,
-                                 min_prime_descendant_simple(residue, i),
-                                 msg='residue == %s, i == %s' % (residue, i))
+                                 min_prime_descendant_simple(residue, i))
 
         # These require going more than one level deep and are so cool.
         self.assertEqual(10336649, min_prime_descendant_simple(126449, 7))
