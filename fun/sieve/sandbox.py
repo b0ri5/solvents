@@ -1,8 +1,8 @@
 import math
 
+from sympy import isprime, prime
 from reduced_residue_system import (ancestors_compositeness, random_rrsp,
                                     reduced_residue_system_primorial)
-from sympy import isprime, prime
 
 
 def there_are_enough_non_two_primes():
