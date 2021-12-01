@@ -11,7 +11,7 @@ from reduced_residue_system import (
     longest_prime_gap_composite, max_power_composite,
     max_consecutive_primes_composite, max_square_composite, min_child,
     min_composite, min_extension, min_prime_descendant,
-    most_unique_factors_composite, parent,
+    min_prime_descendant_simple, most_unique_factors_composite, parent,
     prime_and_composite_between_prime_and_primorial, prime_residues,
     prime_residues_inverse, primoradic, primoradic_to_int,
     primorial_multiplicative_inverse, random_rrsp,
@@ -288,16 +288,38 @@ class Test(unittest.TestCase):
         self.assertEqual((419, 5), min_prime_descendant(209, 4))
 
         # These require going more than one level deep and are so cool.
-        self.assertEqual((19525829, 9), min_prime_descendant(126449, 7))
+        self.assertEqual((10336649, 9), min_prime_descendant(126449, 7))
         self.assertEqual((9913361, 9), min_prime_descendant(213671, 7))
         self.assertEqual((10120951, 9), min_prime_descendant(421261, 7))
-        self.assertEqual((892971133, 10), min_prime_descendant(599653, 8))
-        self.assertEqual((1116141781, 10), min_prime_descendant(677431, 8))
-        self.assertEqual((1339256201, 10), min_prime_descendant(698981, 8))
+        self.assertEqual((243091903, 10), min_prime_descendant(599653, 8))
+        self.assertEqual((301367821, 10), min_prime_descendant(677431, 8))
+        self.assertEqual((233491541, 10), min_prime_descendant(698981, 8))
         self.assertEqual((223877011, 10), min_prime_descendant(784141, 8))
-        self.assertEqual((456749701, 10), min_prime_descendant(864271, 8))
-        self.assertEqual((447287131, 10), min_prime_descendant(1101391, 8))
+        self.assertEqual((243356521, 10), min_prime_descendant(864271, 8))
+        self.assertEqual((272692711, 10), min_prime_descendant(1101391, 8))
         self.assertEqual((224434261, 10), min_prime_descendant(1341391, 8))
+
+    def test_min_prime_descendant_simple(self):
+        self.assertEqual(3, min_prime_descendant_simple(1, 1))
+
+        for i in range(2, 6):
+            for residue in reduced_residue_system_primorial(i):
+                descendant, _ = min_prime_descendant(residue, i)
+                self.assertEqual(descendant,
+                                 min_prime_descendant_simple(residue, i),
+                                 msg='residue == %s, i == %s' % (residue, i))
+
+        # These require going more than one level deep and are so cool.
+        self.assertEqual(10336649, min_prime_descendant_simple(126449, 7))
+        self.assertEqual(9913361, min_prime_descendant_simple(213671, 7))
+        self.assertEqual(10120951, min_prime_descendant_simple(421261, 7))
+        self.assertEqual(243091903, min_prime_descendant_simple(599653, 8))
+        self.assertEqual(301367821, min_prime_descendant_simple(677431, 8))
+        self.assertEqual(233491541, min_prime_descendant_simple(698981, 8))
+        self.assertEqual(223877011, min_prime_descendant_simple(784141, 8))
+        self.assertEqual(243356521, min_prime_descendant_simple(864271, 8))
+        self.assertEqual(272692711, min_prime_descendant_simple(1101391, 8))
+        self.assertEqual(224434261, min_prime_descendant_simple(1341391, 8))
 
     def test_children_residues(self):
         self.assertEqual((1,), prime_residues(1, 1))

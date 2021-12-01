@@ -190,12 +190,34 @@ def min_prime_descendant(residue, i):
         return (residue, i)
     queue = deque()
     queue.appendleft((residue, i))
-    while True:
+    min_child = None
+    min_i = None
+    while not min_child:
         residue, i = queue.pop()
         for child in children(residue, i):
             if isprime(child):
-                return (child, i + 1)
-            queue.appendleft((child, i + 1))
+                min_child = child
+                min_i = i + 1
+                break
+            else:
+                queue.appendleft((child, i + 1))
+
+    # Consume the rest of the queue to get the minimum
+    while queue:
+        residue, i = queue.pop()
+        for child in children(residue, i):
+            if child < min_child and isprime(child):
+                min_child = child
+
+    return min_child, min_i
+
+
+def min_prime_descendant_simple(residue, i):
+    primorial_i = primorial(i)
+    for k in count():
+        num = residue + k * primorial_i
+        if isprime(num):
+            return num
 
 
 def primoradic(num):
