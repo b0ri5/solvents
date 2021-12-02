@@ -190,12 +190,37 @@ def min_prime_descendant(residue, i):
         return (residue, i)
     queue = deque()
     queue.appendleft((residue, i))
-    while True:
+    min_prime_child = None
+    min_i = None
+    while not min_prime_child:
         residue, i = queue.pop()
         for child in children(residue, i):
             if isprime(child):
-                return (child, i + 1)
+                min_prime_child = child
+                min_i = i + 1
+                break
             queue.appendleft((child, i + 1))
+
+    # Consume the rest of the queue to get the minimum
+    while queue:
+        residue, i = queue.pop()
+        for child in children(residue, i):
+            if child < min_prime_child and isprime(child):
+                min_prime_child = child
+
+    return min_prime_child, min_i
+
+
+def min_prime_descendant_simple(residue, i):
+    primorial_i = primorial(i)
+    for k in count():
+        num = residue + k * primorial_i
+        if isprime(num):
+            return num
+    # By https://en.wikipedia.org/wiki/Dirichlet%27s_theorem_on_arithmetic_progressions
+    # a prime will always be found so this "return None" is unreachable but it
+    # makes pytlint happy.
+    return None
 
 
 def primoradic(num):
