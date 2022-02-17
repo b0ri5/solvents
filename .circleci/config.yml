@@ -10,6 +10,8 @@ jobs:
       image: ubuntu-2004:202201-02
     steps:
       - checkout
+      # Output the latest version of python for debugging info
+      - run: pyenv install -l
       # Use the latest version of python available as reported via "pyenv install -l"
       - run: pyenv global 3.9.7
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
