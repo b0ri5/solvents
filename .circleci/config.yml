@@ -11,6 +11,7 @@ jobs:
     steps:
       - checkout
       # Output the latest version of python for debugging info
+      - run: pyenv versions
       - run: pyenv install -l
       # Use the latest version of python available as reported via "pyenv install -l"
       - run: pyenv global 3.9.7
