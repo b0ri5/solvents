@@ -7,7 +7,7 @@ jobs:
     # Use a machine executor because it most easily supports multiple languages
     machine:
       # See https://circleci.com/docs/2.0/configuration-reference/#available-machine-images for the list of images
-      image: ubuntu-2004:202201-02
+      image: ubuntu-2204:2023.10.1
     steps:
       - checkout
       # Output the latest version of python for debugging info in case the next step fails
@@ -15,7 +15,7 @@ jobs:
       # Use the latest version of python available as reported via "pyenv versions"
       - run: pyenv global 3.10.2
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
-      - run: go get github.com/bazelbuild/bazelisk
+      - run: go install github.com/bazelbuild/bazelisk@latest
       - run: bazelisk test --test_output=errors //...
   check-buildifier:
     docker:
@@ -90,7 +90,7 @@ jobs:
       - image: cimg/python:3.11.5@sha256:5eb03f6b4a6dbc1f1abe9c51e6b7cff571ea0ff69ff793e83b7b633efaaa66e9
     steps:
       - checkout
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements_lock.txt
       - run: pip install pylint
       - run: find . -name "*.py" | xargs pylint --disable=missing-docstring --disable=too-many-public-methods
   # See https://github.com/google/yapf

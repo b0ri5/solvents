@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/google/yapf
-    rev: v0.31.0
+    rev: v0.40.2
     hooks:
       - id: yapf
         name: yapf

@@ -1,6 +1,6 @@
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rules_java//java:defs.bzl", "java_library", "java_test")
 load("@rules_python//python:defs.bzl", "py_library", "py_test")
@@ -27,8 +27,9 @@ ts_project(
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "fortytwo_ts_test",
+    node_modules = ["//:node_modules"],
     deps = [":fortytwo_ts_test_lib"],
 )
 
