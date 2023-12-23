@@ -9,7 +9,7 @@
         "@bazel/jasmine": "4.6.2",
         "@bazel/typescript": "4.6.2",
         "@types/benchmark": "2.1.5",
-        "@types/jasmine": "3.10.18",
+        "@types/jasmine": "4.3.1",
         "@types/node": "16.18.66",
         "benny": "3.7.1",
         "clang-format": "1.8.0",
@@ -17,6 +17,7 @@
         "immutable": "4.3.4",
         "jasmine": "3.99.0",
         "jasmine-core": "3.99.1",
+        "jasmine-reporters": "2.5.2",
         "typescript": "4.9.5"
     },
     "license": "MIT"

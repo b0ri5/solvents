@@ -23,14 +23,19 @@ ts_project(
     tsconfig = "@wksp//:tsconfig",
     deps = [
         ":fortytwo_ts",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
 jasmine_test(
     name = "fortytwo_ts_test",
-    node_modules = ["//:node_modules"],
-    deps = [":fortytwo_ts_test_lib"],
+    args = ["fortytwo_test.ts"],
+    chdir = package_name(),
+    data = [
+        ":fortytwo_ts",
+        ":fortytwo_ts_test_lib",
+    ],
+    node_modules = "//:node_modules",
 )
 
 java_library(
