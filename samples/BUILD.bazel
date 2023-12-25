@@ -1,6 +1,6 @@
 load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@rules_go//go:def.bzl", "go_library", "go_test")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rules_java//java:defs.bzl", "java_library", "java_test")
 load("@rules_python//python:defs.bzl", "py_library", "py_test")
@@ -11,7 +11,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -20,7 +20,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":fortytwo_ts",
         "//:node_modules/@types/jasmine",
@@ -79,7 +79,7 @@ cc_test(
     size = "small",
     deps = [
         ":fortytwo_cc",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 
