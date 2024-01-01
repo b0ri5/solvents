@@ -9,7 +9,7 @@ bazel_dep(name = "rules_nodejs", version = "5.8.2")
 # https://github.com/aspect-build/rules_js/blob/c21bbcd93cac997a69f11a20b02552105cd2d7d6/MODULE.bazel#L27
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
 pnpm.pnpm(
-    # Not sure why this needs to be done. But if this is called "pnpm" there is an error
+    # Calling this "pnpm" results in an error, so it is called "pnpm2".
     name = "pnpm2",
     pnpm_version = "8.6.7",
     pnpm_version_integrity = "sha512-vRIWpD/L4phf9Bk2o/O2TDR8fFoJnpYrp2TKqTIZF/qZ2/rgL3qKXzHofHgbXsinwMoSEigz28sqk3pQ+yMEQQ==",
