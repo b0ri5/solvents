@@ -29,12 +29,13 @@ ts_project(
 
 jasmine_test(
     name = "fortytwo_ts_test",
-    args = ["fortytwo_test.js"],
-    chdir = package_name(),
+    args = ["samples/fortytwo_test.js"],
+    copy_data_to_bin = False,
     data = [
         ":fortytwo_ts",
         ":fortytwo_ts_test_lib",
     ],
+    jasmine_reporters = False,
     node_modules = "//:node_modules",
 )
 
