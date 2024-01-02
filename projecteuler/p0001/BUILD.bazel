@@ -1,6 +1,6 @@
-load("@rules_go//go:def.bzl", "go_library", "go_test")
 load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("@rules_go//go:def.bzl", "go_library", "go_test")
 
 ts_project(
     name = "multiples_of_3_or_5_ts",
