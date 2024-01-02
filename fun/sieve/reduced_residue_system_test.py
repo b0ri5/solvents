@@ -2,7 +2,7 @@ import unittest
 
 from math import gcd
 from itertools import islice
-from reduced_residue_system import (
+from fun.sieve.reduced_residue_system import (
     _reduced_residue_system_primorial_brute_force,
     all_reduced_residue_system_primorial, ancestors, ancestors_compositeness,
     children, composite_and_composite_between_prime_and_primorial,

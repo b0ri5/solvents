@@ -1,5 +1,5 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
     name = "sum_square_difference",
@@ -7,7 +7,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -16,14 +16,18 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":sum_square_difference",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "sum_square_difference_test",
-    deps = [":sum_square_difference_test_lib"],
+    args = ["projecteuler/p0006/sum_square_difference_test.js"],
+    copy_data_to_bin = False,
+    data = [":sum_square_difference_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
