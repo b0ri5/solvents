@@ -13,7 +13,7 @@ jobs:
       # Output the latest version of python for debugging info in case the next step fails
       - run: pyenv versions
       # Use the latest version of python available as reported via "pyenv versions"
-      - run: pyenv global 3.10.2
+      - run: pyenv global 3.11.5
       # Install bazelisk. See https://github.com/bazelbuild/bazelisk#requirements
       - run: go install github.com/bazelbuild/bazelisk@latest
       - run: bazelisk test --test_output=errors //...
