@@ -4,7 +4,7 @@ The module for https://github.com/b0ri5/solvents
 
 # https://github.com/aspect-build/rules_js/releases
 bazel_dep(name = "aspect_rules_js", version = "1.34.1")
-bazel_dep(name = "rules_nodejs", version = "5.8.3")
+bazel_dep(name = "rules_nodejs", version = "6.0.2")
 
 # https://github.com/aspect-build/rules_js/blob/c21bbcd93cac997a69f11a20b02552105cd2d7d6/MODULE.bazel#L27
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
