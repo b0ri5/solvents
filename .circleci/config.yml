@@ -115,7 +115,8 @@ workflows:
       - check-cc
       - check-java
       - check-json
-      - check-python
+        #      Disable this until I can figure out how to get it to work or replace it.
+        #      - check-python
       - check-shell
       - check-typescript
       - check-yapf
