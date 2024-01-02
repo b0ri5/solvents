@@ -4,4 +4,4 @@ set -e # Exit on error
 
 find . -name "BUILD.bazel" -not -path "./node_modules/*" \
   | xargs yarn buildifier --lint=warn --mode=check --warnings=all
-yarn buildifier --lint=warn --mode=check --warnings=all WORKSPACE
+yarn buildifier --lint=warn --mode=check --warnings=all MODULE.bazel

@@ -1,7 +1,7 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+load("@rules_go//go:def.bzl", "go_library", "go_test")
 load("@rules_java//java:defs.bzl", "java_library", "java_test")
 load("@rules_python//python:defs.bzl", "py_library", "py_test")
 
@@ -11,7 +11,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -20,16 +20,23 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":fortytwo_ts",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "fortytwo_ts_test",
-    deps = [":fortytwo_ts_test_lib"],
+    args = ["samples/fortytwo_test.js"],
+    copy_data_to_bin = False,
+    data = [
+        ":fortytwo_ts",
+        ":fortytwo_ts_test_lib",
+    ],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
 
 java_library(
@@ -73,7 +80,7 @@ cc_test(
     size = "small",
     deps = [
         ":fortytwo_cc",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
 )
 

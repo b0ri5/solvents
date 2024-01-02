@@ -5,6 +5,7 @@ set -e # Exit on error
 for f in $(find . -name "*.json" -not -path "./node_modules/*")
 do
   tmp=$(mktemp)
-  python -m json.tool $f > $tmp
+  echo "Doing json formatting of $f"
+  python3 -m json.tool $f > $tmp
   cp $tmp $f
 done

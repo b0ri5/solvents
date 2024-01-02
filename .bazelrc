@@ -1,0 +1,7 @@
+# https://github.com/aspect-build/rules_ts/pull/371
+build --@aspect_rules_ts//ts:skipLibCheck=always
+
+# https://docs.aspect.build/rulesets/aspect_rules_ts/docs/transpiler/#typescript-tsc
+build --@aspect_rules_ts//ts:default_to_tsc_transpiler
+fetch --@aspect_rules_ts//ts:default_to_tsc_transpiler
+query --@aspect_rules_ts//ts:default_to_tsc_transpiler

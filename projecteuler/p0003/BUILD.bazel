@@ -1,5 +1,5 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
     name = "largest_prime_factor",
@@ -7,8 +7,8 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
-    deps = ["@npm//bignumber.js"],
+    tsconfig = "//:tsconfig",
+    deps = ["//:node_modules/bignumber.js"],
 )
 
 ts_project(
@@ -17,15 +17,19 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":largest_prime_factor",
-        "@npm//@types/jasmine",
-        "@npm//bignumber.js",
+        "//:node_modules/@types/jasmine",
+        "//:node_modules/bignumber.js",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "largest_prime_factor_test",
-    deps = [":largest_prime_factor_test_lib"],
+    args = ["projecteuler/p0003/largest_prime_factor_test.js"],
+    copy_data_to_bin = False,
+    data = [":largest_prime_factor_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
