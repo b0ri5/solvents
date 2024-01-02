@@ -65,15 +65,15 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/developer/images/image/cimg/openjdk for a list of images
-      - image: cimg/openjdk:17.0.9@sha256:e43486fd029dd851d121da42df9121b260164bc5dd1e4f63122ac8cfd61ad7ea
+      - image: cimg/openjdk:21.0.0@sha256:f56f6b903f121e80b34abe9b5fb0bef3f6f006223b580603da5ac4fde92d41af
     steps:
       - checkout
       - run: |
-          wget https://github.com/google/google-java-format/releases/download/v1.10.0/google-java-format-1.10.0-all-deps.jar
-          find . -name "*.java" | xargs java --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED -jar google-java-format-1.10.0-all-deps.jar --dry-run --set-exit-if-changed
+          wget https://github.com/google/google-java-format/releases/download/v1.19.1/google-java-format-1.19.1-all-deps.jar
+          find . -name "*.java" | xargs java --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED -jar google-java-format-1.19.1-all-deps.jar --dry-run --set-exit-if-changed
       - run:
           command: |
-            echo "Run find . -name "*.java" | xargs java -jar google-java-format-1.10.0-all-deps.jar --replace"
+            echo "Run find . -name "*.java" | xargs java -jar google-java-format-1.19.1-all-deps.jar --replace"
           when: on_fail
   check-shell:
     docker:
