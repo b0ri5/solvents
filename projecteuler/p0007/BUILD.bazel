@@ -1,6 +1,6 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
     name = "10001st_prime",
@@ -8,7 +8,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -17,16 +17,20 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":10001st_prime",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "10001st_prime_test",
-    deps = [":10001st_prime_test_lib"],
+    args = ["projecteuler/p0007/10001st_prime_test.js"],
+    copy_data_to_bin = False,
+    data = [":10001st_prime_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
 
 ts_project(
@@ -35,17 +39,21 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":10001st_prime",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "10001st_prime_stress_test",
+    args = ["projecteuler/p0007/10001st_prime_stress_test.js"],
+    copy_data_to_bin = False,
+    data = [":10001st_prime_stress_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
     tags = ["manual"],
-    deps = [":10001st_prime_stress_test_lib"],
 )
 
 ts_project(
@@ -54,11 +62,11 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
-    deps = ["@npm//immutable"],
+    tsconfig = "//:tsconfig",
+    deps = ["//:node_modules/immutable"],
 )
 
-nodejs_binary(
+js_binary(
     name = "steps",
     data = [":steps_lib"],
     entry_point = ":steps.ts",
@@ -70,20 +78,20 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":10001st_prime",
-        "@npm//@types/benchmark",
-        "@npm//benny",
+        "//:node_modules/@types/benchmark",
+        "//:node_modules/benny",
     ],
 )
 
 # To run this and generate a profile do
 # $ bazel build projecteuler/p0007:benchmark && NODE_ENV=production bazel-bin/projecteuler/p0007/benchmark.sh
 # $ node --prof-process <the isloate file> > processed.txt
-nodejs_binary(
+js_binary(
     name = "benchmark",
+    args = ["--node_options=--prof"],
     data = [":benchmark_lib"],
     entry_point = ":benchmark.ts",
-    templated_args = ["--node_options=--prof"],
 )

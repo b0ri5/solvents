@@ -1,7 +1,7 @@
 import unittest
 
 from itertools import islice
-from gaps import apply_gaps, prime_gaps
+from fun.sieve.gaps import apply_gaps, prime_gaps
 
 
 class GapsTest(unittest.TestCase):

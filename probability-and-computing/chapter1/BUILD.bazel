@@ -1,5 +1,5 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
     name = "1.1",
@@ -7,7 +7,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -16,16 +16,22 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":1.1",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "1.1_test",
-    srcs = [":1.1_test_lib"],
+    args = ["probability-and-computing/chapter1/1.1_test.js"],
+    copy_data_to_bin = False,
+    data = [
+        ":1.1_test_lib",
+    ],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
 
 ts_project(
@@ -34,7 +40,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -43,16 +49,20 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":1.2",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "1.2_test",
-    deps = [":1.2_test_lib"],
+    args = ["probability-and-computing/chapter1/1.2_test.js"],
+    copy_data_to_bin = False,
+    data = [":1.2_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
 
 ts_project(
@@ -61,7 +71,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -70,14 +80,20 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":1.3",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "1.3_test",
-    deps = [":1.3_test_lib"],
+    args = ["probability-and-computing/chapter1/1.3_test.js"],
+    copy_data_to_bin = False,
+    data = [
+        ":1.3_test_lib",
+    ],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )

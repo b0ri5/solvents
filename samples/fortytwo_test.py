@@ -1,6 +1,6 @@
 import unittest
 
-import fortytwo
+from samples import fortytwo
 
 
 class FortytwoTest(unittest.TestCase):

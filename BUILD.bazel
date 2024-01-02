@@ -1,9 +1,14 @@
-load("@bazel_gazelle//:def.bzl", "gazelle")
-load("@io_bazel_rules_go//go:def.bzl", "nogo")
-load("@npm//@bazel/typescript:index.bzl", "ts_config")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
-# gazelle:prefix github.com/b0ri5/solvents
-gazelle(name = "gazelle")
+npm_link_all_packages(name = "node_modules")
+
+compile_pip_requirements(
+    name = "requirements",
+    src = "requirements.in",
+    requirements_txt = "requirements_lock.txt",
+)
 
 exports_files(
     ["tsconfig.json"],
@@ -14,12 +19,5 @@ ts_config(
     name = "tsconfig",
     src = "tsconfig.json",
     visibility = ["//visibility:public"],
-    deps = ["@npm//:node_modules/gts/tsconfig-google.json"],
-)
-
-# See https://github.com/bazelbuild/rules_go/blob/master/go/nogo.rst#setup
-nogo(
-    name = "nogo",
-    vet = True,
-    visibility = ["//visibility:public"],  # must have public visibility
+    deps = ["//:node_modules/gts"],
 )

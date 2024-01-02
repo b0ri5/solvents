@@ -1,5 +1,5 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
     name = "even_fibonacci_numbers_ts",
@@ -7,7 +7,7 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
 )
 
 ts_project(
@@ -16,14 +16,18 @@ ts_project(
     composite = True,
     declaration = True,
     source_map = True,
-    tsconfig = "@wksp//:tsconfig",
+    tsconfig = "//:tsconfig",
     deps = [
         ":even_fibonacci_numbers_ts",
-        "@npm//@types/jasmine",
+        "//:node_modules/@types/jasmine",
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "even_fibonacci_numbers_test",
-    deps = [":even_fibonacci_numbers_ts_test_lib"],
+    args = ["projecteuler/p0002/even_fibonacci_numbers_test.js"],
+    copy_data_to_bin = False,
+    data = [":even_fibonacci_numbers_ts_test_lib"],
+    jasmine_reporters = False,
+    node_modules = "//:node_modules",
 )
