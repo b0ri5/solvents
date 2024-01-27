@@ -3,7 +3,7 @@ The module for https://github.com/b0ri5/solvents
 """
 
 # https://github.com/aspect-build/rules_js/releases
-bazel_dep(name = "aspect_rules_js", version = "1.35.0")
+bazel_dep(name = "aspect_rules_js", version = "1.37.1")
 bazel_dep(name = "rules_nodejs", version = "6.0.3")
 
 # https://github.com/aspect-build/rules_js/blob/c21bbcd93cac997a69f11a20b02552105cd2d7d6/MODULE.bazel#L27
@@ -25,7 +25,7 @@ npm.npm_translate_lock(
 use_repo(npm, "npm")
 
 # https://github.com/aspect-build/rules_ts/releases
-bazel_dep(name = "aspect_rules_ts", version = "2.1.0")
+bazel_dep(name = "aspect_rules_ts", version = "2.1.1")
 
 rules_ts_ext = use_extension(
     "@aspect_rules_ts//ts:extensions.bzl",
@@ -39,7 +39,7 @@ use_repo(rules_ts_ext, "npm_typescript")
 bazel_dep(name = "aspect_rules_jasmine", version = "1.1.1")
 
 # https://github.com/bazelbuild/rules_python/releases
-bazel_dep(name = "rules_python", version = "0.28.0")
+bazel_dep(name = "rules_python", version = "0.29.0")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
