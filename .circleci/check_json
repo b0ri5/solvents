@@ -2,7 +2,7 @@
 
 set -e # Exit on error
 
-for f in $(find . -name "*.json" -not -path "./node_modules/*")
+for f in $(find . -name "*.json" -not -path "./node_modules/*" -not -path "./maven_install.json")
 do
   echo Checking $f
   diff <(python -m json.tool $f) $f
