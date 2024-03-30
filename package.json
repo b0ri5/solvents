@@ -1,24 +1,24 @@
 {
     "dependencies": {
         "bignumber.js": "9.1.2",
-        "typescript": "5.4.2"
+        "typescript": "5.4.3"
     },
     "devDependencies": {
         "@bazel/buildifier": "6.4.0",
-        "@bazel/ibazel": "0.24.0",
+        "@bazel/ibazel": "0.25.0",
         "@bazel/jasmine": "5.8.1",
         "@bazel/typescript": "5.8.1",
         "@types/benchmark": "2.1.5",
         "@types/jasmine": "5.1.4",
-        "@types/node": "20.11.28",
+        "@types/node": "20.11.30",
         "benny": "3.7.1",
         "clang-format": "1.8.0",
-        "gts": "5.2.0",
+        "gts": "5.3.0",
         "immutable": "4.3.5",
         "jasmine": "5.1.0",
         "jasmine-core": "5.1.2",
         "jasmine-reporters": "2.5.2",
-        "typescript": "5.4.2"
+        "typescript": "5.4.3"
     },
     "license": "MIT"
 }
