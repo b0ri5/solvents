@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   '@bazel/buildifier':
-    specifier: 6.4.0
-    version: 6.4.0
+    specifier: 7.1.0
+    version: 7.1.0
   '@bazel/ibazel':
     specifier: 0.25.0
     version: 0.25.0
@@ -115,8 +115,8 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /@bazel/buildifier@6.4.0:
-    resolution: {integrity: sha512-upvdCVlXYOatvank2Ch5lfNe9Msgny1Fozdz4fIm8diVju4Kd2JmA9DVS/Tg8UlFX/ItAL1PdSyefWK8Ashwdg==}
+  /@bazel/buildifier@7.1.0:
+    resolution: {integrity: sha512-FgjztMqd+6OMJzvgUHDWo/qdMxiRaIy8hWth6fA0RWvhnqds2019xWXVOdCjyDWYXqj/Wb5hKGblLS3lzD3ryQ==}
     hasBin: true
     dev: true
 
