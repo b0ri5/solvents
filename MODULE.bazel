@@ -55,7 +55,7 @@ pip.parse(
 use_repo(pip, "pypi")
 
 # https://github.com/bazelbuild/rules_jvm_external/blob/master/docs/bzlmod.md
-bazel_dep(name = "rules_jvm_external", version = "6.0")
+bazel_dep(name = "rules_jvm_external", version = "6.1")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
@@ -70,5 +70,5 @@ use_repo(maven, "maven", "unpinned_maven")
 bazel_dep(name = "googletest", version = "1.14.0.bcr.1")
 
 # https://github.com/bazelbuild/rules_go/blob/master/docs/go/core/bzlmod.md
-bazel_dep(name = "rules_go", version = "0.46.0")
+bazel_dep(name = "rules_go", version = "0.47.0")
 bazel_dep(name = "gazelle", version = "0.36.0")
