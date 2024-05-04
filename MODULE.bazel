@@ -25,7 +25,7 @@ npm.npm_translate_lock(
 use_repo(npm, "npm")
 
 # https://github.com/aspect-build/rules_ts/releases
-bazel_dep(name = "aspect_rules_ts", version = "2.2.0")
+bazel_dep(name = "aspect_rules_ts", version = "2.3.0")
 
 rules_ts_ext = use_extension(
     "@aspect_rules_ts//ts:extensions.bzl",
