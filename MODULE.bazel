@@ -3,8 +3,8 @@ The module for https://github.com/b0ri5/solvents
 """
 
 # https://github.com/aspect-build/rules_js/releases
-bazel_dep(name = "aspect_rules_js", version = "1.42.1")
-bazel_dep(name = "rules_nodejs", version = "6.1.0")
+bazel_dep(name = "aspect_rules_js", version = "1.42.3")
+bazel_dep(name = "rules_nodejs", version = "6.1.1")
 
 # https://github.com/aspect-build/rules_js/blob/c21bbcd93cac997a69f11a20b02552105cd2d7d6/MODULE.bazel#L27
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
@@ -25,7 +25,7 @@ npm.npm_translate_lock(
 use_repo(npm, "npm")
 
 # https://github.com/aspect-build/rules_ts/releases
-bazel_dep(name = "aspect_rules_ts", version = "2.4.0")
+bazel_dep(name = "aspect_rules_ts", version = "2.4.1")
 
 rules_ts_ext = use_extension(
     "@aspect_rules_ts//ts:extensions.bzl",
@@ -36,7 +36,7 @@ rules_ts_ext.deps()
 use_repo(rules_ts_ext, "npm_typescript")
 
 # https://registry.bazel.build/modules/aspect_rules_jasmine
-bazel_dep(name = "aspect_rules_jasmine", version = "1.1.1")
+bazel_dep(name = "aspect_rules_jasmine", version = "1.2.0")
 
 # https://github.com/bazelbuild/rules_python/releases
 bazel_dep(name = "rules_python", version = "0.32.2")
@@ -70,5 +70,5 @@ use_repo(maven, "maven", "unpinned_maven")
 bazel_dep(name = "googletest", version = "1.14.0.bcr.1")
 
 # https://github.com/bazelbuild/rules_go/blob/master/docs/go/core/bzlmod.md
-bazel_dep(name = "rules_go", version = "0.47.1")
-bazel_dep(name = "gazelle", version = "0.36.0")
+bazel_dep(name = "rules_go", version = "0.48.0")
+bazel_dep(name = "gazelle", version = "0.37.0")
