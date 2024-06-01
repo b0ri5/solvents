@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   '@bazel/buildifier':
-    specifier: 7.1.1
-    version: 7.1.1
+    specifier: 7.1.2
+    version: 7.1.2
   '@bazel/ibazel':
     specifier: 0.25.0
     version: 0.25.0
@@ -110,8 +110,8 @@ packages:
       picocolors: 1.0.1
     dev: true
 
-  /@bazel/buildifier@7.1.1:
-    resolution: {integrity: sha512-Up4m88XqBea01zvejR/1dNfFtEJp64f7kgodPUNtVOzHKt+CguVG8yTnyWAb/N0mI2ImrXVxgxglIWymfQRjqQ==}
+  /@bazel/buildifier@7.1.2:
+    resolution: {integrity: sha512-YTljiDZV8wPPn68Ae/kYiuvgz/rP9Y+RC16zfbLCg5Yt2vdCs5VCXV0kFyxm7Jlsu+75D5O+LIAq4vpH9TaMtA==}
     hasBin: true
     dev: true
 
@@ -179,7 +179,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4
+      debug: 4.3.5
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.1
@@ -201,7 +201,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.3.4
+      debug: 4.3.5
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -320,7 +320,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/type-utils': 5.62.0(eslint@8.53.0)(typescript@5.4.5)
       '@typescript-eslint/utils': 5.62.0(eslint@8.53.0)(typescript@5.4.5)
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 8.53.0
       graphemer: 1.4.0
       ignore: 5.3.1
@@ -345,7 +345,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.4.5)
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 8.53.0
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -372,7 +372,7 @@ packages:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.4.5)
       '@typescript-eslint/utils': 5.62.0(eslint@8.53.0)(typescript@5.4.5)
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 8.53.0
       tsutils: 3.21.0(typescript@5.4.5)
       typescript: 5.4.5
@@ -396,7 +396,7 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.62.0
       '@typescript-eslint/visitor-keys': 5.62.0
-      debug: 4.3.4
+      debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.2
@@ -716,8 +716,8 @@ packages:
       which: 2.0.2
     dev: true
 
-  /debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+  /debug@4.3.5:
+    resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -897,7 +897,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.5
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.2
