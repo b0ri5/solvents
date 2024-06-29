@@ -52,7 +52,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.3.0@sha256:28c15c8b40943fa5f42b74eb68b8ad457fed310ef08ca2edf9c57fb417b6bf19
+      - image: cimg/node:15.4.0@sha256:96f3630f2d07f379a8282fa5e2c7c96de7f22eece1c1424be2d27e4c13f286f9
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
