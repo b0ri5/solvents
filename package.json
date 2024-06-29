@@ -1,7 +1,7 @@
 {
     "dependencies": {
         "bignumber.js": "9.1.2",
-        "typescript": "5.4.5"
+        "typescript": "5.5.2"
     },
     "devDependencies": {
         "@bazel/buildifier": "7.1.2",
@@ -10,7 +10,7 @@
         "@bazel/typescript": "5.8.1",
         "@types/benchmark": "2.1.5",
         "@types/jasmine": "5.1.4",
-        "@types/node": "20.14.2",
+        "@types/node": "20.14.7",
         "benny": "3.7.1",
         "clang-format": "1.8.0",
         "gts": "5.3.1",
@@ -18,7 +18,7 @@
         "jasmine": "5.1.0",
         "jasmine-core": "5.1.2",
         "jasmine-reporters": "2.5.2",
-        "typescript": "5.4.5"
+        "typescript": "5.5.2"
     },
     "license": "MIT"
 }
