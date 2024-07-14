@@ -20,7 +20,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.4.0@sha256:5a1a21cf1b8164878cdc77130432330224722c7d71d37cdc3663a6c2ee7be0d8
+      - image: cimg/node:22.4.1@sha256:8d313a30f4d91d5666d61e15e713a63c03e584cebb26fb9ea77e9f1afab14367
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -31,7 +31,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.4.0@sha256:5a1a21cf1b8164878cdc77130432330224722c7d71d37cdc3663a6c2ee7be0d8
+      - image: cimg/node:22.4.1@sha256:8d313a30f4d91d5666d61e15e713a63c03e584cebb26fb9ea77e9f1afab14367
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -52,7 +52,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.4.0@sha256:5a1a21cf1b8164878cdc77130432330224722c7d71d37cdc3663a6c2ee7be0d8
+      - image: cimg/node:22.4.1@sha256:8d313a30f4d91d5666d61e15e713a63c03e584cebb26fb9ea77e9f1afab14367
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
