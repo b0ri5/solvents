@@ -14,9 +14,9 @@
         "benny": "3.7.1",
         "clang-format": "1.8.0",
         "gts": "5.3.1",
-        "immutable": "4.3.6",
-        "jasmine": "5.1.0",
-        "jasmine-core": "5.1.2",
+        "immutable": "4.3.7",
+        "jasmine": "5.2.0",
+        "jasmine-core": "5.2.0",
         "jasmine-reporters": "2.5.2",
         "typescript": "5.5.3"
     },
