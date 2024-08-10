@@ -78,7 +78,7 @@ jobs:
   check-shell:
     docker:
       # See https://circleci.com/developer/images/image/cimg/base for a list of images
-      - image: cimg/base:2024.07@sha256:38733976b98d1ffdffef270d0517c8483c806c4dee1f175af148a2bd50457f6a
+      - image: cimg/base:2024.08@sha256:0d0ec9ec3f617cf5eb7b330b5000ac4df9d582ce4b670a085ddc1ce0e0d281d5
     steps:
       - checkout
       - run: sudo apt-get update
