@@ -32,8 +32,8 @@ devDependencies:
     specifier: 5.1.4
     version: 5.1.4
   '@types/node':
-    specifier: 20.14.14
-    version: 20.14.14
+    specifier: 20.14.15
+    version: 20.14.15
   benny:
     specifier: 3.7.1
     version: 3.7.1
@@ -182,7 +182,7 @@ packages:
       debug: 4.3.6
       espree: 9.6.1
       globals: 13.24.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -292,8 +292,8 @@ packages:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
     dev: true
 
-  /@types/node@20.14.14:
-    resolution: {integrity: sha512-d64f00982fS9YoOgJkAMolK7MN8Iq3TDdVjchbYHdEmjth/DHowx82GnoA+tVUAN+7vxfYUgAzi+JXbKNd2SDQ==}
+  /@types/node@20.14.15:
+    resolution: {integrity: sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -325,7 +325,7 @@ packages:
       debug: 4.3.6
       eslint: 8.57.0
       graphemer: 1.4.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       natural-compare-lite: 1.4.0
       semver: 7.6.3
       tsutils: 3.21.0(typescript@5.5.4)
@@ -830,7 +830,7 @@ packages:
       eslint: 8.57.0
       eslint-plugin-es: 4.1.0(eslint@8.57.0)
       eslint-utils: 3.0.0(eslint@8.57.0)
-      ignore: 5.3.1
+      ignore: 5.3.2
       is-core-module: 2.15.0
       minimatch: 3.1.2
       resolve: 1.22.8
@@ -936,7 +936,7 @@ packages:
       glob-parent: 6.0.2
       globals: 13.24.0
       graphemer: 1.4.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
@@ -1200,7 +1200,7 @@ packages:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
@@ -1294,8 +1294,8 @@ packages:
       safer-buffer: 2.1.2
     dev: true
 
-  /ignore@5.3.1:
-    resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
+  /ignore@5.3.2:
+    resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
     dev: true
 
