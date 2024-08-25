@@ -10,7 +10,7 @@
         "@bazel/typescript": "5.8.1",
         "@types/benchmark": "2.1.5",
         "@types/jasmine": "5.1.4",
-        "@types/node": "20.15.0",
+        "@types/node": "20.16.0",
         "benny": "3.7.1",
         "clang-format": "1.8.0",
         "gts": "5.3.1",
