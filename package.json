@@ -4,13 +4,13 @@
         "typescript": "5.5.4"
     },
     "devDependencies": {
-        "@bazel/buildifier": "7.1.2",
+        "@bazel/buildifier": "7.3.1",
         "@bazel/ibazel": "0.25.0",
         "@bazel/jasmine": "5.8.1",
         "@bazel/typescript": "5.8.1",
         "@types/benchmark": "2.1.5",
         "@types/jasmine": "5.1.4",
-        "@types/node": "20.16.1",
+        "@types/node": "20.16.2",
         "benny": "3.7.1",
         "clang-format": "1.8.0",
         "gts": "5.3.1",
