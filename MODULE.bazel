@@ -55,7 +55,7 @@ pip.parse(
 use_repo(pip, "pypi")
 
 # https://github.com/bazelbuild/rules_jvm_external/blob/master/docs/bzlmod.md
-bazel_dep(name = "rules_jvm_external", version = "6.2")
+bazel_dep(name = "rules_jvm_external", version = "6.3")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
