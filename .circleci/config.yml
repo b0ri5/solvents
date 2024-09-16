@@ -20,7 +20,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.7.0@sha256:b0739415402a6d81fb5e96e65e2931c84712b896718c0de04f8d72002330d6d5
+      - image: cimg/node:22.8.0@sha256:7911acf080e63db58f341e5ecc0cd856e25a925ae3e75b411948ff9526a2a23f
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -31,7 +31,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.7.0@sha256:b0739415402a6d81fb5e96e65e2931c84712b896718c0de04f8d72002330d6d5
+      - image: cimg/node:22.8.0@sha256:7911acf080e63db58f341e5ecc0cd856e25a925ae3e75b411948ff9526a2a23f
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -42,7 +42,7 @@ jobs:
   check-json:
     docker:
       # See https://circleci.com/developer/images/image/cimg/python for a list of images
-      - image: cimg/python:3.12.5@sha256:d28019738e9b5a85a1e1f335247b00829ddda660db6ff312c528fe9769885126
+      - image: cimg/python:3.12.6@sha256:96bd2983f9279a4693190fdbe1fc3ec93b3f29845c327d117e81200c22dfbabd
     steps:
       - checkout
       - run: .circleci/check_json
@@ -52,7 +52,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.7.0@sha256:b0739415402a6d81fb5e96e65e2931c84712b896718c0de04f8d72002330d6d5
+      - image: cimg/node:22.8.0@sha256:7911acf080e63db58f341e5ecc0cd856e25a925ae3e75b411948ff9526a2a23f
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -87,7 +87,7 @@ jobs:
   check-python:
     docker:
       # See https://circleci.com/developer/images/image/cimg/python for a list of images
-      - image: cimg/python:3.12.5@sha256:d28019738e9b5a85a1e1f335247b00829ddda660db6ff312c528fe9769885126
+      - image: cimg/python:3.12.6@sha256:96bd2983f9279a4693190fdbe1fc3ec93b3f29845c327d117e81200c22dfbabd
     steps:
       - checkout
       - run: pip install -r requirements_lock.txt
@@ -97,7 +97,7 @@ jobs:
   check-yapf:
     docker:
       # See https://circleci.com/developer/images/image/cimg/python for a list of images
-      - image: cimg/python:3.12.5@sha256:d28019738e9b5a85a1e1f335247b00829ddda660db6ff312c528fe9769885126
+      - image: cimg/python:3.12.6@sha256:96bd2983f9279a4693190fdbe1fc3ec93b3f29845c327d117e81200c22dfbabd
     steps:
       - checkout
       - run: pip install yapf
