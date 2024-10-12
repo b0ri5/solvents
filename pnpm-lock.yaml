@@ -21,7 +21,7 @@ devDependencies:
     version: 0.25.0
   '@bazel/jasmine':
     specifier: 5.8.1
-    version: 5.8.1(jasmine-core@5.3.0)(jasmine@5.3.0)
+    version: 5.8.1(jasmine-core@5.3.0)(jasmine@5.3.1)
   '@bazel/typescript':
     specifier: 5.8.1
     version: 5.8.1(typescript@5.6.2)
@@ -47,8 +47,8 @@ devDependencies:
     specifier: 4.3.7
     version: 4.3.7
   jasmine:
-    specifier: 5.3.0
-    version: 5.3.0
+    specifier: 5.3.1
+    version: 5.3.1
   jasmine-core:
     specifier: 5.3.0
     version: 5.3.0
@@ -120,7 +120,7 @@ packages:
     hasBin: true
     dev: true
 
-  /@bazel/jasmine@5.8.1(jasmine-core@5.3.0)(jasmine@5.3.0):
+  /@bazel/jasmine@5.8.1(jasmine-core@5.3.0)(jasmine@5.3.1):
     resolution: {integrity: sha512-052veW5EbJRH+5hL4l9Sf99bTmdKQ5WXXMF0QiBOZcA3ZHYMAaKfYNO+brutiWoX6FrBloiskLrMzF8OiHBqyw==}
     hasBin: true
     requiresBuild: true
@@ -129,7 +129,7 @@ packages:
       jasmine-core: '>=2.99.0'
     dependencies:
       c8: 7.5.0
-      jasmine: 5.3.0
+      jasmine: 5.3.1
       jasmine-core: 5.3.0
       jasmine-reporters: 2.5.2
     dev: true
@@ -1451,8 +1451,8 @@ packages:
       mkdirp: 1.0.4
     dev: true
 
-  /jasmine@5.3.0:
-    resolution: {integrity: sha512-Vrv5VWTXVZ/5xcNawlYCmE24pOaZu3KduLr9iAaENoMJ8W8Ryvhfpw2cf3rI4Unc2ajvu2t4tCKjS72TnraBGQ==}
+  /jasmine@5.3.1:
+    resolution: {integrity: sha512-3zeUCfr3d1iga3s+NgDpggCP+ex5sdbNgqNn+Tq4yw/QfnwGrWC/ZvXX1IRm5deSIZ1LnvoeGY55F/ztbVOXPQ==}
     hasBin: true
     dependencies:
       glob: 10.4.5
