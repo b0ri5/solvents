@@ -3,7 +3,7 @@ The module for https://github.com/b0ri5/solvents
 """
 
 # https://github.com/aspect-build/rules_js/releases
-bazel_dep(name = "aspect_rules_js", version = "1.42.3")
+bazel_dep(name = "aspect_rules_js", version = "2.1.2")
 bazel_dep(name = "rules_nodejs", version = "6.3.2")
 
 # https://github.com/aspect-build/rules_js/blob/c21bbcd93cac997a69f11a20b02552105cd2d7d6/MODULE.bazel#L27
@@ -25,7 +25,7 @@ npm.npm_translate_lock(
 use_repo(npm, "npm")
 
 # https://github.com/aspect-build/rules_ts/releases
-bazel_dep(name = "aspect_rules_ts", version = "2.4.2")
+bazel_dep(name = "aspect_rules_ts", version = "3.3.2")
 
 rules_ts_ext = use_extension(
     "@aspect_rules_ts//ts:extensions.bzl",
@@ -36,10 +36,10 @@ rules_ts_ext.deps()
 use_repo(rules_ts_ext, "npm_typescript")
 
 # https://registry.bazel.build/modules/aspect_rules_jasmine
-bazel_dep(name = "aspect_rules_jasmine", version = "1.2.0")
+bazel_dep(name = "aspect_rules_jasmine", version = "2.0.0")
 
 # https://github.com/bazelbuild/rules_python/releases
-bazel_dep(name = "rules_python", version = "0.40.0")
+bazel_dep(name = "rules_python", version = "1.0.0")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
