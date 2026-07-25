@@ -44,8 +44,8 @@ devDependencies:
     specifier: 5.3.1
     version: 5.3.1(typescript@5.7.2)
   immutable:
-    specifier: 4.3.7
-    version: 4.3.7
+    specifier: 4.3.9
+    version: 4.3.9
   jasmine:
     specifier: 5.4.0
     version: 5.4.0
@@ -1260,8 +1260,8 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immutable@4.3.7:
-    resolution: {integrity: sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==}
+  /immutable@4.3.9:
+    resolution: {integrity: sha512-ObHy4YN7ycwZOUCLI1/6svfyAFu7vL8RhAvVu/bh/RZW9EPlOyDaQ9jDQWCtdqzaXUjgXZCW1migtHE7YI7UGQ==}
     dev: true
 
   /import-fresh@3.3.0:
