@@ -20,7 +20,7 @@ jobs:
   check-buildifier:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.11.0@sha256:76aae59c6259672ab68819b8960de5ef571394681089eab2b576f85f080c73ba
+      - image: cimg/node:24.20.0@sha256:22fb15aa90ce260219b6c7ad007f079cfb52bfb0624b4d7ac7e0b0ebf585c617
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -31,7 +31,7 @@ jobs:
   check-typescript:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.11.0@sha256:76aae59c6259672ab68819b8960de5ef571394681089eab2b576f85f080c73ba
+      - image: cimg/node:24.20.0@sha256:22fb15aa90ce260219b6c7ad007f079cfb52bfb0624b4d7ac7e0b0ebf585c617
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -52,7 +52,7 @@ jobs:
   check-cc:
     docker:
       # See https://circleci.com/developer/images/image/cimg/node for a list of images
-      - image: cimg/node:22.11.0@sha256:76aae59c6259672ab68819b8960de5ef571394681089eab2b576f85f080c73ba
+      - image: cimg/node:24.20.0@sha256:22fb15aa90ce260219b6c7ad007f079cfb52bfb0624b4d7ac7e0b0ebf585c617
     steps:
       - checkout
       - run: yarn install --frozen-lockfile --non-interactive
@@ -65,7 +65,7 @@ jobs:
   check-java:
     docker:
       # See https://circleci.com/developer/images/image/cimg/openjdk for a list of images
-      - image: cimg/openjdk:21.0.5@sha256:4fa07b8ba0634a2036c53d2cc5242b0d8f49d84dd3400a0b310478f1f76de55a
+      - image: cimg/openjdk:25.0.4@sha256:c2fae0b91d4c591f200f1d0221234a994a13436bc1f90dabb37902dd66504ee2
     steps:
       - checkout
       - run: |
@@ -78,7 +78,7 @@ jobs:
   check-shell:
     docker:
       # See https://circleci.com/developer/images/image/cimg/base for a list of images
-      - image: cimg/base:2024.12@sha256:03c91d4730297b5af3718e1e81d43e210eae02be271ed7d370ccb3b994dad2bd
+      - image: cimg/base:2026.09@sha256:668174490adc470cd34eb3aa178939d65f817bc13ef657a94ff0278338f7d8da
     steps:
       - checkout
       - run: sudo apt-get update
